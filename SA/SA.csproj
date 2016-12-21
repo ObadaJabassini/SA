@@ -52,6 +52,10 @@
       <HintPath>..\packages\C5.2.4.5947.17249\lib\net45\C5.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="MathNet.Numerics, Version=3.13.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.3.13.1\lib\net40\MathNet.Numerics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -64,6 +68,7 @@
   <ItemGroup>
     <Compile Include="LightsOut\AStar.cs" />
     <Compile Include="LightsOut\BFS.cs" />
+    <Compile Include="LightsOut\LineraAlgebra\Solver.cs" />
     <Compile Include="LightsOut\Node.cs" />
     <Compile Include="Mancala\MinMax.cs" />
     <Compile Include="Mancala\Node.cs" />
