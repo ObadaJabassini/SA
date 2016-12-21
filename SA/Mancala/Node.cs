@@ -15,7 +15,7 @@ namespace SA.Mancala
         public Node Parent { get; set; } = null;
         public IList<Node> Parents { get { IList<Node> nn = new List<Node>(); nn.Add(this); Node temp = Parent; while (temp != null) { nn.Add(temp); temp = temp.Parent; } return nn.Reverse().ToList(); } }
         public int Eval => Mancalas[0] - Mancalas[1];
-        public bool GameOver => Bins.All(e => e.All(c => c == 0));
+        public bool IsGameOver => Bins.All(e => e.All(c => c == 0));
         public bool GetExtraTurn { get; }
 
         public Node(int player, bool extra)
@@ -23,6 +23,8 @@ namespace SA.Mancala
             GetExtraTurn = extra;
             Player = player;
         }
+
+        public Node() { }
 
         public IList<Node> GenerateChildren()
         {
@@ -74,6 +76,16 @@ namespace SA.Mancala
             }
 
             return false;
+        }
+
+        public static bool operator <(Node n1, Node n2)
+        {
+            return n1.Eval < n2.Eval;
+        }
+
+        public static bool operator >(Node n1, Node n2)
+        {
+            return n1.Eval > n2.Eval;
         }
     }
 }
