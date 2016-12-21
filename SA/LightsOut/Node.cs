@@ -12,9 +12,9 @@ namespace SA.LightsOut
         public State[,] Board { get; set; }
         public IList<Node> Children { get; private set; } = null;
         public Node Parent { get; set; } = null;
-        public IList<Node> Parents { get { IList<Node> nn = new List<Node>(); nn.Add(this); Node temp = Parent;while(temp != null) { nn.Add(temp); temp = temp.Parent; } return nn.Reverse().ToList();} }
+        public IList<Node> Parents { get { IList<Node> nn = new List<Node>(); Node temp = Parent;while (temp != null) nn.Add(temp); var t = nn.Reverse(); var tt = t.ToList();tt.Insert(0, this); return tt; } }
         private int _eval = -1;
-        public int Evaluation { get { return _eval != -1 ? _eval : (_eval = Board.Cast<State>().Where(state => state == State.ON).Count()); } }
+        public int Evaluation { get { return _eval != -1 ? _eval : (_eval = Board.Cast<State>().Where(state => state == State.OFF).Count()); } }
         public int Cost { get; set; } = 0;
         public int TotalCost { get { return Cost + Evaluation; } }
         public bool IsFinal { get { return Board.Cast<State>().All(state => state == State.OFF); } }
@@ -59,7 +59,7 @@ namespace SA.LightsOut
 
         public override int GetHashCode()
         {
-            return Board.Cast<State>().Aggregate(17, (f, s) => f * 31 + s.GetHashCode());
+            return Board.Cast<State>().Aggregate(17, (f, s) => f * 31 + s == State.ON ? 1 : 2);
         }
 
         public override string ToString()
