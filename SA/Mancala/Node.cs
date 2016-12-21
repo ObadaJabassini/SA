@@ -31,30 +31,30 @@ namespace SA.Mancala
             {
                 IList<int>[] bins = Bins.Clone() as IList<int>[];
                 int[] mancalas = Mancalas.Clone() as int[];
-                bool extra = Move(i, bins, mancalas);
+                bool extra = _move(i, bins, mancalas);
                 Bins[Player - 1].ToList().ForEach(e => Children.Add(new Node(Player, extra) { Bins = bins, Mancalas = mancalas, Parent = this }));
             }
 
             return Children;
         }
 
-        public bool Move(int bin, IList<int>[] Bins, int[] Mancalas)
+        private bool _move(int bin, IList<int>[] Bins, int[] Mancalas)
         {
             Func<int, int, int> inc_dec = (i, k) => k == 1 ? i+1 : i-1;
             Func<int, int, bool> more_less = (i, k) => k == 1 ? i < Bins[0].Count : i > 0;
             Func<int, int> start = (k) => k == 1 ? Bins[1].Count : 0;
 
-            int stones = Bins[Player - 1][bin], t = Player, idx = bin;
+            int stones = Bins[Player - 1][bin], side = Player, idx = bin;
             while (stones > 0)
             {
-                for (int i = inc_dec(idx, t); more_less(i, t); i = inc_dec(i, t))
+                for (int i = inc_dec(idx, side); more_less(i, side); i = inc_dec(i, side))
                 {
-                    Bins[t - 1][i]++;
+                    Bins[side - 1][i]++;
 
-                    if (t == Player && stones - 1 == 0)
+                    if (side == Player && stones - 1 == 0)
                     {
-                        Bins[t - 1][i] += Bins[3 - t - 1][i];
-                        Bins[3 - t - 1][i] = 0;
+                        Bins[side - 1][i] += Bins[3 - side - 1][i];
+                        Bins[3 - side - 1][i] = 0;
                     }
 
                     stones--;
@@ -62,14 +62,14 @@ namespace SA.Mancala
 
                 if (stones > 0)
                 {
-                    Mancalas[t - 1]++;
+                    Mancalas[side - 1]++;
 
-                    if (t == Player && stones - 1 == 0)
+                    if (side == Player && stones - 1 == 0)
                         return true;
 
                     stones--;
-                    idx = start(t);
-                    t = 3 - t;
+                    idx = start(side);
+                    side = 3 - side;
                 }
             }
 
