@@ -17,7 +17,7 @@ namespace SA.LightsOut
         public int Evaluation { get { return _eval != -1 ? _eval : (_eval = Board.Cast<State>().Where(state => state == State.OFF).Count()); } }
         public int Cost { get; set; } = 0;
         public int TotalCost { get { return Cost + Evaluation; } }
-        public bool IsFinal { get { return Board.Cast<State>().All(state => state == State.OFF); } }
+        public bool IsFinal { get { return Board.Cast<State>().All(state => state == State.ON); } }
         private bool _isValid(int x, int y) => x >= 0 && y >= 0 && x < Board.GetLength(0) && y < Board.GetLength(1);
         private State _flip(State state) => state == State.ON ? State.OFF : State.ON;
         public IList<Node> GenerateChildren()
