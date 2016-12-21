@@ -8,7 +8,7 @@ namespace SA.LightsOut
 {
     public class Node
     {
-        public enum State { ON, OFF}
+        public enum State { ON, OFF }
         public State[,] Board { get; set; }
         public IList<Node> Children { get; private set; } = null;
         public Node Parent { get; set; } = null;
