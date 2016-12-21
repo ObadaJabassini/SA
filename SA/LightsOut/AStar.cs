@@ -14,17 +14,18 @@ namespace SA.LightsOut
         public IList<Node> Solve()
         {
             C5.IntervalHeap<Node> heap = new C5.IntervalHeap<Node>(Comparer<Node>.Create((Node f, Node s) => (f.TotalCost).CompareTo(s.TotalCost)));
-            heap.Add(new Node() {Board = Initial});
+            var ini = new Node() { Board = Initial };
+            heap.Add(ini);
             ISet<Node> visited = new HashSet<Node>();
             while(!heap.IsEmpty)
             {
-                var n = heap.FindMin();
-                if(n.IsFinal)
+                var n = heap.DeleteMin();
+                if (n.IsFinal)
                 {
                     return n.Parents;
                 }
                 visited.Add(n);
-                heap.AddAll(n.GenerateChildren().Where(s => !visited.Contains(s)));
+                n.GenerateChildren().Where(e => !visited.Contains(e)).ToList().ForEach(e => heap.Add(e));
             }
             return new List<Node>();
         }
