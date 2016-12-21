@@ -65,6 +65,7 @@
     <Compile Include="LightsOut\AStar.cs" />
     <Compile Include="LightsOut\BFS.cs" />
     <Compile Include="LightsOut\Node.cs" />
+    <Compile Include="Mancala\MinMax.cs" />
     <Compile Include="Mancala\Node.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

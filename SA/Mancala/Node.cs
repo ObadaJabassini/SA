@@ -44,10 +44,10 @@ namespace SA.Mancala
             Func<int, int, bool> more_less = (i, k) => k == 1 ? i < Bins[0].Count : i > 0;
             Func<int, int> start = (k) => k == 1 ? Bins[1].Count : 0;
 
-            int stones = Bins[Player - 1][bin], side = Player, idx = bin;
+            int stones = Bins[Player - 1][bin], side = Player, idx = inc_dec(bin, side);
             while (stones > 0)
             {
-                for (int i = inc_dec(idx, side); more_less(i, side); i = inc_dec(i, side))
+                for (int i = idx; more_less(i, side); i = inc_dec(i, side))
                 {
                     Bins[side - 1][i]++;
 
