@@ -11,8 +11,9 @@ namespace SA
     {
         static void Main(string[] args)
         {
-            var b = new Node.State[, ] { { Node.State.OFF, Node.State.OFF, Node.State.ON }, { Node.State.ON, Node.State.OFF, Node.State.ON }, { Node.State.ON, Node.State.OFF, Node.State.ON } };
-            Console.WriteLine(new AStar { Initial = b}.Solve());
+            var b = new Node.State[, ] { { Node.State.OFF, Node.State.ON, Node.State.OFF }, { Node.State.ON, Node.State.ON, Node.State.ON }, { Node.State.OFF, Node.State.ON, Node.State.OFF } };
+            new BFS() { Initial = b}.Solve().ToList().ForEach(e => Console.WriteLine(e.ToString()));
+            Console.ReadKey();
         }
     }
 }

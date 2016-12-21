@@ -12,7 +12,7 @@ namespace SA.LightsOut
         public State[,] Board { get; set; }
         public IList<Node> Children { get; private set; } = null;
         public Node Parent { get; set; } = null;
-        public IList<Node> Parents { get { IList<Node> nn = new List<Node>(); nn.Add(this); Node temp = Parent;while (temp != null) nn.Add(temp);return nn.Reverse().ToList(); } }
+        public IList<Node> Parents { get { IList<Node> nn = new List<Node>(); nn.Add(this); Node temp = Parent;while(temp != null) { nn.Add(temp); temp = temp.Parent; } return nn.Reverse().ToList();} }
         private int _eval = -1;
         public int Evaluation { get { return _eval != -1 ? _eval : (_eval = Board.Cast<State>().Where(state => state == State.ON).Count()); } }
         public int Cost { get; set; } = 0;
@@ -39,6 +39,7 @@ namespace SA.LightsOut
         private void _click(State[, ] b, int i, int j)
         {
             var that = this;
+            b[i, j] = _flip(b[i, j]);
             if (_isValid(i - 1, j))
                 b[i - 1, j] = _flip(b[i - 1, j]);
             if (_isValid(i + 1, j))
