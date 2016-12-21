@@ -13,7 +13,7 @@ namespace SA.Mancala
         public int Player { get; }
         public IList<Node> Children { get; private set; } = null;
         public Node Parent { get; set; } = null;
-        public IList<Node> Parents { get { IList<Node> nn = new List<Node>(); nn.Add(this); Node temp = Parent; while (temp != null) { nn.Add(temp); temp = temp.Parent; } return nn.Reverse().ToList(); } }
+        public IList<Node> Parents { get { IList<Node> nn = new List<Node>(); Node temp = Parent;while (temp != null) nn.Add(temp); var t = nn.Reverse(); var tt = t.ToList();tt.Insert(0, this); return tt; } }
         public int Eval => Mancalas[0] - Mancalas[1];
         public bool GameOver => Bins.All(e => e.All(c => c == 0));
         public bool GetExtraTurn { get; }
@@ -72,7 +72,6 @@ namespace SA.Mancala
                     side = 3 - side;
                 }
             }
-
             return false;
         }
     }
