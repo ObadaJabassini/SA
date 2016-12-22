@@ -12,11 +12,24 @@ namespace SA.LightsOut
         public State[,] Board { get; set; }
         public IList<Node> Children { get; private set; } = null;
         public Node Parent { get; set; } = null;
-        public IList<Node> Parents { get { IList<Node> nn = new List<Node>(); nn.Add(this); Node temp = Parent;while(temp != null) { nn.Add(temp); temp = temp.Parent; } return nn.Reverse().ToList();} }
+        public IList<Node> Parents
+        {
+            get
+            {
+                IList<Node> nn = new List<Node>();
+                Node temp = this;
+                while (temp != null)
+                {
+                    nn.Add(temp);
+                    temp = temp.Parent;
+                }
+                return nn.Reverse().ToList();
+            }
+        }
         private int _eval = -1;
-        public int Evaluation { get { return _eval != -1 ? _eval : (_eval = Board.Cast<State>().Where(state => state == State.ON).Count()); } }
+        public double Evaluation { get { return _eval != -1 ? _eval : (_eval = Board.Cast<State>().Where(state => state == State.ON).Count() / 5); } }
         public int Cost { get; set; } = 0;
-        public int TotalCost { get { return Cost + Evaluation; } }
+        public double TotalCost { get { return Cost + Evaluation; } }
         public bool IsFinal { get { return Board.Cast<State>().All(state => state == State.OFF); } }
         private bool _isValid(int x, int y) => x >= 0 && y >= 0 && x < Board.GetLength(0) && y < Board.GetLength(1);
         private State _flip(State state) => state == State.ON ? State.OFF : State.ON;
@@ -30,15 +43,15 @@ namespace SA.LightsOut
                 {
                     var b = Board.Clone() as State[, ];
                     _click(b, i, j);
-                    Children.Add(new Node() { Board = b, Cost = this.Cost + 1, Parent = self});
+                    var child = new Node() { Board = b, Cost = this.Cost + 1, Parent = self };
+                    Children.Add(child);
                 }
             }
             return Children;
         }
 
-        private void _click(State[, ] b, int i, int j)
+        public void _click(State[, ] b, int i, int j)
         {
-            var that = this;
             b[i, j] = _flip(b[i, j]);
             if (_isValid(i - 1, j))
                 b[i - 1, j] = _flip(b[i - 1, j]);
@@ -54,7 +67,16 @@ namespace SA.LightsOut
         {
             if (obj == null)
                 return false;
-            return Board.Cast<State>().Equals(((Node)obj).Board.Cast<State>());
+            var t = obj as Node;
+            for (int i = 0; i < Board.GetLength(0); i++)
+            {
+                for (int j = 0; j < Board.GetLength(1); j++)
+                {
+                    if (Board[i, j] != t.Board[i, j])
+                        return false;
+                }
+            }
+            return true;
         }
 
         public override int GetHashCode()

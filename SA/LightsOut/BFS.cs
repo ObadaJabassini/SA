@@ -13,7 +13,8 @@ namespace SA.LightsOut
         public IList<Node> Solve()
         {
             Queue<Node> q = new Queue<Node>();
-            q.Enqueue(new Node() { Board = Initial });
+            var ini = new Node() { Board = Initial };
+            q.Enqueue(ini);
             ISet<Node> visited = new HashSet<Node>();
             while (q.Count != 0)
             {

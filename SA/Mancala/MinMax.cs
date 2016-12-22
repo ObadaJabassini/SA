@@ -7,47 +7,29 @@ using System.Threading.Tasks;
 
 namespace SA.Mancala
 {
-    class MinMax
+    class MinMax : IntelligentAgent
     {
-        public enum DifficultyLevel { Easy, Meduim, Difficult }
-        public DifficultyLevel Level { get; }
+        public MinMax(Game.DifficultyLevel level = Game.DifficultyLevel.Meduim) : base(level) { }
 
-        public int Lookahead
-        {
-            get
-            {
-                switch (Level)
-                {
-                        case DifficultyLevel.Easy:
-                        return 5;
-                        case DifficultyLevel.Difficult:
-                        return 50;
-                    default:
-                        return 25;
-                }
-            }
-        }
+        protected bool _cutOff() => false;
+        protected void _setAdditionalParams(int val, int player) { }
 
-        public MinMax(DifficultyLevel level = DifficultyLevel.Meduim)
+        protected override Node GenerateBestMove(Node node, int depth, int player)
         {
-            Level = level;
-        }
-
-        public Node BestMove(Node node, int depth, int player)
-        {
-            if (depth == Lookahead || node.IsGameOver) return node;
+            if (depth == Lookahead || node.IsFinal) return node;
 
             Node bestNode = player == 1
-                ? new Node() {Mancalas = new int[] {Int32.MinValue, Int32.MaxValue}}
-                : new Node() {Mancalas = new int[] {Int32.MaxValue, Int32.MinValue}};
+                ? new Node(new Game(new[] { int.MinValue, int.MaxValue }))
+                : new Node(new Game(new[] { int.MaxValue, int.MinValue }));
 
             node.GenerateChildren();
-            for (int i = 0; i < node.Children.Count; i++)
+            foreach (Node n in node.Children)
             {
-                Node n = node.Children[i];
                 int turn = 3 - player;
                 if (n.GetExtraTurn) turn = player;
-                Node newN = BestMove(n, depth + 1, turn);
+                Node newN = GenerateBestMove(n, depth + 1, turn);
+                _setAdditionalParams(newN.Eval, turn);
+                if(_cutOff()) break;
                 bestNode = player == 1 ? (newN > bestNode ? newN : bestNode) : (newN < bestNode ? newN : bestNode);
             }
             return bestNode;
