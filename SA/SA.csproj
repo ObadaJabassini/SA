@@ -68,6 +68,7 @@
   <ItemGroup>
     <Compile Include="LightsOut\AStar.cs" />
     <Compile Include="LightsOut\BFS.cs" />
+    <Compile Include="LightsOut\LineraAlgebra\MMatrix.cs" />
     <Compile Include="LightsOut\LineraAlgebra\Solver.cs" />
     <Compile Include="LightsOut\Node.cs" />
     <Compile Include="Mancala\MinMax.cs" />

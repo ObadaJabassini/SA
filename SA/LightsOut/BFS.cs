@@ -24,7 +24,7 @@ namespace SA.LightsOut
                     return n.Parents;
                 }
                 visited.Add(n);
-                n.GenerateChildren().Where(s => !visited.Contains(s)).ToList().ForEach(e => q.Enqueue(e));
+                n.GenerateChildren().Where(s => !visited.Contains(s)).ToList().ForEach(q.Enqueue);
             }
             return new List<Node>();
         }
