@@ -12,9 +12,9 @@ namespace SA
     {
         static void Main(string[] args)
         {
-            var b = new Node.State[, ] { { Node.State.ON, Node.State.ON, Node.State.OFF }, { Node.State.ON, Node.State.OFF, Node.State.OFF }, { Node.State.OFF, Node.State.OFF, Node.State.OFF } };
-            //new AStar() { Initial = b}.Solve().ToList().ForEach(e => Console.WriteLine(e.ToString()));
-            new Solver() { Initial = b}.Solve().ToList().ForEach(e => Console.WriteLine(e.ToString()));
+            var b = new Node.State[, ] { { Node.State.ON, Node.State.ON, Node.State.OFF}, { Node.State.ON, Node.State.OFF, Node.State.OFF}, { Node.State.OFF, Node.State.OFF, Node.State.OFF } };
+            new AStar() { Initial = b}.Solve().ToList().ForEach(e => Console.WriteLine(e.ToString()));
+            //new Solver() { Initial = b}.Solve().ToList().ForEach(e => Console.WriteLine(e.ToString()));
             Console.ReadKey();
         }
     }
