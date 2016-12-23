@@ -10,7 +10,7 @@ namespace SA.LightsOut
 {
     class BFS
     {
-        public enum SolveMethod { SYNC, ASYNC}
+        public enum SolveMethod { SYNC, ASYNC }
         public Node.State[,] Initial { set; get; }
         public IList<Node> Solve(SolveMethod method = SolveMethod.SYNC)
         {
@@ -28,13 +28,14 @@ namespace SA.LightsOut
             {
                 ConcurrentQueue<Node> q = new ConcurrentQueue<Node>();
                 var t = ini.GenerateChildren();
-                foreach(var x in t)
+                foreach (var x in t)
                 {
                     q.Enqueue(x);
                 }
                 const int maxi = 200000;
                 Tuple<IEnumerable<Node>, int> res = new Tuple<IEnumerable<Node>, int>(null, maxi);
                 IList<Task> tasks = new List<Task>();
+                object l = new object();
                 for (int i = 1; i <= 100; ++i)
                 {
                     tasks.Add(Task.Factory.StartNew(() =>
@@ -48,8 +49,11 @@ namespace SA.LightsOut
                             {
                                 var ps = n.Parents;
                                 int cnt = ps.Count;
-                                if(cnt < res.Item2)
-                                    Interlocked.Exchange(ref res, new Tuple<IEnumerable<Node>, int>(ps, cnt));
+                                lock (l)
+                                {
+                                    if (cnt < res.Item2)
+                                        res = new Tuple<IEnumerable<Node>, int>(ps, cnt);
+                                }
                                 return;
                             }
                             t = n.GenerateChildren();
