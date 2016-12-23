@@ -13,7 +13,15 @@ namespace SA.LightsOut
         public IList<Node> Solve()
         {
             Queue<Node> q = new Queue<Node>();
-            var ini = new Node() { Board = Initial };
+            HashSet<Tuple<int, int>> set = new HashSet<Tuple<int, int>>();
+            for (int i = 0; i < Initial.GetLength(0); i++)
+            {
+                for (int j = 0; j < Initial.GetLength(1); j++)
+                {
+                    set.Add(new Tuple<int, int>(i, j));
+                }
+            }
+            var ini = new Node(set) { Board = Initial };
             q.Enqueue(ini);
             ISet<Node> visited = new HashSet<Node>();
             while (q.Count != 0)

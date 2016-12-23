@@ -12,6 +12,7 @@ namespace SA.LightsOut
         public State[,] Board { get; set; }
         public IList<Node> Children { get; private set; } = null;
         public Node Parent { get; set; } = null;
+        public HashSet<Tuple<int, int>> RemainingPositions { get; set; } = new HashSet<Tuple<int, int>>();
         public IList<Node> Parents
         {
             get
@@ -33,24 +34,30 @@ namespace SA.LightsOut
         public bool IsFinal { get { return Board.Cast<State>().All(state => state == State.OFF); } }
         private bool _isValid(int x, int y) => x >= 0 && y >= 0 && x < Board.GetLength(0) && y < Board.GetLength(1);
         private State _flip(State state) => state == State.ON ? State.OFF : State.ON;
+
+        public Node(HashSet<Tuple<int, int>> set)
+        {
+            this.RemainingPositions = set;
+        }
+
         public IList<Node> GenerateChildren()
         {
             var self = this;
             Children = new List<Node>();
-            for (int i = 0; i < Board.GetLength(0); i++)
+            foreach (var pair in RemainingPositions)
             {
-                for (int j = 0; j < Board.GetLength(1); j++)
-                {
-                    var b = Board.Clone() as State[, ];
-                    _click(b, i, j);
-                    var child = new Node() { Board = b, Cost = this.Cost + 1, Parent = self };
-                    Children.Add(child);
-                }
+                var b = Board.Clone() as State[,];
+                int i = pair.Item1, j = pair.Item2;
+                var set = RemainingPositions.Clone();
+                set.Remove(new Tuple<int, int>(i, j));
+                _click(b, i, j);
+                var child = new Node(set) { Board = b, Cost = this.Cost + 1, Parent = self};
+                Children.Add(child);
             }
             return Children;
         }
 
-        public void _click(State[, ] b, int i, int j)
+        public void _click(State[,] b, int i, int j)
         {
             b[i, j] = _flip(b[i, j]);
             if (_isValid(i - 1, j))
