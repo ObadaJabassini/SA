@@ -43,8 +43,6 @@ namespace SA.LightsOut
                         Node n;
                         while (q.TryDequeue(out n))
                         {
-                            if (n.Cost >= res.Item2)
-                                return;
                             if (n.IsFinal)
                             {
                                 var ps = n.Parents;
@@ -53,12 +51,13 @@ namespace SA.LightsOut
                                     if (n.Cost < res.Item2)
                                         res = new Tuple<IEnumerable<Node>, int>(ps, n.Cost);
                                 }
-                                return;
+                                continue;
                             }
                             t = n.GenerateChildren();
                             foreach (var x in t)
                             {
-                                q.Enqueue(x);
+                                if (x.Cost < res.Item2)
+                                    q.Enqueue(x);
                             }
                         }
                     }
