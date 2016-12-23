@@ -7,50 +7,31 @@ using System.Threading.Tasks;
 
 namespace SA.Mancala
 {
-    class MinMax
+    class MinMax : IntelligentAgent
     {
-        public enum DifficultyLevel { Easy, Meduim, Difficult }
-        public DifficultyLevel Level { get; }
+        public MinMax(Game.DifficultyLevel level = Game.DifficultyLevel.Meduim) : base(level) { }
 
-        public int Lookahead
+        protected bool _cutOff() => false;
+        protected void _setAdditionalParams(int val, int player) { }
+
+        protected override Tuple<int, int> GenerateBestMove(Node node, int depth, int player)
         {
-            get
-            {
-                switch (Level)
-                {
-                        case DifficultyLevel.Easy:
-                        return 5;
-                        case DifficultyLevel.Difficult:
-                        return 50;
-                    default:
-                        return 25;
-                }
-            }
-        }
+            if (depth == Lookahead || node.IsFinal) return new Tuple<int, int>(node.Eval, node.SelectedBin);
 
-        public MinMax(DifficultyLevel level = DifficultyLevel.Meduim)
-        {
-            Level = level;
-        }
-
-        public Node BestMove(Node node, int depth, int player)
-        {
-            if (depth == Lookahead || node.IsGameOver) return node;
-
-            Node bestNode = player == 1
-                ? new Node() {Mancalas = new int[] {Int32.MinValue, Int32.MaxValue}}
-                : new Node() {Mancalas = new int[] {Int32.MaxValue, Int32.MinValue}};
-
+            int bestVal = player == 1 ? int.MinValue : int.MaxValue, bestMove = -1;
+            
             node.GenerateChildren();
-            for (int i = 0; i < node.Children.Count; i++)
+            foreach (Node n in node.Children)
             {
-                Node n = node.Children[i];
                 int turn = 3 - player;
                 if (n.GetExtraTurn) turn = player;
-                Node newN = BestMove(n, depth + 1, turn);
-                bestNode = player == 1 ? (newN > bestNode ? newN : bestNode) : (newN < bestNode ? newN : bestNode);
+                var newVal = GenerateBestMove(n, depth + 1, turn);
+                _setAdditionalParams(newVal.Item1, turn);
+                if(_cutOff()) break;
+                bestVal = player == 1 ? (newVal.Item1 > bestVal ? newVal.Item1 : bestVal) : (newVal.Item1 < bestVal ? newVal.Item1 : bestVal);
+                bestMove = newVal.Item1 == bestVal ? n.SelectedBin : bestMove;
             }
-            return bestNode;
+            return new Tuple<int, int>(bestVal, bestMove);
         }
     }
 }

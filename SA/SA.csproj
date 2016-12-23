@@ -72,8 +72,11 @@
     <Compile Include="LightsOut\LineraAlgebra\MMatrix.cs" />
     <Compile Include="LightsOut\LineraAlgebra\Solver.cs" />
     <Compile Include="LightsOut\Node.cs" />
+    <Compile Include="Mancala\AlphaBetaMinMax.cs" />
+    <Compile Include="Mancala\Game.cs" />
     <Compile Include="Mancala\MinMax.cs" />
     <Compile Include="Mancala\Node.cs" />
+    <Compile Include="Mancala\IntelligentAgent.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
