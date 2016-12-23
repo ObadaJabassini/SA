@@ -48,11 +48,10 @@ namespace SA.LightsOut
                             if (n.IsFinal)
                             {
                                 var ps = n.Parents;
-                                int cnt = ps.Count;
                                 lock (l)
                                 {
-                                    if (cnt < res.Item2)
-                                        res = new Tuple<IEnumerable<Node>, int>(ps, cnt);
+                                    if (n.Cost < res.Item2)
+                                        res = new Tuple<IEnumerable<Node>, int>(ps, n.Cost);
                                 }
                                 return;
                             }
