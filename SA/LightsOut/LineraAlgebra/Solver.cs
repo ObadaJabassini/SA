@@ -108,7 +108,6 @@ namespace SA.LightsOut.LineraAlgebra
 
         private Matrix<double>[] _createRow(int index, Matrix<double> O, Matrix<double> I, Matrix<double> B)
         {
-            Console.WriteLine($"index = {index}");
             IList<Matrix<double>> list = new List<Matrix<double>>();
             if(index == 0)
             {
@@ -118,7 +117,6 @@ namespace SA.LightsOut.LineraAlgebra
                 {
                     list.Add(O);
                 }
-                Console.WriteLine(list.Count);
                 _temp = list.Count;
                 return list.ToArray();
             }
@@ -130,7 +128,6 @@ namespace SA.LightsOut.LineraAlgebra
                 }
                 list.Add(I);
                 list.Add(B);
-                Console.WriteLine(list.Count);
                 return list.ToArray();
             }
             for (int i = 1; i <= index - 1; i++)
@@ -144,7 +141,6 @@ namespace SA.LightsOut.LineraAlgebra
             {
                 list.Add(O);
             }
-            Console.WriteLine(list.Count);
             return list.ToArray();
         }
 
@@ -269,16 +265,8 @@ namespace SA.LightsOut.LineraAlgebra
                 {
                     solution[i / r][i % c] = A.getBVector(i, 0);
                 }
-                for (int i = 0; i < r; i++)
-                {
-                    for (int j = 0; j < c; j++)
-                    {
-                        Console.Write(solution[i][j] + " ");
-                    }
-                    Console.WriteLine();
-                }
                 IList<Node> nodes = new List<Node>();
-                var last = new Node() { Board = Initial };
+                var last = new Node(new HashSet<Tuple<int, int>>()) { Board = Initial };
                 nodes.Add(last);
                 for (int i = 0; i < r; i++)
                 {
@@ -288,7 +276,7 @@ namespace SA.LightsOut.LineraAlgebra
                         {
                             var bb = last.Board.Clone() as Node.State[,];
                             _click(bb, i, j);
-                            var node = new Node() { Board = bb };
+                            var node = new Node(null) { Board = bb };
                             nodes.Add(node);
                             last = node;
                         }

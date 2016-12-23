@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,10 @@ namespace SA.LightsOut
     {
         public enum State { ON, OFF }
         public State[,] Board { get; set; }
-        public IList<Node> Children { get; private set; } = null;
+        //public IList<Node> Children { get; private set; } = null;
+        public ConcurrentBag<Node> Children { get; private set; } = null;
         public Node Parent { get; set; } = null;
-        public HashSet<Tuple<int, int>> RemainingPositions { get; set; } = new HashSet<Tuple<int, int>>();
+        public HashSet<Tuple<int, int>> RemainingPositions { get; set; }
         public IList<Node> Parents
         {
             get
@@ -43,18 +45,29 @@ namespace SA.LightsOut
         public IList<Node> GenerateChildren()
         {
             var self = this;
-            Children = new List<Node>();
-            foreach (var pair in RemainingPositions)
+            //Children = new List<Node>();
+            Children = new ConcurrentBag<Node>();
+            Parallel.ForEach(RemainingPositions, (pair) =>
             {
                 var b = Board.Clone() as State[,];
                 int i = pair.Item1, j = pair.Item2;
                 var set = RemainingPositions.Clone();
                 set.Remove(new Tuple<int, int>(i, j));
                 _click(b, i, j);
-                var child = new Node(set) { Board = b, Cost = this.Cost + 1, Parent = self};
+                var child = new Node(set) { Board = b, Cost = this.Cost + 1, Parent = self };
                 Children.Add(child);
-            }
-            return Children;
+            });
+            //foreach (var pair in RemainingPositions)
+            //{
+            //    var b = Board.Clone() as State[,];
+            //    int i = pair.Item1, j = pair.Item2;
+            //    var set = RemainingPositions.Clone();
+            //    set.Remove(new Tuple<int, int>(i, j));
+            //    _click(b, i, j);
+            //    var child = new Node(set) { Board = b, Cost = this.Cost + 1, Parent = self};
+            //    Children.Add(child);
+            //}
+            return Children.ToList();
         }
 
         public void _click(State[,] b, int i, int j)

@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SA.Mancala;
 
 namespace SA
 {
@@ -13,11 +12,12 @@ namespace SA
     {
         static void Main(string[] args)
         {
-            var b = new Node.State[,] { { Node.State.ON, Node.State.ON, Node.State.OFF }, { Node.State.ON, Node.State.OFF, Node.State.OFF }, { Node.State.OFF, Node.State.OFF, Node.State.OFF } };
-            new BFS() { Initial = b }.Solve().ToList().ForEach(e => Console.WriteLine(e.ToString()));
-            //new Solver() { Initial = b}.Solve().ToList().ForEach(e => Console.WriteLine(e.ToString()));
-            Game game = new Game();
-            game.Play();
+            var b = new Node.State[,] { { Node.State.ON, Node.State.ON, Node.State.ON}, { Node.State.ON, Node.State.OFF, Node.State.ON }, { Node.State.OFF, Node.State.OFF, Node.State.OFF } };
+            var sol = new BFS() { Initial = b }.Solve().ToList();
+            if(sol.Count == 0)
+                Console.WriteLine("No Solutions have been found");
+            else
+                sol.ForEach(Console.WriteLine);
             Console.ReadKey();
         }
     }
