@@ -11,7 +11,6 @@ namespace SA.Mancala
         private Game _thisGame;
         public IList<Node> Children { get; private set; }
         public Node Parent { get; set; }
-        public IList<Node> Parents { get { IList<Node> nn = new List<Node>(); Node temp = Parent; while (temp != null) nn.Add(temp); var t = nn.Reverse(); var tt = t.ToList(); tt.Insert(0, this); return tt; } }
         public int Eval => _thisGame.Mancalas[0] - _thisGame.Mancalas[1];
         public bool IsFinal => _thisGame.IsGameOver;
         public int SelectedBin { private set; get; }
@@ -27,16 +26,19 @@ namespace SA.Mancala
         public IList<Node> GenerateChildren()
         {
             Children = new List<Node>();
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < Game.BINS_NUM; i++)
             {
-                Game newGame = new Game(_thisGame);
-                newGame.MakeMove(i);
-                Children.Add(new Node(newGame)
+                if (_thisGame.Bins[_thisGame.NextPlayer - 1][i] != 0)
                 {
-                    Parent = this,
-                    SelectedBin = i,
-                    GetExtraTurn = _thisGame.NextPlayer == newGame.NextPlayer
-                });
+                    Game newGame = new Game(_thisGame);
+                    newGame.MakeMove(i);
+                    Children.Add(new Node(newGame)
+                    {
+                        Parent = this,
+                        SelectedBin = i,
+                        GetExtraTurn = _thisGame.NextPlayer == newGame.NextPlayer
+                    });
+                }
             }
 
             return Children;

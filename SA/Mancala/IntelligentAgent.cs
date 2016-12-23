@@ -15,22 +15,24 @@ namespace SA.Mancala
             switch (level)
             {
                 case Game.DifficultyLevel.Easy:
-                    Lookahead = 5;
+                    Lookahead = 1;
                     break;
                 case Game.DifficultyLevel.Difficult:
-                    Lookahead = 50;
+                    Lookahead = 3;
                     break;
                 default:
-                    Lookahead = 25;
+                    Lookahead = 2;
                     break;
             }
         }
 
-        protected abstract Node GenerateBestMove(Node node, int depth, int player);
+        protected abstract Tuple<int, int> GenerateBestMove(Node node, int depth, int player);
 
-        public void TakeTurn(Game game)
+        public int TakeTurn(Game game)
         {
-            game.MakeMove(GenerateBestMove(new Node(game), 0, 1).SelectedBin);
+            int b = GenerateBestMove(new Node(game), 0, 1).Item2;
+            game.MakeMove(b);
+            return b;
         }
     }
 }

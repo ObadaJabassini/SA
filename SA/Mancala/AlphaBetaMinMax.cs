@@ -10,6 +10,8 @@ namespace SA.Mancala
     {
         private int _alpha = int.MinValue, _beta = int.MaxValue;
 
+        public AlphaBetaMinMax(Game.DifficultyLevel level = Game.DifficultyLevel.Meduim) : base(level) { }
+
         protected bool _cutOff() => _alpha >= _beta;
 
         protected void _setAdditionalParams(int val, int player)
