@@ -163,7 +163,7 @@ namespace SA.Mancala
                 }
             }
 
-            if(Winner == 1) Console.WriteLine("Gongrats you won!!..");
+            if(Winner == 1) Console.WriteLine("Congrats you won!!..");
             else if(Winner == 2) Console.WriteLine("I won :p");
             else Console.WriteLine("Draw....");
         }
