@@ -26,10 +26,10 @@ namespace SA.LightsOut
             if (method == SolveMethod.ASYNC)
             {
                 ConcurrentQueue<Node> q = new ConcurrentQueue<Node>();
-                q.Enqueue(ini);
+                ini.GenerateChildren().ToList().ForEach(q.Enqueue);
                 ConcurrentBag<Tuple<List<Node>, int>> bag = new ConcurrentBag<Tuple<List<Node>, int>>();
                 IList<Task> tasks = new List<Task>();
-                for (int i = 0; i < 80; i++)
+                for (int i = 0; i < 100; i++)
                 {
                     tasks.Add(Task.Factory.StartNew(() =>
                     {
