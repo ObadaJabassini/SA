@@ -26,30 +26,44 @@ namespace SA.LightsOut
             if (method == SolveMethod.ASYNC)
             {
                 ConcurrentQueue<Node> q = new ConcurrentQueue<Node>();
-                ini.GenerateChildren().ToList().ForEach(q.Enqueue);
-                ConcurrentBag<Tuple<List<Node>, int>> bag = new ConcurrentBag<Tuple<List<Node>, int>>();
+                var t = ini.GenerateChildren();
+                foreach(var x in t)
+                {
+                    q.Enqueue(x);
+                }
+                const int maxi = 200000;
+                Tuple<IEnumerable<Node>, int> res = new Tuple<IEnumerable<Node>, int>(null, maxi);
                 IList<Task> tasks = new List<Task>();
-                for (int i = 0; i < 100; i++)
+                for (int i = 1; i <= 100; ++i)
                 {
                     tasks.Add(Task.Factory.StartNew(() =>
                     {
                         Node n;
                         while (q.TryDequeue(out n))
                         {
+                            if (n.Cost > res.Item2)
+                                return;
                             if (n.IsFinal)
                             {
                                 var ps = n.Parents;
-                                bag.Add(new Tuple<List<Node>, int>(ps.ToList(), ps.Count));
+                                int cnt = ps.Count;
+                                if(cnt < res.Item2)
+                                    res = new Tuple<IEnumerable<Node>, int>(ps, cnt);
+                                return;
                             }
-                            n.GenerateChildren().ToList().ForEach(q.Enqueue);
+                            t = n.GenerateChildren();
+                            foreach (var x in t)
+                            {
+                                q.Enqueue(x);
+                            }
                         }
                     }
                     ));
                 }
                 Task.WaitAll(tasks.ToArray());
-                if (bag.IsEmpty)
+                if (res.Item2 == maxi)
                     return new List<Node>();
-                return bag.OrderByDescending(x => x.Item2).First().Item1;
+                return res.Item1.ToList();
             }
             // sync code
             Queue<Node> queue = new Queue<Node>();

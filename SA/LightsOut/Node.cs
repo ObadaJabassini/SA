@@ -42,20 +42,20 @@ namespace SA.LightsOut
             this.RemainingPositions = set;
         }
 
-        public IList<Node> GenerateChildren()
+        public ConcurrentBag<Node> GenerateChildren()
         {
             var self = this;
             //Children = new List<Node>();
             Children = new ConcurrentBag<Node>();
             Parallel.ForEach(RemainingPositions, (pair) =>
             {
-                var b = Board.Clone() as State[,];
+                var b = self.Board.Clone() as State[,];
                 int i = pair.Item1, j = pair.Item2;
-                var set = RemainingPositions.Clone();
+                var set = self.RemainingPositions.Clone();
                 set.Remove(new Tuple<int, int>(i, j));
                 _click(b, i, j);
-                var child = new Node(set) { Board = b, Cost = this.Cost + 1, Parent = self };
-                Children.Add(child);
+                var child = new Node(set) { Board = b, Cost = self.Cost + 1, Parent = self};
+                self.Children.Add(child);
             });
             //foreach (var pair in RemainingPositions)
             //{
@@ -64,10 +64,10 @@ namespace SA.LightsOut
             //    var set = RemainingPositions.Clone();
             //    set.Remove(new Tuple<int, int>(i, j));
             //    _click(b, i, j);
-            //    var child = new Node(set) { Board = b, Cost = this.Cost + 1, Parent = self};
+            //    var child = new Node(set) { Board = b, Cost = this.Cost + 1, Parent = self };
             //    Children.Add(child);
             //}
-            return Children.ToList();
+            return Children;
         }
 
         public void _click(State[,] b, int i, int j)
