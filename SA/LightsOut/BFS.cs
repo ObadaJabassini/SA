@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace SA.LightsOut
@@ -41,14 +42,14 @@ namespace SA.LightsOut
                         Node n;
                         while (q.TryDequeue(out n))
                         {
-                            if (n.Cost > res.Item2)
+                            if (n.Cost >= res.Item2)
                                 return;
                             if (n.IsFinal)
                             {
                                 var ps = n.Parents;
                                 int cnt = ps.Count;
                                 if(cnt < res.Item2)
-                                    res = new Tuple<IEnumerable<Node>, int>(ps, cnt);
+                                    Interlocked.Exchange(ref res, new Tuple<IEnumerable<Node>, int>(ps, cnt));
                                 return;
                             }
                             t = n.GenerateChildren();
