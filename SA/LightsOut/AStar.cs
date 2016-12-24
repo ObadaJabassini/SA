@@ -7,17 +7,15 @@ using System.Threading.Tasks;
 
 namespace SA.LightsOut
 {
-    public class AStar
+    public class AStar : SolutionMethod
     {
-        public Node.State[, ] Initial { set; get; }
-
-        public IList<Node> Solve()
+        public override IList<Node> Solve()
         {
             C5.IntervalHeap<Node> heap = new C5.IntervalHeap<Node>(Comparer<Node>.Create((Node f, Node s) => (f.TotalCost).CompareTo(s.TotalCost)));
             HashSet<Tuple<int, int>> set = new HashSet<Tuple<int, int>>();
-            for (int i = 0; i < Initial.GetLength(0); i++)
+            for (int i = 0; i < Initial.Game.GetLength(0); i++)
             {
-                for (int j = 0; j < Initial.GetLength(1); j++)
+                for (int j = 0; j < Initial.Game.GetLength(1); j++)
                 {
                     set.Add(new Tuple<int, int>(i, j));
                 }

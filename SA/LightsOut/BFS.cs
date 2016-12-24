@@ -8,23 +8,23 @@ using System.Threading.Tasks;
 
 namespace SA.LightsOut
 {
-    class BFS
+    public class BFS : SolutionMethod
     {
         public enum SolveMethod { SYNC, ASYNC }
-        public Node.State[,] Initial { set; get; }
-        public IList<Node> Solve(SolveMethod method = SolveMethod.SYNC)
+        public SolveMethod Method { get; set; } = SolveMethod.SYNC;
+        public override IList<Node> Solve()
         {
             HashSet<Tuple<int, int>> set = new HashSet<Tuple<int, int>>();
-            for (int i = 0; i < Initial.GetLength(0); i++)
+            for (int i = 0; i < Initial.Game.GetLength(0); i++)
             {
-                for (int j = 0; j < Initial.GetLength(1); j++)
+                for (int j = 0; j < Initial.Game.GetLength(1); j++)
                 {
                     set.Add(new Tuple<int, int>(i, j));
                 }
             }
             var ini = new Node(set) { Board = Initial };
             // async code
-            if (method == SolveMethod.ASYNC)
+            if (Method == SolveMethod.ASYNC)
             {
                 ConcurrentQueue<Node> q = new ConcurrentQueue<Node>();
                 var t = ini.GenerateChildren();
@@ -46,7 +46,7 @@ namespace SA.LightsOut
                             if (n.IsFinal)
                             {
                                 var ps = n.Parents;
-                                lock (l)
+                                //lock (l)
                                 {
                                     if (n.Cost < res.Item2)
                                         res = new Tuple<IEnumerable<Node>, int>(ps, n.Cost);
@@ -56,8 +56,11 @@ namespace SA.LightsOut
                             t = n.GenerateChildren();
                             foreach (var x in t)
                             {
-                                if (x.Cost < res.Item2)
-                                    q.Enqueue(x);
+                                //lock (l)
+                                {
+                                    if (x.Cost < res.Item2)
+                                        q.Enqueue(x);
+                                }
                             }
                         }
                     }

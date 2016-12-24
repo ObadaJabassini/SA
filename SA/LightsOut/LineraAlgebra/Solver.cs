@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace SA.LightsOut.LineraAlgebra
 {
-    public class Solver
+    public class Solver : SolutionMethod
     {
-        public Node.State[,] Initial { set; get; }
-        private bool _isValid(Node.State[,] m, int i, int j) => i >= 0 && i < m.GetLength(0) && j >= 0 && j < m.GetLength(1);
-        private bool _isValid(Matrix<double> m, int i, int j) => i >= 0 && i < m.RowCount && j >= 0 && j < m.ColumnCount;
-        private Node.State _flip(Node.State state) => state == Node.State.ON ? Node.State.OFF : Node.State.ON;
         private int _temp = 0;
         private void _reduce(Matrix<double> d)
         {
@@ -113,16 +109,16 @@ namespace SA.LightsOut.LineraAlgebra
             {
                 list.Add(B);
                 list.Add(I);
-                for (int i = 0; i < Initial.GetLength(1) - 2; i++)
+                for (int i = 0; i < Initial.Game.GetLength(1) - 2; i++)
                 {
                     list.Add(O);
                 }
                 _temp = list.Count;
                 return list.ToArray();
             }
-            if(index == Initial.GetLength(0) - 1)
+            if(index == Initial.Game.GetLength(0) - 1)
             {
-                for (int i = 0; i < Initial.GetLength(1) - 2; i++)
+                for (int i = 0; i < Initial.Game.GetLength(1) - 2; i++)
                 {
                     list.Add(O);
                 }
@@ -137,16 +133,16 @@ namespace SA.LightsOut.LineraAlgebra
             list.Add(I);
             list.Add(B);
             list.Add(I);
-            for (int i = 1; i <= Initial.GetLength(1) - index - 2; i++)
+            for (int i = 1; i <= Initial.Game.GetLength(1) - index - 2; i++)
             {
                 list.Add(O);
             }
             return list.ToArray();
         }
 
-        public IList<Node> Solve()
+        public override IList<Node> Solve()
         { 
-            int r = Initial.GetLength(0), c = Initial.GetLength(1);
+            int r = Initial.Game.GetLength(0), c = Initial.Game.GetLength(1);
             //Matrix<double> O = Matrix<double>.Build.Dense(r, c, 0),
             //               I = Matrix<double>.Build.DenseDiagonal(r, c, 1),
             //               B = Matrix<double>.Build.Dense(r, c, 0);
@@ -204,7 +200,7 @@ namespace SA.LightsOut.LineraAlgebra
             {
                 for (int j = 0; j < c; j++)
                 {
-                    b[index++] = Initial[i, j] == Node.State.ON ? 1 : 0;
+                    b[index++] = Initial[i, j];
                 }
             }
             var ASize = r * c;
@@ -274,8 +270,8 @@ namespace SA.LightsOut.LineraAlgebra
                     {
                         if (solution[i][j] == 1)
                         {
-                            var bb = last.Board.Clone() as Node.State[,];
-                            _click(bb, i, j);
+                            var bb = last.Board.Clone() as Board;
+                            bb.Click(i, j);
                             var node = new Node(null) { Board = bb };
                             nodes.Add(node);
                             last = node;
@@ -285,19 +281,6 @@ namespace SA.LightsOut.LineraAlgebra
                 return nodes;
             }
             return new List<Node>();
-        }
-
-        public void _click(Node.State[,] b, int i, int j)
-        {
-            b[i, j] = _flip(b[i, j]);
-            if (_isValid(b, i - 1, j))
-                b[i - 1, j] = _flip(b[i - 1, j]);
-            if (_isValid(b, i + 1, j))
-                b[i + 1, j] = _flip(b[i + 1, j]);
-            if (_isValid(b, i, j - 1))
-                b[i, j - 1] = _flip(b[i, j - 1]);
-            if (_isValid(b, i, j + 1))
-                b[i, j + 1] = _flip(b[i, j + 1]);
         }
 
         private T[,] _createRectangularArray<T>(IList<T[]> arrays)
