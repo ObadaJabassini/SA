@@ -15,7 +15,7 @@ namespace SA.Mancala
         private IList<int>[] _bins;
         private int[] _mancals;
         public int NextPlayer { private set; get; } = 2;
-        public bool IsGameOver => Bins.All(e => e.All(c => c == 0));
+        public bool IsGameOver => Bins.Any(e => e.All(c => c == 0));
         public DifficultyLevel Level { get; }
         public IntelligentAgent Agent { set; get; }
         public int Winner => Mancalas[0] > Mancalas[1] ? 1 : (Mancalas[0] < Mancalas[1] ? 2 : 3);
@@ -94,7 +94,7 @@ namespace SA.Mancala
 
                     if (side == NextPlayer && stones - 1 == 0 && _bins[side - 1][i] == 1)
                     {
-                        _bins[side - 1][i] += _bins[3 - side - 1][i];
+                        _mancals[side - 1] += _bins[3 - side - 1][i] + _bins[side - 1][i]--;
                         _bins[3 - side - 1][i] = 0;
                     }
 
