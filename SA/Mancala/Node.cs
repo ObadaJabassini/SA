@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SA.Mancala
 {
-    class Node
+    public class Node
     {
         private Game _thisGame;
         public IList<Node> Children { get; private set; }
