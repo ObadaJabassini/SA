@@ -283,6 +283,68 @@ namespace SA.LightsOut.LineraAlgebra
             return new List<Node>();
         }
 
+        public bool CanBeSolved(Board bb)
+        {
+            int r = bb.Game.GetLength(0), c = bb.Game.GetLength(1);
+            int[] b = new int[r * c];
+            int index = 0;
+            for (int i = 0; i < r; i++)
+            {
+                for (int j = 0; j < c; j++)
+                {
+                    b[index++] = bb[i, j];
+                }
+            }
+            var ASize = r * c;
+            var A = new MMatrix(ASize, ASize);
+            for (int Arow = 0; Arow < ASize; Arow++)
+            {
+                for (int Acol = 0; Acol < ASize; Acol++)
+                {
+                    int i, j, i_, j_ = 0;
+                    i = Arow / c;
+                    j = Arow % c;
+                    i_ = Acol / c;
+                    j_ = Acol % c;
+                    if (i_ >= 0 && i_ <= ASize && j_ >= 0 && j_ <= ASize)
+                    {
+                        if (Math.Abs(i - i_) + Math.Abs(j - j_) <= 1)
+                        {
+                            A.set(Arow, Acol, 1);
+                        }
+                        else
+                        {
+                            A.set(Arow, Acol, 0);
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < b.Length; i++)
+            {
+                A.setBVector(i, 0, b[i]);
+            }
+            A.reducedRowEchelonForm();
+            Func<MMatrix, bool> canBeSolved = (m) =>
+            {
+                for (int curr_Row = r * c - 1; curr_Row >= 0; curr_Row--)
+                {
+                    for (int i = 0; i < r * c; i++)
+                    {
+                        if (m.get(curr_Row, i) != 0)
+                        {
+                            return true;
+                        }
+                    }
+                    if (m.getBVector(curr_Row, 0) != 0)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            };
+            return canBeSolved(A);
+        }
+
         private T[,] _createRectangularArray<T>(IList<T[]> arrays)
         {
             int minorLength = arrays[0].Length;

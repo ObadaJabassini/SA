@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SA.LightsOut.LineraAlgebra;
+using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace SA.LightsOut
         public SolveMethod Method { get; set; } = SolveMethod.SYNC;
         public override IList<Node> Solve()
         {
+            if (!(new Solver().CanBeSolved(Initial)))
+                return new List<Node>();
             HashSet<Tuple<int, int>> set = new HashSet<Tuple<int, int>>();
             for (int i = 0; i < Initial.Game.GetLength(0); i++)
             {
