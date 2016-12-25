@@ -25,7 +25,7 @@ namespace SA
             //Console.ReadKey();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI.Forms.Lights());
+            //Application.Run(new GUI.Forms.Lights());
             Application.Run(new GUI.Forms.Mancala());
 
             //int[,] tt = new int[5, 5];

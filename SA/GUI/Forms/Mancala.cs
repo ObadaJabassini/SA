@@ -155,7 +155,7 @@ namespace SA.GUI.Forms
                 && (List[value.id] as Cell).ContainerCell.Controls.Count==1
                 )
             {
-                if (value.player == 1)
+                if (value.player == 2 && (target_index < 7 && target_index > 0))
                 {
                     (List[0] as EarningsCell).AddStone((List[value.id] as Cell).ContainerCell.Controls[0] as Stone);
                     Control.ControlCollection stones = (List[target_index] as Cell).ContainerCell.Controls;
@@ -168,7 +168,7 @@ namespace SA.GUI.Forms
 
                     (List[target_index] as Cell).ContainerCell.Controls.Clear();
                 }
-                else
+                else if (value.player == 1 && (target_index > 7 && target_index < 14))
                 {
                     (List[7] as EarningsCell).AddStone((List[value.id] as Cell).ContainerCell.Controls[0] as Stone);
                     Control.ControlCollection stones = (List[target_index] as Cell).ContainerCell.Controls;
