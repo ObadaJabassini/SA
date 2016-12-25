@@ -10,5 +10,6 @@ namespace SA
     {
         public byte player;
         public int virtualId;
+        public bool ext;
     }
 }

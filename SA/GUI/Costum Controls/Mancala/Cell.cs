@@ -100,11 +100,19 @@ namespace SA.GUI.Costum_Controls.Mancala
 
         public void PerformClick()
         {
-            _observers[0].OnNext(new CuurentCell()
-            {
+            CuurentCell cell=new CuurentCell(){
                 player = this.VirtualId.Item1,
                 virtualId = this.VirtualId.Item2
-            });
+
+            };
+            if (this.VirtualId.Item1 == 2 && this.ContainerCell.Controls.Count == 7 - id)
+            {
+                cell.ext = true;
+            }
+            if (this.VirtualId.Item1 == 1 && this.ContainerCell.Controls.Count == 14 - id)
+            {
+                cell.ext = true;
+            }
             List<Stone> stones = Empty();
             if (stones.Count != 0)
             {
@@ -125,8 +133,10 @@ namespace SA.GUI.Costum_Controls.Mancala
                     //stones.RemoveAt(0);
                     nextcell.CarryStones(stones);
                 }
+
             }
-            
+            _observers[0].OnNext(cell);
+
         }
 
         private void Cell_Click(object sender, EventArgs e)
@@ -148,33 +158,38 @@ namespace SA.GUI.Costum_Controls.Mancala
             Forms.Mancala._game.MakeMove(this.VirtualId.Item2);
         }
 
-        public void CarryStones( List<Stone> stones)
+        public void CarryStones(List<Stone> stones)
         {
-
+            
             if (stones.Count != 0)
             {
-                Func<int, int> next = (int current) => (current + 1) % 14;
+                Func<int, int> next = (int current) => (current + 1)%14;
                 this.AddStone(stones[0]);
                 stones.RemoveAt(0);
-                if ((Forms.Mancala.List[next(id)]) is Cell)
+                if (stones.Count == 0 && this.ContainerCell.Controls.Count == 1)
                 {
-                    var nextcell = (Forms.Mancala.List[next(id)]) as Cell;
-                    nextcell.CarryStones(stones);
+                    _observers2[0].OnNext(new GetOpositCell()
+                    {
+                        id = this.id,
+                        player = this.VirtualId.Item1
+                    });
                 }
-                if ((Forms.Mancala.List[next(id)]) is EarningsCell)
+                else
                 {
-                    var nextcell = (Forms.Mancala.List[next(id)]) as EarningsCell;
-                    nextcell.CarryStones(stones);
+                    if ((Forms.Mancala.List[next(id)]) is Cell)
+                    {
+                        var nextcell = (Forms.Mancala.List[next(id)]) as Cell;
+                        nextcell.CarryStones(stones);
+                    }
+                    if ((Forms.Mancala.List[next(id)]) is EarningsCell)
+                    {
+                        var nextcell = (Forms.Mancala.List[next(id)]) as EarningsCell;
+                        nextcell.CarryStones(stones);
+                    }
                 }
             }
-            else
-            {
-                _observers2[0].OnNext(new GetOpositCell()
-                {
-                    id = this.id,
-                    player = this.VirtualId.Item1
-                });
-            }
+
+
         }
 
         private void ContainerCell_MouseUp(object sender, MouseEventArgs e)

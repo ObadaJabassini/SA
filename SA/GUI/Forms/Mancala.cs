@@ -138,29 +138,48 @@ namespace SA.GUI.Forms
 
         public void OnNext(CuurentCell value)
         {
-            Informant.Text = value.player == 1 ? "Your Turn" : "Computer's Turn";
+            if (value.ext)
+                Informant.Text = value.player == 2 ? "Your Got an Extra Turn !!" : "Computer Got an Extra Turn !!";
+            else
+                Informant.Text = value.player == 1 ? "Your Turn" : "Computer's Turn";
         }
 
         public void OnNext(GetOpositCell value)
         {
             int target_index = 14 - value.id;
-            if ((List[target_index] as Cell).ContainerCell.Controls.Count != 0)
+            Console.WriteLine(value.id);
+            Console.WriteLine((List[value.id] as Cell).ContainerCell.Controls);
+            Console.WriteLine(target_index);
+            Console.WriteLine((List[target_index] as Cell).ContainerCell.Controls);
+            if ((List[target_index] as Cell).ContainerCell.Controls.Count != 0
+                && (List[value.id] as Cell).ContainerCell.Controls.Count==1
+                )
             {
                 if (value.player == 1)
                 {
-                    Control.ControlCollection stones = (List[value.id] as Cell).ContainerCell.Controls;
+                    (List[0] as EarningsCell).AddStone((List[value.id] as Cell).ContainerCell.Controls[0] as Stone);
+                    Control.ControlCollection stones = (List[target_index] as Cell).ContainerCell.Controls;
+                    int count = stones.Count;
                     for (int i = 0; i < stones.Count; i++)
                     {
-                        (List[0] as EarningsCell).AddStone(stones[i] as Stone);
+                        (List[0] as EarningsCell).AddStone(stones[0] as Stone);
                     }
+                    (List[value.id] as Cell).ContainerCell.Controls.Clear();
+
+                    (List[target_index] as Cell).ContainerCell.Controls.Clear();
                 }
                 else
                 {
-                    Control.ControlCollection stones = (List[value.id] as Cell).ContainerCell.Controls;
+                    (List[7] as EarningsCell).AddStone((List[value.id] as Cell).ContainerCell.Controls[0] as Stone);
+                    Control.ControlCollection stones = (List[target_index] as Cell).ContainerCell.Controls;
+                    int count = stones.Count;
                     for (int i = 0; i < stones.Count; i++)
                     {
-                        (List[7] as EarningsCell).AddStone(stones[i] as Stone);
+                        (List[7] as EarningsCell).AddStone(stones[0] as Stone);
+                    
                     }
+                    (List[value.id] as Cell).ContainerCell.Controls.Clear();
+                    (List[target_index] as Cell).ContainerCell.Controls.Clear();
                 }
             }
             //(List[3-value.player] as EarningsCell).ContainerCell.Controls.Add(List[(value.id + 7) % 14]);

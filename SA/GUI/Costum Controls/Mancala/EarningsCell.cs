@@ -50,8 +50,8 @@ namespace SA.GUI.Costum_Controls.Mancala
                         nextcell.CarryStones(stones);
                     }
                 }
-                else
-                    _observers[0].OnNext(this.VirtualId.Item1);
+               // else
+                   // _observers[0].OnNext(this.VirtualId.Item1);
             }
         }
 
