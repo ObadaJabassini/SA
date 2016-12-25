@@ -61,10 +61,10 @@ namespace SA.GUI.Costum_Controls
 
         #endregion
 
-        private Telerik.WinControls.UI.RadButton radButton1;
         private Telerik.WinControls.Themes.Office2013DarkTheme office2013DarkTheme1;
         private Telerik.WinControls.Themes.VisualStudio2012DarkTheme visualStudio2012DarkTheme1;
         private Windows8Theme windows8Theme1;
         private VisualStudio2012LightTheme visualStudio2012LightTheme1;
+        public Telerik.WinControls.UI.RadButton radButton1;
     }
 }
