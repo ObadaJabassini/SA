@@ -132,6 +132,11 @@
             this.n.Name = "n";
             this.n.Size = new System.Drawing.Size(48, 20);
             this.n.TabIndex = 0;
+            this.n.Value = new decimal(new int[] {
+            11,
+            0,
+            0,
+            0});
             // 
             // m
             // 
@@ -140,6 +145,11 @@
             this.m.Name = "m";
             this.m.Size = new System.Drawing.Size(49, 20);
             this.m.TabIndex = 0;
+            this.m.Value = new decimal(new int[] {
+            11,
+            0,
+            0,
+            0});
             this.m.ValueChanged += new System.EventHandler(this.m_ValueChanged);
             // 
             // async

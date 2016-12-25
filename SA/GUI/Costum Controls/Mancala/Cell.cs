@@ -105,6 +105,34 @@ namespace SA.GUI.Costum_Controls.Mancala
                 virtualId = this.VirtualId.Item2
 
             };
+            GetOpositCell opositCell = null;
+            Func<int> index = () => (this.ContainerCell.Controls.Count + id) % 14;
+            Func<int> target = () => 14 - index();
+            if (Forms.Mancala.List[index()] is Cell)
+            {
+                Cell c = Forms.Mancala.List[index()] as Cell;
+                Cell t = Forms.Mancala.List[target()] as Cell;
+                if (VirtualId.Item1== c.VirtualId.Item1)
+                {
+                    if (c.ContainerCell.Controls.Count == 0 && t.ContainerCell.Controls.Count != 0)
+                    {
+                        Console.WriteLine(index());
+                        Console.WriteLine(id);
+                        Console.WriteLine("===" + c.ContainerCell.Controls.Count);
+                        Console.WriteLine(target());
+                        Console.WriteLine("===" + t.ContainerCell.Controls.Count);
+                        opositCell = new GetOpositCell()
+                        {
+                            //id=index(),
+                            Cell = c,
+                            target = t,
+                            player = VirtualId.Item1
+
+                        };
+                    }
+                }
+            }
+
             if (this.VirtualId.Item1 == 2 && this.ContainerCell.Controls.Count == 7 - id)
             {
                 cell.ext = true;
@@ -135,8 +163,9 @@ namespace SA.GUI.Costum_Controls.Mancala
                 }
 
             }
+            if(opositCell != null)
+                _observers2[0].OnNext(opositCell);
             _observers[0].OnNext(cell);
-
         }
 
         private void Cell_Click(object sender, EventArgs e)
@@ -168,11 +197,11 @@ namespace SA.GUI.Costum_Controls.Mancala
                 stones.RemoveAt(0);
                 if (stones.Count == 0 && this.ContainerCell.Controls.Count == 1)
                 {
-                    _observers2[0].OnNext(new GetOpositCell()
-                    {
-                        id = this.id,
-                        player = this.VirtualId.Item1
-                    });
+                    //_observers2[0].OnNext(new GetOpositCell()
+                    //{
+                    //    id = this.id,
+                    //    player = this.VirtualId.Item1
+                    //});
                 }
                 else
                 {

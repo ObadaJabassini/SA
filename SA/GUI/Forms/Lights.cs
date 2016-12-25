@@ -22,8 +22,8 @@ namespace SA.GUI.Forms
         public Lights()
         {
             InitializeComponent();
-            this.tableLayoutPanel1.RowCount = 12;
-            this.tableLayoutPanel1.ColumnCount = 12;
+            this.tableLayoutPanel1.RowCount = 11;
+            this.tableLayoutPanel1.ColumnCount = 11;
 
             for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
                 for (int j = 0; j < tableLayoutPanel1.ColumnCount; j++)
@@ -85,7 +85,7 @@ namespace SA.GUI.Forms
             //this.radListView1.Items.Add(solution[0]);
             foreach (Node node in solution)
             {
-                this.moves.Text += "_____________________________\n" + node;
+                this.moves.Text += "_____________________\n" + node;
             }
             
         }
