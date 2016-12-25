@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CuurentCell.cs" />
+    <Compile Include="GetOpositCell.cs" />
     <Compile Include="GUI\Costum Controls\Lights\LightsCell.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,10 +147,12 @@
     </Compile>
     <Compile Include="LightsOut\AStar.cs" />
     <Compile Include="LightsOut\BFS.cs" />
+    <Compile Include="LightsOut\Board.cs" />
     <Compile Include="LightsOut\HashSetExtensions.cs" />
     <Compile Include="LightsOut\LineraAlgebra\MMatrix.cs" />
     <Compile Include="LightsOut\LineraAlgebra\Solver.cs" />
     <Compile Include="LightsOut\Node.cs" />
+    <Compile Include="LightsOut\SolutionMethod.cs" />
     <Compile Include="Mancala\AlphaBetaMinMax.cs" />
     <Compile Include="Mancala\Game.cs" />
     <Compile Include="Mancala\MinMax.cs" />

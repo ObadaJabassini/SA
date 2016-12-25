@@ -12,7 +12,7 @@ using SA.Mancala;
 
 namespace SA.GUI.Forms
 {
-    public partial class Mancala : Telerik.WinControls.UI.RadForm, IObserver<ResultMessage>,IObserver<byte>,IObserver<CuurentCell>
+    public partial class Mancala : Telerik.WinControls.UI.RadForm, IObserver<ResultMessage>,IObserver<byte>,IObserver<CuurentCell>,IObserver<GetOpositCell>
     {
         private const int TotalCellCount = 14;
         private readonly Point FirstOpCell = new Point(158, 33);
@@ -71,7 +71,8 @@ namespace SA.GUI.Forms
                     VirtualId = new Tuple<byte, int>(2, i),
                     id = id++
                 };
-                PLCell.Subscribe(this);
+                PLCell.Subscribe((IObserver<CuurentCell>) this);
+                PLCell.Subscribe((IObserver<GetOpositCell>) this);
                 Mancala.List.Add(PLCell);
             }
             EarningsCell EarningsPLCell = new EarningsCell
@@ -93,7 +94,8 @@ namespace SA.GUI.Forms
                     VirtualId = new Tuple<byte, int>(1, i),
                     id = id++
                 };
-                OPCell.Subscribe(this);
+                OPCell.Subscribe((IObserver<CuurentCell>) this);
+                OPCell.Subscribe((IObserver<GetOpositCell>) this);
                 Mancala.List.Add(OPCell);
             }
 
@@ -137,6 +139,65 @@ namespace SA.GUI.Forms
         public void OnNext(CuurentCell value)
         {
             Informant.Text = value.player == 1 ? "Your Turn" : "Computer's Turn";
+        }
+
+        public void OnNext(GetOpositCell value)
+        {
+            int target_index = 14 - value.id;
+            if ((List[target_index] as Cell).ContainerCell.Controls.Count != 0)
+            {
+                if (value.player == 1)
+                {
+                    Control.ControlCollection stones = (List[value.id] as Cell).ContainerCell.Controls;
+                    for (int i = 0; i < stones.Count; i++)
+                    {
+                        (List[0] as EarningsCell).AddStone(stones[i] as Stone);
+                    }
+                }
+                else
+                {
+                    Control.ControlCollection stones = (List[value.id] as Cell).ContainerCell.Controls;
+                    for (int i = 0; i < stones.Count; i++)
+                    {
+                        (List[7] as EarningsCell).AddStone(stones[i] as Stone);
+                    }
+                }
+            }
+            //(List[3-value.player] as EarningsCell).ContainerCell.Controls.Add(List[(value.id + 7) % 14]);
+
+            //if (value.player == 1)
+            //{
+            //    Control.ControlCollection Collection = (List[(value.id + 7) % 14] as Cell).ContainerCell.Controls;
+
+            //    Control.ControlCollection targeted = (List[0] as EarningsCell).ContainerCell.Controls;
+            //    for (int i = 0; i < Collection.Count; i++)
+            //    {
+            //        targeted.Add(
+            //            Collection[0]
+            //            );
+            //        Collection.Remove(
+            //            Collection[0]
+            //            );
+            //    }
+            //    //Control[] stones = (List[value.id] as Cell).ContainerCell.Controls;
+
+            //    //(List[0] as EarningsCell).ContainerCell.Controls.AddRange(stones);
+            //}
+            //else
+            //{
+            //    Control.ControlCollection Collection = (List[(value.id + 7) % 14] as Cell).ContainerCell.Controls;
+
+            //    EarningsCell targeted = (List[7] as EarningsCell);
+            //    for (int i = 0; i < Collection.Count; i++)
+            //    {
+            //        targeted.AddStones(
+            //            Collection[0]
+            //            );
+            //        Collection.Remove(
+            //            Collection[0]
+            //            );
+            //    }
+            //}
         }
 
         public void OnError(Exception error)

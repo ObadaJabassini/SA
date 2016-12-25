@@ -59,7 +59,6 @@ namespace SA.GUI.Costum_Controls.Mancala
         {
 
             ContainerCell.Controls.AddRange(stones.ToArray());
-
             player2.Play();
             this.CountStones.Text = ContainerCell.Controls.Count.ToString();
         }

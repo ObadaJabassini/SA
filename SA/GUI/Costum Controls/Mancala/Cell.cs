@@ -15,7 +15,7 @@ using SA.Properties;
 
 namespace SA.GUI.Costum_Controls.Mancala
 {
-    public partial class Cell : UserControl, IOperations, IObservable<CuurentCell>
+    public partial class Cell : UserControl, IOperations, IObservable<CuurentCell>,IObservable<GetOpositCell>
     {
         private bool _isloaded;
         public int id;
@@ -106,9 +106,9 @@ namespace SA.GUI.Costum_Controls.Mancala
                 virtualId = this.VirtualId.Item2
             });
             List<Stone> stones = Empty();
-            if (stones.Count > 0)
+            if (stones.Count != 0)
             {
-                Func<int, int> next = (int current) => (current + 1) % 14;
+                Func<int, int> next = (int current) => (current + 1)%14;
                 //this.AddStone(stones[0]);
                 //stones.RemoveAt(0);
                 if ((Forms.Mancala.List[next(id)]) is Cell)
@@ -151,7 +151,7 @@ namespace SA.GUI.Costum_Controls.Mancala
         public void CarryStones( List<Stone> stones)
         {
 
-            if (stones.Count > 0)
+            if (stones.Count != 0)
             {
                 Func<int, int> next = (int current) => (current + 1) % 14;
                 this.AddStone(stones[0]);
@@ -167,6 +167,14 @@ namespace SA.GUI.Costum_Controls.Mancala
                     nextcell.CarryStones(stones);
                 }
             }
+            else
+            {
+                _observers2[0].OnNext(new GetOpositCell()
+                {
+                    id = this.id,
+                    player = this.VirtualId.Item1
+                });
+            }
         }
 
         private void ContainerCell_MouseUp(object sender, MouseEventArgs e)
@@ -181,6 +189,16 @@ namespace SA.GUI.Costum_Controls.Mancala
             if (!_observers.Contains(observer))
             {
                 _observers.Add(observer);
+            }
+            return null;
+        }
+
+        private List<IObserver<GetOpositCell>> _observers2 = new List<IObserver<GetOpositCell>>();
+        public IDisposable Subscribe(IObserver<GetOpositCell> observer)
+        {
+            if (!_observers2.Contains(observer))
+            {
+                _observers2.Add(observer);
             }
             return null;
         }

@@ -93,7 +93,7 @@ namespace SA.Mancala
                     _bins[side - 1][i]++;
                     if (side == NextPlayer && stones - 1 == 0 && _bins[side - 1][i] == 1)
                     {
-                        _bins[side - 1][i] += _bins[3 - side - 1][i];
+                        _mancals[side - 1] += _bins[3 - side - 1][i] + _bins[side - 1][i]--;
                         _bins[3 - side - 1][i] = 0;
                     }
 
