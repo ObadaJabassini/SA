@@ -19,7 +19,7 @@ namespace SA.GUI.Costum_Controls.Mancala
     {
         private bool _isloaded;
         public int id;
-        static SoundPlayer player = new SoundPlayer(Resources.button12);
+        static SoundPlayer player = new SoundPlayer(Resources.Click_SoundBible_com_1387633738);
         public Tuple<byte,int >VirtualId;
         public Cell()
         {
@@ -100,6 +100,9 @@ namespace SA.GUI.Costum_Controls.Mancala
 
         public void PerformClick()
         {
+
+            Console.WriteLine(Forms.Mancala._game);
+            Console.WriteLine(id);
             CuurentCell cell=new CuurentCell(){
                 player = this.VirtualId.Item1,
                 virtualId = this.VirtualId.Item2
@@ -116,11 +119,11 @@ namespace SA.GUI.Costum_Controls.Mancala
                 {
                     if (c.ContainerCell.Controls.Count == 0 && t.ContainerCell.Controls.Count != 0)
                     {
-                        Console.WriteLine(index());
-                        Console.WriteLine(id);
-                        Console.WriteLine("===" + c.ContainerCell.Controls.Count);
-                        Console.WriteLine(target());
-                        Console.WriteLine("===" + t.ContainerCell.Controls.Count);
+                        //Console.WriteLine(index());
+                        //Console.WriteLine(id);
+                        //Console.WriteLine("===" + c.ContainerCell.Controls.Count);
+                        //Console.WriteLine(target());
+                        //Console.WriteLine("===" + t.ContainerCell.Controls.Count);
                         opositCell = new GetOpositCell()
                         {
                             //id=index(),

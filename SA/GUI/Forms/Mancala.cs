@@ -5,10 +5,12 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Windows.Forms;
 using SA.GUI.Costum_Controls.Mancala;
 using SA.Mancala;
+using SA.Properties;
 
 namespace SA.GUI.Forms
 {
@@ -23,6 +25,7 @@ namespace SA.GUI.Forms
         public static Game _game;
         public static List<Control> List = new List<Control>();
         private Game.DifficultyLevel m;
+        static SoundPlayer player=new SoundPlayer(Resources.button9);
         public Mancala()
         {
             InitializeComponent();
@@ -128,6 +131,7 @@ namespace SA.GUI.Forms
                 }
                 );
             (c as Cell).PerformClick();
+            
             //Informant.Text = "Your Turn ";
         }
 
@@ -146,6 +150,7 @@ namespace SA.GUI.Forms
 
         public void OnNext(GetOpositCell value)
         {
+            
             if (value.player == 1)
             {
                 (List[0] as EarningsCell).AddStone(value.Cell.ContainerCell.Controls[0] as Stone );
@@ -176,6 +181,7 @@ namespace SA.GUI.Forms
                 }
                 //value.target.ContainerCell.Controls.Clear();
             }
+            player.Play();
             //int target_index = 14 - value.id;
             //Console.WriteLine(value.id);
             //Console.WriteLine((List[value.id] as Cell).ContainerCell.Controls);
@@ -311,32 +317,103 @@ namespace SA.GUI.Forms
             
            
 
+            //for (int i = 1; i <= 6; i++)
+            //{
+            //    if ((List[i] as Cell).ContainerCell.Controls.Count != 0)
+            //            break;
+            //    if (i == 6) 
+            //        if(
+            //        (List[7] as EarningsCell).ContainerCell.Controls.Count >
+            //        (List[0] as EarningsCell).ContainerCell.Controls.Count)
+            //        Informant.Text = "You Won !";
+            //   else if ((List[7] as EarningsCell).ContainerCell.Controls.Count <
+            //            (List[0] as EarningsCell).ContainerCell.Controls.Count)
+            //            Informant.Text = "Computer Won !";
+            //   else
+            //       if ((List[7] as EarningsCell).ContainerCell.Controls.Count ==
+            //           (List[0] as EarningsCell).ContainerCell.Controls.Count)
+
+            //           Informant.Text = "It is a Draw !";
+               
+            //}
+            //for (int i = 8; i <= 13; i++)
+            //{
+            //    if ((List[i] as Cell).ContainerCell.Controls.Count != 0)
+            //        break;
+            //    if (i == 13) 
+            //    {if((List[7] as EarningsCell).ContainerCell.Controls.Count <
+            //        (List[0] as EarningsCell).ContainerCell.Controls.Count)
+            //        Informant.Text = "Computer Won !";
+            //        if((List[7] as EarningsCell).ContainerCell.Controls.Count ==
+            //        (List[0] as EarningsCell).ContainerCell.Controls.Count)
+            //            Informant.Text = "It is a Draw !";
+            //    }
+                
+            //}
+
+            if (Check())
+            {
+                if ((List[0] as EarningsCell).ContainerCell.Controls.Count >
+                    (List[7] as EarningsCell).ContainerCell.Controls.Count)
+                {
+                    Informant.Text = "Computer Won !";
+                }
+                else if ((List[0] as EarningsCell).ContainerCell.Controls.Count <
+                         (List[7] as EarningsCell).ContainerCell.Controls.Count)
+                {
+                    Informant.Text = "You Won !";
+                }
+                else if ((List[0] as EarningsCell).ContainerCell.Controls.Count ==
+                         (List[7] as EarningsCell).ContainerCell.Controls.Count)
+                {
+                    Informant.Text = "It's a Draw !";
+                }
+            }
+            else _game.Makeachoice();
+             //if (Informant.Text == "Computer Got an Extra Trun !!")
+             //   Informant.Text = "Your Turn";
+        }
+
+        bool Check()
+        {
             for (int i = 1; i <= 6; i++)
             {
                 if ((List[i] as Cell).ContainerCell.Controls.Count != 0)
-                        break;
-                if (i == 6 && 
-                    (List[7] as EarningsCell).ContainerCell.Controls.Count >
-                    (List[0] as EarningsCell).ContainerCell.Controls.Count)
-                    Informant.Text = "You Won !";
+                    break;
+                if (i == 6)
+                {
+                    gathertoEarnings(1);
+                    return true;
+                }
             }
             for (int i = 8; i <= 13; i++)
             {
                 if ((List[i] as Cell).ContainerCell.Controls.Count != 0)
                     break;
-                if (i == 13) 
-                {if((List[7] as EarningsCell).ContainerCell.Controls.Count <
-                    (List[0] as EarningsCell).ContainerCell.Controls.Count)
-                    Informant.Text = "Computer Won !";
-                    if((List[7] as EarningsCell).ContainerCell.Controls.Count ==
-                    (List[0] as EarningsCell).ContainerCell.Controls.Count)
-                        Informant.Text = "It is a Draw !";
+                if (i == 13)
+                {
+                    gathertoEarnings(2);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        void gathertoEarnings(byte player)
+        {
+            int start = player == 1 ? 8 : 1;
+            int end = player == 1 ? 13 : 6;
+            int earning = player == 1 ? 0 : 7;
+            for (int i = start; i < end; i++)
+            {
+                Cell cell = List[i]as Cell;
+                int count = cell.ContainerCell.Controls.Count;
+                for (int j = 0; j < count; j++)
+                {
+                    (List[earning] as EarningsCell).AddStone(cell.ContainerCell.Controls[0] as Stone);
                 }
                 
             }
-           _game.Makeachoice();
-             //if (Informant.Text == "Computer Got an Extra Trun !!")
-             //   Informant.Text = "Your Turn";
         }
     }
 

@@ -13,7 +13,7 @@ namespace SA.GUI.Costum_Controls.Mancala
     public partial class EarningsCell :UserControl,IOperations,IObservable<byte>
     {
         public int id;
-        SoundPlayer player = new SoundPlayer(SA.Properties.Resources.button9);
+        SoundPlayer player = new SoundPlayer(SA.Properties.Resources.button12);
         SoundPlayer player2 = new SoundPlayer(SA.Properties.Resources.Click_SoundBible_com_1387633738);
         public Tuple<byte, int> VirtualId;
         public EarningsCell()

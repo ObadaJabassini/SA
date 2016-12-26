@@ -17,8 +17,8 @@ namespace SA.GUI.Forms
         private LightsCell[,] LightsCells;
         private SolutionMethod method;
         private Board Board;
-        private List<Node> solution;
-
+        //private List<Node> solution;
+        private C5.LinkedList<Node> solution=new C5.LinkedList<Node>();
         public Lights()
         {
             InitializeComponent();
@@ -50,7 +50,7 @@ namespace SA.GUI.Forms
         private void radButton1_Click(object sender, EventArgs e)
         {
 
-
+            radLabel3.Text = "Number of Solutions :\n";
             this.moves.Clear();
             int[,] ints = new int[tableLayoutPanel1.RowCount, tableLayoutPanel1.ColumnCount];
             for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
@@ -80,14 +80,21 @@ namespace SA.GUI.Forms
                 method = new BFS() {Initial = Board};
             else
                 method = new AStar() {Initial = Board};
-            solution = method.Solve().ToList();
+
+            List<Node> sol = method.Solve().ToList();
 
             //this.radListView1.Items.Add(solution[0]);
-            foreach (Node node in solution)
+            foreach (Node node in sol)
             {
-                this.moves.Text += "_____________________\n" + node;
+                string s = node.ToString();
+                string ss=s;
+                ss=ss.Replace('1', '*');
+                this.moves.Text += "_____________________\n" + ss;
+                solution.Add(node);
             }
-            
+           
+            radLabel3.Text +=  solution.Count>0? (solution.Count - 1).ToString() : "There is no solutions !";
+        
         }
 
         private void bfs_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
@@ -138,6 +145,54 @@ namespace SA.GUI.Forms
         private void tableLayoutPanel1_Resize(object sender, EventArgs e)
         {
             this.Size = new Size(tableLayoutPanel1.Size.Width + side.Size.Width + moves.Size.Width+6, this.Size.Height);
+            this.Refresh();
+        }
+
+        private void radPanel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void radBindingNavigator1MoveNextItem_Click(object sender, EventArgs e)
+        {
+            radBindingNavigator1PositionItem.Text = (Convert.ToInt16(radBindingNavigator1PositionItem.Text+1)).ToString();
+            togrid(Convert.ToInt32(radBindingNavigator1PositionItem.Text));
+        }
+       
+        
+
+        void togrid(int node)
+        {
+            string ss = solution[node].ToString();
+            string s = ss.Replace("\n",String.Empty);
+            for (int i = 0; i < m.Value; i++)
+            {
+                for (int j = 0; j < n.Value; j++)
+                {
+                    int index = (int) (m.Value *i + j);
+                    Console.WriteLine(index);
+                    if (s[index] == '0' &&( tableLayoutPanel1.Controls[index]as LightsCell).radButton1.ThemeName!=visualStudio2012DarkTheme1.ThemeName)
+                    {
+                        (tableLayoutPanel1.Controls[index] as LightsCell).radButton1.ThemeName =
+                            visualStudio2012DarkTheme1.ThemeName;
+                    }
+                    else if ((s[index] == '1' || s[index] == '*' ) && (tableLayoutPanel1.Controls[index] as LightsCell).radButton1.ThemeName != visualStudio2012LightTheme1.ThemeName)
+                    {
+                        (tableLayoutPanel1.Controls[index] as LightsCell).radButton1.ThemeName =
+                            visualStudio2012LightTheme1.ThemeName;
+                    }
+                }
+            }
+        }
+
+        private void radBindingNavigator1PositionItem_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void radBindingNavigator1PositionItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

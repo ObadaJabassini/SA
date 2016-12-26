@@ -113,7 +113,6 @@ namespace SA.Mancala
             }
 
             NextPlayer = getExtraTurn ? NextPlayer : 3 - NextPlayer;
-            Console.WriteLine(this);
         }
 
         public override string ToString()
@@ -192,7 +191,6 @@ namespace SA.Mancala
             ResultMessage message=new ResultMessage();
             message.VirtualId = Agent.TakeTurn(this);
             _observers[0].OnNext(message);
-            Console.WriteLine(this);
         }
     }
 }
