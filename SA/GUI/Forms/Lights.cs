@@ -28,10 +28,10 @@ namespace SA.GUI.Forms
             for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
                 for (int j = 0; j < tableLayoutPanel1.ColumnCount; j++)
                 {
-                    this.tableLayoutPanel1.Controls.Add(new LightsCell()
+                    this.tableLayoutPanel1.SetCellPosition(new LightsCell()
                     {
                         Name = (tableLayoutPanel1.RowCount*i + j).ToString()
-                    });
+                    }, new TableLayoutPanelCellPosition(i,j));
                     tableLayoutPanel1.AutoSize = true;
                 }
 
@@ -72,7 +72,7 @@ namespace SA.GUI.Forms
                     }
                 }
             }
-            Board = new Board() {Game = ints};
+            Board = new Board(ints); 
             
             if (this.linearalgebra.IsChecked)
                 method = new Solver() {Initial = Board};
@@ -88,7 +88,7 @@ namespace SA.GUI.Forms
             {
                 string s = node.ToString();
                 string ss=s;
-                ss=ss.Replace('1', '*');
+                //ss=ss.Replace('1', '*');
                 this.moves.Text += "_____________________\n" + ss;
                 solution.Add(node);
             }
@@ -166,27 +166,29 @@ namespace SA.GUI.Forms
         void togrid(int node)
         {
             string ss = solution[node].ToString();
-            string s = ss.Replace("\n",String.Empty);
+            string s = (string) ss.Replace("\n",String.Empty);
             for (int i = 0; i < m.Value; i++)
             {
                 for (int j = 0; j < n.Value; j++)
                 {
                     int index = (int) (m.Value*i + j);
-                    if (s[index] == '0' &&
-                        (tableLayoutPanel1.Controls[index] as LightsCell).radButton1.ThemeName.ToString() !=
+                    int index2 = (int) (n.Value*j + i);
+                    LightsCell cell = tableLayoutPanel1.GetControlFromPosition(i, j) as LightsCell;
+                    if (s[index] == 'O' &&
+                        (cell).radButton1.ThemeName.ToString() !=
                         visualStudio2012DarkTheme1.ThemeName.ToString())
                     {
-                        (tableLayoutPanel1.Controls[index ] as LightsCell).radButton1.ThemeName =
+                        (cell).radButton1.ThemeName =
                             visualStudio2012DarkTheme1.ThemeName;
                         tableLayoutPanel1.Refresh();
                         Console.WriteLine("0");
                         Console.WriteLine("{0}",index);
                     }
-                    else if ((s[index] == '1' || s[index] == '*') &&
-                             (tableLayoutPanel1.Controls[index] as LightsCell).radButton1.ThemeName !=
+                    else if ((s[index] == 'L') &&
+                             (cell).radButton1.ThemeName !=
                              visualStudio2012LightTheme1.ThemeName)
                     {
-                        (tableLayoutPanel1.Controls[index ] as LightsCell).radButton1.ThemeName =
+                        (cell).radButton1.ThemeName =
                             visualStudio2012LightTheme1.ThemeName;
                         tableLayoutPanel1.Refresh();
                         Console.WriteLine("1");

@@ -18,9 +18,9 @@ namespace SA.LightsOut
             if (!(new Solver().CanBeSolved(Initial)))
                 return new List<Node>();
             HashSet<Tuple<int, int>> set = new HashSet<Tuple<int, int>>();
-            for (int i = 0; i < Initial.Game.GetLength(0); i++)
+            for (int i = 0; i < Initial.GetLength(0); i++)
             {
-                for (int j = 0; j < Initial.Game.GetLength(1); j++)
+                for (int j = 0; j < Initial.GetLength(1); j++)
                 {
                     set.Add(new Tuple<int, int>(i, j));
                 }
