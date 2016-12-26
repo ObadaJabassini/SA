@@ -109,16 +109,16 @@ namespace SA.LightsOut.LineraAlgebra
             {
                 list.Add(B);
                 list.Add(I);
-                for (int i = 0; i < Initial.Game.GetLength(1) - 2; i++)
+                for (int i = 0; i < Initial.GetLength(1) - 2; i++)
                 {
                     list.Add(O);
                 }
                 _temp = list.Count;
                 return list.ToArray();
             }
-            if(index == Initial.Game.GetLength(0) - 1)
+            if(index == Initial.GetLength(0) - 1)
             {
-                for (int i = 0; i < Initial.Game.GetLength(1) - 2; i++)
+                for (int i = 0; i < Initial.GetLength(1) - 2; i++)
                 {
                     list.Add(O);
                 }
@@ -133,7 +133,7 @@ namespace SA.LightsOut.LineraAlgebra
             list.Add(I);
             list.Add(B);
             list.Add(I);
-            for (int i = 1; i <= Initial.Game.GetLength(1) - index - 2; i++)
+            for (int i = 1; i <= Initial.GetLength(1) - index - 2; i++)
             {
                 list.Add(O);
             }
@@ -142,7 +142,7 @@ namespace SA.LightsOut.LineraAlgebra
 
         public override IList<Node> Solve()
         { 
-            int r = Initial.Game.GetLength(0), c = Initial.Game.GetLength(1);
+            int r = Initial.GetLength(0), c = Initial.GetLength(1);
             //Matrix<double> O = Matrix<double>.Build.Dense(r, c, 0),
             //               I = Matrix<double>.Build.DenseDiagonal(r, c, 1),
             //               B = Matrix<double>.Build.Dense(r, c, 0);
@@ -200,7 +200,7 @@ namespace SA.LightsOut.LineraAlgebra
             {
                 for (int j = 0; j < c; j++)
                 {
-                    b[index++] = Initial[i, j];
+                    b[index++] = Initial[i, j]? 1 : 0;
                 }
             }
             var ASize = r * c;
@@ -285,14 +285,14 @@ namespace SA.LightsOut.LineraAlgebra
 
         public bool CanBeSolved(Board bb)
         {
-            int r = bb.Game.GetLength(0), c = bb.Game.GetLength(1);
+            int r = bb.GetLength(0), c = bb.GetLength(1);
             int[] b = new int[r * c];
             int index = 0;
             for (int i = 0; i < r; i++)
             {
                 for (int j = 0; j < c; j++)
                 {
-                    b[index++] = bb[i, j];
+                    b[index++] = bb[i, j]? 1 : 0;
                 }
             }
             var ASize = r * c;

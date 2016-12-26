@@ -13,19 +13,20 @@ namespace SA
     {
         public static void Main(string[] args)
         {
-            int[,] tt = new int[5, 5];
-            for (int i = 0; i < 5; i++)
+            const int sz = 7;
+            int[,] tt = new int[sz, sz];
+            for (int i = 0; i < sz; i++)
             {
-                for (int j = 0; j < 5; j++)
+                for (int j = 0; j < sz; j++)
                 {
                     tt[i, j] = 0;
                 }
             }
             tt[0, 0] = 1;
-            var t = new Board() { Game = tt};
-            var b = new Board() { Game = new int[,] { { 1, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } } };
-            var bb = new Board() { Game = new int[,] { { 1, 1, 1 }, { 1, 0, 1 }, { 0, 0, 0 } } };
-            SolutionMethod method = new BFS() { Initial = t};
+            var t = new Board(tt);
+            var b = new Board(new int[,] { { 1, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } });
+            var bb = new Board(new int[,] { { 1, 1, 1 }, { 1, 0, 1 }, { 0, 0, 0 } });
+            SolutionMethod method = new BFS() { Initial = b};
             var sol = method.Solve().ToList();
             if (sol.Count == 0)
                 Console.WriteLine("No Solutions have been found");
