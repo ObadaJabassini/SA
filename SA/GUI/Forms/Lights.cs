@@ -155,8 +155,10 @@ namespace SA.GUI.Forms
 
         private void radBindingNavigator1MoveNextItem_Click(object sender, EventArgs e)
         {
-            radBindingNavigator1PositionItem.Text = (Convert.ToInt16(radBindingNavigator1PositionItem.Text+1)).ToString();
-            togrid(Convert.ToInt32(radBindingNavigator1PositionItem.Text));
+
+            togrid(Convert.ToInt16(radBindingNavigator1PositionItem.Text));
+            radBindingNavigator1PositionItem.Text =
+                (Convert.ToInt16(radBindingNavigator1PositionItem.Text) + 1).ToString();
         }
        
         
@@ -169,17 +171,26 @@ namespace SA.GUI.Forms
             {
                 for (int j = 0; j < n.Value; j++)
                 {
-                    int index = (int) (m.Value *i + j);
-                    Console.WriteLine(index);
-                    if (s[index] == '0' &&( tableLayoutPanel1.Controls[index]as LightsCell).radButton1.ThemeName!=visualStudio2012DarkTheme1.ThemeName)
+                    int index = (int) (m.Value*i + j);
+                    if (s[index] == '0' &&
+                        (tableLayoutPanel1.Controls[index] as LightsCell).radButton1.ThemeName.ToString() !=
+                        visualStudio2012DarkTheme1.ThemeName.ToString())
                     {
-                        (tableLayoutPanel1.Controls[index] as LightsCell).radButton1.ThemeName =
+                        (tableLayoutPanel1.Controls[index ] as LightsCell).radButton1.ThemeName =
                             visualStudio2012DarkTheme1.ThemeName;
+                        tableLayoutPanel1.Refresh();
+                        Console.WriteLine("0");
+                        Console.WriteLine("{0}",index);
                     }
-                    else if ((s[index] == '1' || s[index] == '*' ) && (tableLayoutPanel1.Controls[index] as LightsCell).radButton1.ThemeName != visualStudio2012LightTheme1.ThemeName)
+                    else if ((s[index] == '1' || s[index] == '*') &&
+                             (tableLayoutPanel1.Controls[index] as LightsCell).radButton1.ThemeName !=
+                             visualStudio2012LightTheme1.ThemeName)
                     {
-                        (tableLayoutPanel1.Controls[index] as LightsCell).radButton1.ThemeName =
+                        (tableLayoutPanel1.Controls[index ] as LightsCell).radButton1.ThemeName =
                             visualStudio2012LightTheme1.ThemeName;
+                        tableLayoutPanel1.Refresh();
+                        Console.WriteLine("1");
+                        Console.WriteLine("{0}", index);
                     }
                 }
             }
@@ -193,6 +204,14 @@ namespace SA.GUI.Forms
         private void radBindingNavigator1PositionItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void radBindingNavigator1MovePreviousItem_Click(object sender, EventArgs e)
+        {
+            radBindingNavigator1PositionItem.Text =
+                (Convert.ToInt16(radBindingNavigator1PositionItem.Text) - 1).ToString();
+            togrid(Convert.ToInt32(radBindingNavigator1PositionItem.Text));
+   
         }
     }
 }

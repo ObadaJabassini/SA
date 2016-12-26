@@ -81,7 +81,7 @@ namespace SA.GUI.Forms
             EarningsCell EarningsPLCell = new EarningsCell
             {
                 Name = "EarningsPLCell",
-                Location = new Point(935, 130),
+                Location = new Point(938, 83),
                 VirtualId = new Tuple<byte, int>(2, -1),
                 id = id++
             };
@@ -130,6 +130,9 @@ namespace SA.GUI.Forms
                     return false;
                 }
                 );
+            //Console.WriteLine(value.VirtualId);
+            //Console.WriteLine(_game);
+            //Console.WriteLine(">>>>>>>>>>>>>>>>");
             (c as Cell).PerformClick();
             
             //Informant.Text = "Your Turn ";
@@ -138,6 +141,7 @@ namespace SA.GUI.Forms
         public void OnNext(byte value)
         {
             this.Informant.Text = value == 1 ? "Computer Got an Extra Trun !!" : "You Got an Extra Trun !!";
+            //Forms.Mancala._game.NextPlayer = value;
         }
 
         public void OnNext(CuurentCell value)
@@ -146,6 +150,7 @@ namespace SA.GUI.Forms
                 Informant.Text = value.player == 2 ? "Your Got an Extra Turn !!" : "Computer Got an Extra Turn !!";
             else
                 Informant.Text = value.player == 1 ? "Your Turn" : "Computer's Turn";
+        
         }
 
         public void OnNext(GetOpositCell value)
@@ -350,6 +355,8 @@ namespace SA.GUI.Forms
             //    }
                 
             //}
+            if (Informant.Text.Contains("ou"))
+                return;
 
             if (Check())
             {
@@ -369,7 +376,10 @@ namespace SA.GUI.Forms
                     Informant.Text = "It's a Draw !";
                 }
             }
-            else _game.Makeachoice();
+            else
+            {
+                _game.Makeachoice();
+            }
              //if (Informant.Text == "Computer Got an Extra Trun !!")
              //   Informant.Text = "Your Turn";
         }

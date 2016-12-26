@@ -101,13 +101,18 @@ namespace SA.GUI.Costum_Controls.Mancala
         public void PerformClick()
         {
 
-            Console.WriteLine(Forms.Mancala._game);
-            Console.WriteLine(id);
+            Console.WriteLine("It is Player :{0}", Forms.Mancala._game.NextPlayer);
+            Console.WriteLine("{0} played {1}", VirtualId.Item1, id);
+
             CuurentCell cell=new CuurentCell(){
                 player = this.VirtualId.Item1,
                 virtualId = this.VirtualId.Item2
 
             };
+            if(VirtualId.Item1==2)
+                Forms.Mancala._game.MakeMove(this.VirtualId.Item2);
+
+            Console.WriteLine(Forms.Mancala._game);
             GetOpositCell opositCell = null;
             Func<int> index = () => (this.ContainerCell.Controls.Count + id) % 14;
             Func<int> target = () => 14 - index();
@@ -143,6 +148,7 @@ namespace SA.GUI.Costum_Controls.Mancala
             if (this.VirtualId.Item1 == 1 && this.ContainerCell.Controls.Count == 14 - id)
             {
                 cell.ext = true;
+               // Forms.Mancala._game.NextPlayer = 1;
             }
             List<Stone> stones = Empty();
             if (stones.Count != 0)
@@ -166,28 +172,38 @@ namespace SA.GUI.Costum_Controls.Mancala
                 }
 
             }
+
+
             if(opositCell != null)
                 _observers2[0].OnNext(opositCell);
             _observers[0].OnNext(cell);
         }
 
+        private Func<Cell, bool> CanClicked =
+            (Cell c) =>
+                c.VirtualId.Item1 == 2 && c.Controls.Count != 0
+                //&&Forms.Mancala._game.NextPlayer == 2
+                ;
+        
         private void Cell_Click(object sender, EventArgs e)
         {
-            _observers[0].OnNext(new CuurentCell()
+            //    _observers[0].OnNext(new CuurentCell()
+            //    {
+            //        player = this.VirtualId.Item1,
+            //        virtualId = this.VirtualId.Item2
+            //    });
+            if (CanClicked(this))
             {
-                player = this.VirtualId.Item1,
-                virtualId = this.VirtualId.Item2
-            });
-            PerformClick();
-            Forms.Mancala._game.NextPlayer = this.VirtualId.Item1;
-            Forms.Mancala._game.MakeMove(this.VirtualId.Item2);
+                PerformClick();
+            }
         }
 
         private void ContainerCell_Click(object sender, EventArgs e)
         {
-            PerformClick();
-            Forms.Mancala._game.NextPlayer = this.VirtualId.Item1;
-            Forms.Mancala._game.MakeMove(this.VirtualId.Item2);
+            if (CanClicked(this))
+            {
+                PerformClick();
+            }
         }
 
         public void CarryStones(List<Stone> stones)

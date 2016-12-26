@@ -33,8 +33,8 @@ namespace SA
             //    Console.WriteLine("No Solutions have been found");
             //else
             //    sol.ForEach(Console.WriteLine);
-            ////Game g = new Game();
-            ////g.Play();
+            //Game g = new Game();
+            //g.Play();
             //Console.ReadKey();
 
             //var b = new Node.State[,] { { Node.State.ON, Node.State.ON, Node.State.ON}, { Node.State.ON, Node.State.OFF, Node.State.ON }, { Node.State.OFF, Node.State.OFF, Node.State.OFF } };

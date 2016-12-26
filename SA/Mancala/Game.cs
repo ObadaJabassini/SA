@@ -152,8 +152,6 @@ namespace SA.Mancala
                     int choice = Agent.TakeTurn(this);
                     Console.WriteLine("I choose {0}, the result is :", choice);
                     Console.WriteLine(this);
-                    ResultMessage message=new ResultMessage();
-                    message.VirtualId = choice;
                     while (NextPlayer == 1)
                     {
                         Console.WriteLine("I got an extra turn! :p let me make a move..");
@@ -188,8 +186,13 @@ namespace SA.Mancala
 
         public void Makeachoice()
         {
+            
+            Console.WriteLine("Next");
+            Console.WriteLine(NextPlayer);
             ResultMessage message=new ResultMessage();
             message.VirtualId = Agent.TakeTurn(this);
+           Console.WriteLine("Next2");
+            Console.WriteLine(NextPlayer);
             _observers[0].OnNext(message);
         }
     }

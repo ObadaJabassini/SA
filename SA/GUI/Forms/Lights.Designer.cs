@@ -463,6 +463,7 @@
             // 
             this.radBindingNavigator1MovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1MovePreviousItem.Image")));
             this.radBindingNavigator1MovePreviousItem.Name = "radBindingNavigator1MovePreviousItem";
+            this.radBindingNavigator1MovePreviousItem.Click += new System.EventHandler(this.radBindingNavigator1MovePreviousItem_Click);
             // 
             // commandBarSeparator2
             // 
