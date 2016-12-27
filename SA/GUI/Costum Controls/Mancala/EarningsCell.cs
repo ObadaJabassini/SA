@@ -48,11 +48,6 @@ namespace SA.GUI.Costum_Controls.Mancala
                         var nextcell = (Forms.Mancala.List[next(id)]) as Cell;
                         nextcell.CarryStones(stones);
                     }
-                    if ((Forms.Mancala.List[next(id)]) is EarningsCell)
-                    {
-                        var nextcell = (Forms.Mancala.List[next(id)]) as EarningsCell;
-                        nextcell.CarryStones(stones);
-                    }
                 }
                // else
                    // _observers[0].OnNext(this.VirtualId.Item1);

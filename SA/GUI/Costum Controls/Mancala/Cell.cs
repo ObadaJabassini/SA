@@ -117,7 +117,12 @@ namespace SA.GUI.Costum_Controls.Mancala
             Console.WriteLine(Forms.Mancala._game);
 
             GetOpositCell opositCell = null;
-            Func<int> noopernings = () => (13 + VirtualId.Item2 + this.ContainerCell.Controls.Count)/14;
+            Func<int> noopernings = () =>
+            {
+                if (VirtualId.Item1 == 2)
+                    return ((VirtualId.Item2 + this.ContainerCell.Controls.Count)/13);
+                return ((5 - VirtualId.Item2 + this.ContainerCell.Controls.Count)/13);
+            };
             Func<int> index = () => (this.ContainerCell.Controls.Count
                 - noopernings()
                 + id) % 14;
