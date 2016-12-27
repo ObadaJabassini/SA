@@ -10,8 +10,6 @@ namespace SA.LightsOut
     public class Node
     {
         public Board Board{ get; set; }
-        //public IList<Node> Children { get; private set; } = null;
-        public ConcurrentBag<Node> Children { get; private set; } = null;
         public Node Parent { get; set; } = null;
         public HashSet<Tuple<int, int>> RemainingPositions { get; set; }
         public IList<Node> Parents
@@ -41,7 +39,7 @@ namespace SA.LightsOut
         {
             var self = this;
             //Children = new List<Node>();
-            Children = new ConcurrentBag<Node>();
+            var Children = new ConcurrentBag<Node>();
             Parallel.ForEach(RemainingPositions, (pair) =>
             {
                 var b = self.Board.Clone() as Board;
@@ -50,7 +48,7 @@ namespace SA.LightsOut
                 set.Remove(new Tuple<int, int>(i, j));
                 b.Click(i, j);
                 var child = new Node(set) { Board = b, Cost = self.Cost + 1, Parent = self};
-                self.Children.Add(child);
+                Children.Add(child);
             });
             //foreach (var pair in RemainingPositions)
             //{
