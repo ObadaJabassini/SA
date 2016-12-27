@@ -167,14 +167,13 @@ namespace SA.GUI.Forms
         {
             string ss = solution[node].ToString();
             string s = (string) ss.Replace("\n",String.Empty);
+            int index = 0;
             for (int i = 0; i < m.Value; i++)
             {
                 for (int j = 0; j < n.Value; j++)
                 {
-                    int index = (int) (m.Value*i + j);
-                    int index2 = (int) (n.Value*j + i);
                     LightsCell cell = tableLayoutPanel1.GetControlFromPosition(i, j) as LightsCell;
-                    if (s[index] == 'O' &&
+                    if (s[index] == '0' &&
                         (cell).radButton1.ThemeName.ToString() !=
                         visualStudio2012DarkTheme1.ThemeName.ToString())
                     {
@@ -184,7 +183,7 @@ namespace SA.GUI.Forms
                         Console.WriteLine("0");
                         Console.WriteLine("{0}",index);
                     }
-                    else if ((s[index] == 'L') &&
+                    else if ((s[index] == '1') &&
                              (cell).radButton1.ThemeName !=
                              visualStudio2012LightTheme1.ThemeName)
                     {
@@ -194,6 +193,7 @@ namespace SA.GUI.Forms
                         Console.WriteLine("1");
                         Console.WriteLine("{0}", index);
                     }
+                    index++;
                 }
             }
         }
@@ -214,6 +214,22 @@ namespace SA.GUI.Forms
                 (Convert.ToInt16(radBindingNavigator1PositionItem.Text) - 1).ToString();
             togrid(Convert.ToInt32(radBindingNavigator1PositionItem.Text));
    
+        }
+
+        private void radButton3_Click(object sender, EventArgs e)
+        {
+            foreach (LightsCell cell in tableLayoutPanel1.Controls)
+            {
+                cell.radButton1.ThemeName = visualStudio2012LightTheme1.ThemeName;
+            }
+        }
+
+        private void radButton4_Click(object sender, EventArgs e)
+        {
+            foreach (LightsCell cell in tableLayoutPanel1.Controls)
+            {
+                cell.radButton1.ThemeName = visualStudio2012DarkTheme1.ThemeName;
+            }
         }
     }
 }

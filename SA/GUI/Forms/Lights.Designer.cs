@@ -76,6 +76,8 @@
             this.commandBarSeparator5 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.radBindingNavigator1DeleteItem = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
+            this.radButton3 = new Telerik.WinControls.UI.RadButton();
+            this.radButton4 = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.side)).BeginInit();
@@ -105,6 +107,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
             this.radPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radBindingNavigator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,6 +141,8 @@
             // side
             // 
             this.side.BackColor = System.Drawing.Color.Transparent;
+            this.side.Controls.Add(this.radButton4);
+            this.side.Controls.Add(this.radButton3);
             this.side.Controls.Add(this.radLabel1);
             this.side.Controls.Add(this.radLabel2);
             this.side.Controls.Add(this.radButton2);
@@ -157,7 +163,7 @@
             // 
             // radLabel1
             // 
-            this.radLabel1.Location = new System.Drawing.Point(30, 68);
+            this.radLabel1.Location = new System.Drawing.Point(30, 115);
             this.radLabel1.Name = "radLabel1";
             this.radLabel1.Size = new System.Drawing.Size(79, 18);
             this.radLabel1.TabIndex = 1;
@@ -166,7 +172,7 @@
             // 
             // radLabel2
             // 
-            this.radLabel2.Location = new System.Drawing.Point(46, 26);
+            this.radLabel2.Location = new System.Drawing.Point(46, 73);
             this.radLabel2.Name = "radLabel2";
             this.radLabel2.Size = new System.Drawing.Size(61, 18);
             this.radLabel2.TabIndex = 0;
@@ -175,7 +181,7 @@
             // 
             // radButton2
             // 
-            this.radButton2.Location = new System.Drawing.Point(57, 114);
+            this.radButton2.Location = new System.Drawing.Point(57, 152);
             this.radButton2.Name = "radButton2";
             this.radButton2.Size = new System.Drawing.Size(110, 24);
             this.radButton2.TabIndex = 0;
@@ -186,7 +192,7 @@
             // n
             // 
             this.n.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.n.Location = new System.Drawing.Point(119, 67);
+            this.n.Location = new System.Drawing.Point(119, 114);
             this.n.Name = "n";
             this.n.Size = new System.Drawing.Size(48, 20);
             this.n.TabIndex = 0;
@@ -199,7 +205,7 @@
             // m
             // 
             this.m.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.m.Location = new System.Drawing.Point(118, 26);
+            this.m.Location = new System.Drawing.Point(118, 73);
             this.m.Name = "m";
             this.m.Size = new System.Drawing.Size(49, 20);
             this.m.TabIndex = 0;
@@ -221,7 +227,7 @@
             // 
             // bfs
             // 
-            this.bfs.Location = new System.Drawing.Point(65, 254);
+            this.bfs.Location = new System.Drawing.Point(65, 281);
             this.bfs.Name = "bfs";
             this.bfs.Size = new System.Drawing.Size(41, 18);
             this.bfs.TabIndex = 2;
@@ -231,7 +237,7 @@
             // 
             // Astar
             // 
-            this.Astar.Location = new System.Drawing.Point(65, 216);
+            this.Astar.Location = new System.Drawing.Point(65, 243);
             this.Astar.Name = "Astar";
             this.Astar.Size = new System.Drawing.Size(35, 18);
             this.Astar.TabIndex = 1;
@@ -240,7 +246,7 @@
             // 
             // linearalgebra
             // 
-            this.linearalgebra.Location = new System.Drawing.Point(65, 181);
+            this.linearalgebra.Location = new System.Drawing.Point(65, 208);
             this.linearalgebra.Name = "linearalgebra";
             this.linearalgebra.Size = new System.Drawing.Size(95, 18);
             this.linearalgebra.TabIndex = 0;
@@ -359,10 +365,10 @@
             this.moves.AutoScroll = true;
             this.moves.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.moves.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.moves.Location = new System.Drawing.Point(0, 150);
+            this.moves.Location = new System.Drawing.Point(0, 85);
             this.moves.Multiline = true;
             this.moves.Name = "moves";
-            this.moves.Size = new System.Drawing.Size(217, 345);
+            this.moves.Size = new System.Drawing.Size(217, 410);
             this.moves.TabIndex = 0;
             this.moves.ThemeName = "VisualStudio2012Dark";
             this.moves.TextChanged += new System.EventHandler(this.radTextBoxControl1_TextChanged);
@@ -397,7 +403,7 @@
             this.radPanel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel3.Location = new System.Drawing.Point(0, 44);
             this.radPanel3.Name = "radPanel3";
-            this.radPanel3.Size = new System.Drawing.Size(217, 100);
+            this.radPanel3.Size = new System.Drawing.Size(217, 42);
             this.radPanel3.TabIndex = 0;
             this.radPanel3.Text = "radPanel3";
             this.radPanel3.ThemeName = "VisualStudio2012Dark";
@@ -543,6 +549,26 @@
             // 
             this.commandBarRowElement1.MinSize = new System.Drawing.Size(25, 25);
             // 
+            // radButton3
+            // 
+            this.radButton3.Location = new System.Drawing.Point(112, 20);
+            this.radButton3.Name = "radButton3";
+            this.radButton3.Size = new System.Drawing.Size(55, 24);
+            this.radButton3.TabIndex = 1;
+            this.radButton3.Text = "Turn On";
+            this.radButton3.ThemeName = "VisualStudio2012Light";
+            this.radButton3.Click += new System.EventHandler(this.radButton3_Click);
+            // 
+            // radButton4
+            // 
+            this.radButton4.Location = new System.Drawing.Point(57, 20);
+            this.radButton4.Name = "radButton4";
+            this.radButton4.Size = new System.Drawing.Size(52, 24);
+            this.radButton4.TabIndex = 2;
+            this.radButton4.Text = "Turn Off";
+            this.radButton4.ThemeName = "VisualStudio2012Light";
+            this.radButton4.Click += new System.EventHandler(this.radButton4_Click);
+            // 
             // Lights
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -594,6 +620,8 @@
             this.radPanel3.ResumeLayout(false);
             this.radPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radBindingNavigator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -649,6 +677,8 @@
         private Telerik.WinControls.UI.CommandBarSeparator commandBarSeparator5;
         private Telerik.WinControls.UI.CommandBarButton radBindingNavigator1DeleteItem;
         private Telerik.WinControls.UI.CommandBarRowElement commandBarRowElement1;
+        private Telerik.WinControls.UI.RadButton radButton4;
+        private Telerik.WinControls.UI.RadButton radButton3;
 
 
     }
