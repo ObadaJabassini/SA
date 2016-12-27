@@ -10,7 +10,7 @@ namespace SA.Mancala
     class Game
     {
         public const int BINS_NUM   = 6;
-        public int StonesNum { private set; get; } = 4;
+        public int StonesNum { set; get; } = 4;
         public enum DifficultyLevel { Easy, Meduim, Difficult }
         private IList<int>[] _bins;
         private int[] _mancals;
@@ -103,7 +103,6 @@ namespace SA.Mancala
 
                 if (stones <= 0) continue;
 
-                //_mancals[side - 1]++;
                 if (side == NextPlayer)
                 {
                     _mancals[side - 1]++;
@@ -113,15 +112,15 @@ namespace SA.Mancala
                         getExtraTurn = true;
                 }
 
-                //if (side == NextPlayer && stones - 1 == 0)
-                //    getExtraTurn = true;
-
-                //stones--;
                 idx = start(side);
                 side = 3 - side;
             }
 
             NextPlayer = getExtraTurn ? NextPlayer : 3 - NextPlayer;
+
+            if (!IsGameOver) return;
+            _mancals[0] += _bins[0].Sum();
+            _mancals[1] += _bins[1].Sum();
         }
 
         public override string ToString()

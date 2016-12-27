@@ -22,7 +22,7 @@ namespace SA
             //    sol.ForEach(Console.WriteLine);
             //Console.ReadKey();
 
-            Game g = new Game();
+            Game g = new Game(new MinMax());
             g.Play();
         }
     }
