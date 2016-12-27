@@ -77,7 +77,7 @@ namespace SA.LightsOut
             // sync code
             Queue<Node> queue = new Queue<Node>();
             queue.Enqueue(ini);
-            ISet<Node> visited = new HashSet<Node>();
+            ISet<Board> visited = new HashSet<Board>();
             while (queue.Count != 0)
             {
                 var n = queue.Dequeue();
@@ -85,8 +85,8 @@ namespace SA.LightsOut
                 {
                     return n.Parents;
                 }
-                visited.Add(n);
-                n.GenerateChildren().Where(s => !visited.Contains(s)).ToList().ForEach(queue.Enqueue);
+                visited.Add(n.Board);
+                n.GenerateChildren().Where(s => !visited.Contains(s.Board)).ToList().ForEach(queue.Enqueue);
             }
             return new List<Node>();
         }
