@@ -355,8 +355,7 @@ namespace SA.GUI.Forms
             //    }
                 
             //}
-            if (Informant.Text.Contains("ou"))
-                return;
+            
 
             if (Check())
             {
@@ -378,6 +377,7 @@ namespace SA.GUI.Forms
             }
             else
             {
+                if(_game.NextPlayer==1)
                 _game.Makeachoice();
             }
              //if (Informant.Text == "Computer Got an Extra Trun !!")

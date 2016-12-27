@@ -181,7 +181,7 @@ namespace SA.GUI.Costum_Controls.Mancala
         private Func<Cell, bool> CanClicked =
             (Cell c) =>
                 c.VirtualId.Item1 == 2 && c.Controls.Count != 0
-                //&&Forms.Mancala._game.NextPlayer == 2
+                &&Forms.Mancala._game.NextPlayer == 2
                 ;
         
         private void Cell_Click(object sender, EventArgs e)
