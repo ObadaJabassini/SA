@@ -108,12 +108,14 @@ namespace SA.GUI.Forms
         {
             //Program.shapedForm1.Hide();
             //BoardPanel.Controls.AddRange(List.ToArray());
+            SuspendLayout();
             foreach (var control in List)
             {
               BoardPanel.Controls.Add(control);  
                 System.Windows.Forms.Application.DoEvents();
             }
             Play.Visible = true;
+            ResumeLayout();
         }
  
         public void OnNext(ResultMessage value)
@@ -421,6 +423,42 @@ namespace SA.GUI.Forms
                 for (int j = 0; j < count; j++)
                 {
                     (List[earning] as EarningsCell).AddStone(cell.ContainerCell.Controls[0] as Stone);
+                }
+                
+            }
+        }
+
+        private void radButton1_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+
+        public void Reset()
+        {
+            Informant.Text = FirstPlayer.SelectedItem.Index == 0 ? "Computer's Turn" : "Your Turn";
+            
+            foreach (var cell in List)
+            {
+                if(cell is EarningsCell && (cell as EarningsCell).ContainerCell.Controls.Count!=0)
+                {(cell as EarningsCell).ContainerCell.Controls.Clear();continue;}
+                if (cell is Cell && (cell as Cell).ContainerCell.Controls.Count > 4)
+                {
+                    Cell c = cell as Cell;
+                    int tocleared = (cell as Cell).ContainerCell.Controls.Count - 4;
+                    for (int i = 0; i < tocleared; i++)
+                    {
+                        c.ContainerCell.Controls.RemoveAt(0);
+                    }
+                    continue;
+                }
+                if (cell is Cell && (cell as Cell).ContainerCell.Controls.Count < 4)
+                {
+                    Cell c = cell as Cell;
+                    int tocleared = 4-(cell as Cell).ContainerCell.Controls.Count ;
+                    for (int i = 0; i < tocleared; i++)
+                    {
+                        c.AddStone(new Stone());
+                    }
                 }
                 
             }

@@ -91,7 +91,8 @@ namespace SA.Mancala
                 for (int i = idx; more_less(i, side) && stones > 0; i = inc_dec(i, side))
                 {
                     _bins[side - 1][i]++;
-                    if (side == NextPlayer && stones - 1 == 0 && _bins[side - 1][i] == 1)
+                    //if (side == NextPlayer && stones - 1 == 0 && _bins[side - 1][i] == 1)
+                    if (side == NextPlayer && stones - 1 == 0 && _bins[side - 1][i] == 1 && _bins[3 - side - 1][i] > 0)
                     {
                         _mancals[side - 1] += _bins[3 - side - 1][i] + _bins[side - 1][i]--;
                         _bins[3 - side - 1][i] = 0;

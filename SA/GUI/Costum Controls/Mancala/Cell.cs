@@ -28,6 +28,7 @@ namespace SA.GUI.Costum_Controls.Mancala
         
         private void Cell_Load(object sender, EventArgs e)
         {
+            SuspendLayout();
             int count = 4;
 
             for (int i = 0; i < count; i++)
@@ -42,6 +43,7 @@ namespace SA.GUI.Costum_Controls.Mancala
             //StartAddto();
             //StartRemovefrom();
             _isloaded = true;
+            ResumeLayout();
         }
 
         private void StartAddto()
@@ -100,6 +102,8 @@ namespace SA.GUI.Costum_Controls.Mancala
 
         public void PerformClick()
         {
+            (Forms.Mancala.List[0] as EarningsCell).Canaddto = VirtualId.Item1 == 1;
+            (Forms.Mancala.List[7] as EarningsCell).Canaddto = VirtualId.Item1 == 2;
             CuurentCell cell=new CuurentCell(){
                 player = this.VirtualId.Item1,
                 virtualId = this.VirtualId.Item2
@@ -113,7 +117,10 @@ namespace SA.GUI.Costum_Controls.Mancala
             Console.WriteLine(Forms.Mancala._game);
 
             GetOpositCell opositCell = null;
-            Func<int> index = () => (this.ContainerCell.Controls.Count + id) % 14;
+            Func<int> noopernings = () => (13 + VirtualId.Item2 + this.ContainerCell.Controls.Count)/14;
+            Func<int> index = () => (this.ContainerCell.Controls.Count
+                - noopernings()
+                + id) % 14;
             Func<int> target = () => 14 - index();
             if (Forms.Mancala.List[index()] is Cell)
             {

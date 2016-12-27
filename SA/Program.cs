@@ -68,7 +68,6 @@ namespace SA
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI.Forms.Lights());
-            Application.Run(new GUI.Forms.LightsOuts());
             Application.Run(new GUI.Forms.Mancala());
 
             

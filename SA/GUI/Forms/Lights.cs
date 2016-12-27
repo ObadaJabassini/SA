@@ -104,7 +104,7 @@ namespace SA.GUI.Forms
 
         private void bfs_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
         {
-
+            async.Visible = bfs.IsChecked;
         }
 
         private void m_ValueChanged(object sender, EventArgs e)

@@ -16,6 +16,7 @@ namespace SA.GUI.Costum_Controls.Mancala
         SoundPlayer player = new SoundPlayer(SA.Properties.Resources.button12);
         SoundPlayer player2 = new SoundPlayer(SA.Properties.Resources.Click_SoundBible_com_1387633738);
         public Tuple<byte, int> VirtualId;
+        public bool Canaddto = false;
         public EarningsCell()
         {
             InitializeComponent();
@@ -25,9 +26,9 @@ namespace SA.GUI.Costum_Controls.Mancala
         public void AddStone(Stone stone)
         {
 
-            ContainerCell.Controls.Add(stone);
-            player.Play();
-            this.CountStones.Text = ContainerCell.Controls.Count.ToString();
+                ContainerCell.Controls.Add(stone);
+                player.Play();
+                this.CountStones.Text = ContainerCell.Controls.Count.ToString();
         }
 
         public void CarryStones(List<Stone> stones)
@@ -35,8 +36,11 @@ namespace SA.GUI.Costum_Controls.Mancala
             if (stones.Count > 0)
             {
                 Func<int, int> next = (int current) => (current + 1) % 14;
-                this.AddStone(stones[0]);
-                stones.RemoveAt(0);
+                if (Canaddto)
+                {
+                    this.AddStone(stones[0]);
+                    stones.RemoveAt(0);
+                }
                 if (stones.Count != 0)
                 {
                     if ((Forms.Mancala.List[next(id)]) is Cell)
@@ -72,6 +76,11 @@ namespace SA.GUI.Costum_Controls.Mancala
                 _observers.Add(observer);
             }
             return null;
+        }
+
+        private void ContainerCell_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            this.CountStones.Text = ContainerCell.Controls.Count.ToString();
         }
     }
 }

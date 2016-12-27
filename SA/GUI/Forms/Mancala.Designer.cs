@@ -32,14 +32,19 @@ namespace SA.GUI.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem5 = new Telerik.WinControls.UI.RadListDataItem();
-            Telerik.WinControls.UI.RadListDataItem radListDataItem6 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem1 = new Telerik.WinControls.UI.RadListDataItem();
             Telerik.WinControls.UI.RadListDataItem radListDataItem2 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem3 = new Telerik.WinControls.UI.RadListDataItem();
+            Telerik.WinControls.UI.RadListDataItem radListDataItem4 = new Telerik.WinControls.UI.RadListDataItem();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
+            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
             this.radPanel4 = new Telerik.WinControls.UI.RadPanel();
             this.radPanel5 = new Telerik.WinControls.UI.RadPanel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.object_184e2268_d87b_4c48_bb9c_e7efb0acb573 = new Telerik.WinControls.RootRadElement();
             this.visualStudio2012DarkTheme1 = new Telerik.WinControls.Themes.VisualStudio2012DarkTheme();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -55,22 +60,24 @@ namespace SA.GUI.Forms
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.BoardPanel = new Telerik.WinControls.UI.RadPanel();
             this.Mask = new Telerik.WinControls.UI.RadPanel();
-            this.Informant = new Telerik.WinControls.UI.RadLabel();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.Play = new Telerik.WinControls.UI.RadLabel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.Informant = new Telerik.WinControls.UI.RadLabel();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
+            this.radPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel5)).BeginInit();
             this.radPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.beginner)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hard)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medium)).BeginInit();
@@ -80,18 +87,14 @@ namespace SA.GUI.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardPanel)).BeginInit();
             this.BoardPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Mask)).BeginInit();
             this.Mask.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Informant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Informant)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,9 +111,25 @@ namespace SA.GUI.Forms
             this.radPanel2.TabIndex = 2;
             this.radPanel2.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // radLabel1
+            // 
+            this.radLabel1.Font = new System.Drawing.Font("Sneakerhead BTN Condensed", 50.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radLabel1.ForeColor = System.Drawing.Color.DarkGray;
+            this.radLabel1.Image = global::SA.Properties.Resources.Mask;
+            this.radLabel1.Location = new System.Drawing.Point(518, 12);
+            this.radLabel1.Name = "radLabel1";
+            this.radLabel1.Size = new System.Drawing.Size(242, 87);
+            this.radLabel1.TabIndex = 6;
+            this.radLabel1.Text = "Mancala";
+            ((Telerik.WinControls.UI.RadLabelElement)(this.radLabel1.GetChildAt(0))).Image = global::SA.Properties.Resources.Mask;
+            ((Telerik.WinControls.UI.RadLabelElement)(this.radLabel1.GetChildAt(0))).Text = "Mancala";
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radLabel1.GetChildAt(0).GetChildAt(2).GetChildAt(0))).ImageScaling = Telerik.WinControls.Enumerations.ImageScaling.None;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radLabel1.GetChildAt(0).GetChildAt(2).GetChildAt(0))).Alignment = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // radPanel3
             // 
             this.radPanel3.BackColor = System.Drawing.Color.Transparent;
+            this.radPanel3.Controls.Add(this.pictureBox10);
             this.radPanel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.radPanel3.Location = new System.Drawing.Point(0, 100);
             this.radPanel3.Name = "radPanel3";
@@ -144,6 +163,51 @@ namespace SA.GUI.Forms
             this.radPanel5.TabIndex = 0;
             ((Telerik.WinControls.UI.RadPanelElement)(this.radPanel5.GetChildAt(0))).Text = "";
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel5.GetChildAt(0).GetChildAt(1))).Opacity = 0D;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox4.Image = global::SA.Properties.Resources.Crimson;
+            this.pictureBox4.Location = new System.Drawing.Point(389, 32);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox4.TabIndex = 4;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Visible = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::SA.Properties.Resources.Blue_1;
+            this.pictureBox1.Location = new System.Drawing.Point(445, 22);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox3.Image = global::SA.Properties.Resources.Orange;
+            this.pictureBox3.Location = new System.Drawing.Point(409, 13);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox3.TabIndex = 3;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::SA.Properties.Resources.Green;
+            this.pictureBox2.Location = new System.Drawing.Point(421, 50);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             // 
             // object_184e2268_d87b_4c48_bb9c_e7efb0acb573
             // 
@@ -294,10 +358,10 @@ namespace SA.GUI.Forms
             // 
             // StratigyAlgorithm
             // 
-            radListDataItem5.Text = "MinMax";
-            radListDataItem6.Text = "AlphaBeta";
-            this.StratigyAlgorithm.Items.Add(radListDataItem5);
-            this.StratigyAlgorithm.Items.Add(radListDataItem6);
+            radListDataItem1.Text = "MinMax";
+            radListDataItem2.Text = "AlphaBeta";
+            this.StratigyAlgorithm.Items.Add(radListDataItem1);
+            this.StratigyAlgorithm.Items.Add(radListDataItem2);
             this.StratigyAlgorithm.Location = new System.Drawing.Point(389, 123);
             this.StratigyAlgorithm.Name = "StratigyAlgorithm";
             this.StratigyAlgorithm.SelectNextOnDoubleClick = true;
@@ -310,10 +374,10 @@ namespace SA.GUI.Forms
             // 
             // FirstPlayer
             // 
-            radListDataItem1.Text = "Computer First";
-            radListDataItem2.Text = "Me First";
-            this.FirstPlayer.Items.Add(radListDataItem1);
-            this.FirstPlayer.Items.Add(radListDataItem2);
+            radListDataItem3.Text = "Computer First";
+            radListDataItem4.Text = "Me First";
+            this.FirstPlayer.Items.Add(radListDataItem3);
+            this.FirstPlayer.Items.Add(radListDataItem4);
             this.FirstPlayer.Location = new System.Drawing.Point(722, 123);
             this.FirstPlayer.Name = "FirstPlayer";
             this.FirstPlayer.SelectNextOnDoubleClick = true;
@@ -372,21 +436,6 @@ namespace SA.GUI.Forms
             this.pictureBox7.TabStop = false;
             this.pictureBox7.Visible = false;
             // 
-            // radLabel1
-            // 
-            this.radLabel1.Font = new System.Drawing.Font("Sneakerhead BTN Condensed", 50.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel1.ForeColor = System.Drawing.Color.DarkGray;
-            this.radLabel1.Image = global::SA.Properties.Resources.Mask;
-            this.radLabel1.Location = new System.Drawing.Point(518, 12);
-            this.radLabel1.Name = "radLabel1";
-            this.radLabel1.Size = new System.Drawing.Size(242, 87);
-            this.radLabel1.TabIndex = 6;
-            this.radLabel1.Text = "Mancala";
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radLabel1.GetChildAt(0))).Image = global::SA.Properties.Resources.Mask;
-            ((Telerik.WinControls.UI.RadLabelElement)(this.radLabel1.GetChildAt(0))).Text = "Mancala";
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radLabel1.GetChildAt(0).GetChildAt(2).GetChildAt(0))).ImageScaling = Telerik.WinControls.Enumerations.ImageScaling.None;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radLabel1.GetChildAt(0).GetChildAt(2).GetChildAt(0))).Alignment = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // BoardPanel
             // 
             this.BoardPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -423,29 +472,6 @@ namespace SA.GUI.Forms
             ((Telerik.WinControls.Primitives.FillPrimitive)(this.Mask.GetChildAt(0).GetChildAt(0))).Opacity = 1D;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.Mask.GetChildAt(0).GetChildAt(1))).Opacity = 0D;
             // 
-            // Informant
-            // 
-            this.Informant.AutoSize = false;
-            this.Informant.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Informant.ForeColor = System.Drawing.Color.Maroon;
-            this.Informant.Location = new System.Drawing.Point(133, 171);
-            this.Informant.Name = "Informant";
-            this.Informant.Size = new System.Drawing.Size(796, 43);
-            this.Informant.TabIndex = 8;
-            this.Informant.Text = "\'s Turn";
-            this.Informant.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.Informant.Click += new System.EventHandler(this.Informant_Click);
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = global::SA.Properties.Resources.AnimatedCustomWaintingFinalofFinalofFinal1;
-            this.pictureBox9.Location = new System.Drawing.Point(434, 162);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(220, 64);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 7;
-            this.pictureBox9.TabStop = false;
-            // 
             // Play
             // 
             this.Play.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -458,6 +484,8 @@ namespace SA.GUI.Forms
             this.Play.Text = "Play";
             this.Play.Visible = false;
             this.Play.Click += new System.EventHandler(this.radLabel2_Click);
+            ((Telerik.WinControls.UI.RadLabelElement)(this.Play.GetChildAt(0))).Image = global::SA.Properties.Resources.Play;
+            ((Telerik.WinControls.UI.RadLabelElement)(this.Play.GetChildAt(0))).Text = "Play";
             ((Telerik.WinControls.Layouts.ImageAndTextLayoutPanel)(this.Play.GetChildAt(0).GetChildAt(2))).TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             ((Telerik.WinControls.Layouts.ImageAndTextLayoutPanel)(this.Play.GetChildAt(0).GetChildAt(2))).Alignment = System.Drawing.ContentAlignment.MiddleCenter;
             ((Telerik.WinControls.Primitives.ImagePrimitive)(this.Play.GetChildAt(0).GetChildAt(2).GetChildAt(0))).ImageScaling = Telerik.WinControls.Enumerations.ImageScaling.None;
@@ -475,50 +503,38 @@ namespace SA.GUI.Forms
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.Play.GetChildAt(0).GetChildAt(2).GetChildAt(1))).AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
             ((Telerik.WinControls.Primitives.TextPrimitive)(this.Play.GetChildAt(0).GetChildAt(2).GetChildAt(1))).ScaleTransform = new System.Drawing.SizeF(1F, 1F);
             // 
-            // pictureBox2
+            // pictureBox9
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::SA.Properties.Resources.Green;
-            this.pictureBox2.Location = new System.Drawing.Point(421, 50);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
+            this.pictureBox9.Image = global::SA.Properties.Resources.AnimatedCustomWaintingFinalofFinalofFinal1;
+            this.pictureBox9.Location = new System.Drawing.Point(434, 162);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(220, 64);
+            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox9.TabIndex = 7;
+            this.pictureBox9.TabStop = false;
             // 
-            // pictureBox3
+            // Informant
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox3.Image = global::SA.Properties.Resources.Orange;
-            this.pictureBox3.Location = new System.Drawing.Point(409, 13);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox3.TabIndex = 3;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Visible = false;
+            this.Informant.AutoSize = false;
+            this.Informant.Font = new System.Drawing.Font("Cooper Black", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Informant.ForeColor = System.Drawing.Color.Maroon;
+            this.Informant.Location = new System.Drawing.Point(133, 171);
+            this.Informant.Name = "Informant";
+            this.Informant.Size = new System.Drawing.Size(796, 43);
+            this.Informant.TabIndex = 8;
+            this.Informant.Text = "\'s Turn";
+            this.Informant.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Informant.Click += new System.EventHandler(this.Informant_Click);
             // 
-            // pictureBox1
+            // pictureBox10
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::SA.Properties.Resources.Blue_1;
-            this.pictureBox1.Location = new System.Drawing.Point(445, 22);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox4.Image = global::SA.Properties.Resources.Crimson;
-            this.pictureBox4.Location = new System.Drawing.Point(389, 32);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(40, 40);
-            this.pictureBox4.TabIndex = 4;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Visible = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            this.pictureBox10.BackgroundImage = global::SA.Properties.Resources.Green;
+            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox10.Location = new System.Drawing.Point(12, 29);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(62, 42);
+            this.pictureBox10.TabIndex = 0;
+            this.pictureBox10.TabStop = false;
             // 
             // Mancala
             // 
@@ -552,10 +568,16 @@ namespace SA.GUI.Forms
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
             this.radPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).EndInit();
+            this.radPanel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel5)).EndInit();
             this.radPanel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.beginner)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hard)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.medium)).EndInit();
@@ -565,19 +587,15 @@ namespace SA.GUI.Forms
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.BoardPanel)).EndInit();
             this.BoardPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Mask)).EndInit();
             this.Mask.ResumeLayout(false);
             this.Mask.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Informant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Informant)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -615,6 +633,7 @@ namespace SA.GUI.Forms
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox10;
 
     }
 }
