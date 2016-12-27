@@ -19,6 +19,5 @@ namespace SA.Mancala
             _alpha = player == 1 && val > _alpha ? val : _alpha;
             _beta  = player == 2 && val < _beta ? val : _beta;
         }
-
     }
 }

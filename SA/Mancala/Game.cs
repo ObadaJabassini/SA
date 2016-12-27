@@ -10,7 +10,7 @@ namespace SA.Mancala
     class Game
     {
         public const int BINS_NUM   = 6;
-        public const int STONES_NUM = 4;
+        public int StonesNum { private set; get; } = 4;
         public enum DifficultyLevel { Easy, Meduim, Difficult }
         private IList<int>[] _bins;
         private int[] _mancals;
@@ -26,8 +26,8 @@ namespace SA.Mancala
             {
                 var temp = new IList<int>[]
                 {
-                    Enumerable.Range(0, BINS_NUM).Select(i => STONES_NUM).ToList(),
-                    Enumerable.Range(0, BINS_NUM).Select(i => STONES_NUM).ToList()
+                    Enumerable.Range(0, BINS_NUM).Select(i => StonesNum).ToList(),
+                    Enumerable.Range(0, BINS_NUM).Select(i => StonesNum).ToList()
                 };
                 for (int i = 0; i < BINS_NUM; i++)
                 {
@@ -43,8 +43,8 @@ namespace SA.Mancala
         {
             _bins = new IList<int>[]
             {
-                 Enumerable.Range(0, BINS_NUM).Select(i => STONES_NUM).ToList(),
-                 Enumerable.Range(0, BINS_NUM).Select(i => STONES_NUM).ToList()
+                 Enumerable.Range(0, BINS_NUM).Select(i => StonesNum).ToList(),
+                 Enumerable.Range(0, BINS_NUM).Select(i => StonesNum).ToList()
             };
 
             _mancals = new[] {0, 0};
@@ -92,7 +92,7 @@ namespace SA.Mancala
                 {
                     _bins[side - 1][i]++;
 
-                    if (side == NextPlayer && stones - 1 == 0 && _bins[side - 1][i] == 1)
+                    if (side == NextPlayer && stones - 1 == 0 && _bins[side - 1][i] == 1 && _bins[3 - side - 1][i] > 0)
                     {
                         _mancals[side - 1] += _bins[3 - side - 1][i] + _bins[side - 1][i]--;
                         _bins[3 - side - 1][i] = 0;
@@ -103,12 +103,20 @@ namespace SA.Mancala
 
                 if (stones <= 0) continue;
 
-                _mancals[side - 1]++;
+                //_mancals[side - 1]++;
+                if (side == NextPlayer)
+                {
+                    _mancals[side - 1]++;
+                    stones--;
 
-                if (side == NextPlayer && stones - 1 == 0)
-                    getExtraTurn = true;
+                    if(stones == 0)
+                        getExtraTurn = true;
+                }
 
-                stones--;
+                //if (side == NextPlayer && stones - 1 == 0)
+                //    getExtraTurn = true;
+
+                //stones--;
                 idx = start(side);
                 side = 3 - side;
             }
