@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace SA.Mancala
 {
-    class Game
+    public partial class  Game 
     {
         public const int BINS_NUM   = 6;
         public const int STONES_NUM = 4;
         public enum DifficultyLevel { Easy, Meduim, Difficult }
         private IList<int>[] _bins;
         private int[] _mancals;
-        public int NextPlayer { private set; get; } = 2;
-        public bool IsGameOver => Bins.Any(e => e.All(c => c == 0));
+        public int NextPlayer { set; get; } = 2;
+        public bool IsGameOver => Bins.All(e => e.All(c => c == 0));
         public DifficultyLevel Level { get; }
         public IntelligentAgent Agent { set; get; }
         public int Winner => Mancalas[0] > Mancalas[1] ? 1 : (Mancalas[0] < Mancalas[1] ? 2 : 3);
@@ -91,7 +91,6 @@ namespace SA.Mancala
                 for (int i = idx; more_less(i, side) && stones > 0; i = inc_dec(i, side))
                 {
                     _bins[side - 1][i]++;
-
                     if (side == NextPlayer && stones - 1 == 0 && _bins[side - 1][i] == 1)
                     {
                         _mancals[side - 1] += _bins[3 - side - 1][i] + _bins[side - 1][i]--;
@@ -166,6 +165,35 @@ namespace SA.Mancala
             if(Winner == 1) Console.WriteLine("Congrats you won!!..");
             else if(Winner == 2) Console.WriteLine("I won :p");
             else Console.WriteLine("Draw....");
+        }
+    }
+
+        
+       //GUI
+    public partial class Game :IObservable<ResultMessage>
+    {
+        private List<IObserver<ResultMessage>> _observers = new List<IObserver<ResultMessage>>();
+
+        public IDisposable Subscribe(IObserver<ResultMessage> observer)
+        {
+           if (!_observers.Contains(observer))
+            {
+                _observers.Add(observer);
+            }
+            return null;
+        }
+         public void NotifyResults(ResultMessage message) => _observers.ForEach(obs => obs.OnNext(message));
+
+        public void Makeachoice()
+        {
+            
+            Console.WriteLine("Next");
+            Console.WriteLine(NextPlayer);
+            ResultMessage message=new ResultMessage();
+            message.VirtualId = Agent.TakeTurn(this);
+           Console.WriteLine("Next2");
+            Console.WriteLine(NextPlayer);
+            _observers[0].OnNext(message);
         }
     }
 }

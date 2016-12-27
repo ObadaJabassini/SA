@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SA.Mancala
 {
-    abstract class IntelligentAgent
+    public abstract class IntelligentAgent
     {
         public int Lookahead { private set; get; }
 

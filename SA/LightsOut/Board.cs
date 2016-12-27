@@ -156,7 +156,8 @@ namespace SA.LightsOut
             {
                 for (int j = 0; j < _cols; j++)
                 {
-                    builder.Append(_game[to1D(i, j)] ? "ON":"OFF").Append(" ");
+                    //builder.Append(_game[to1D(i, j)] ? "ON":"OFF").Append(" ");
+                    builder.Append(_game[to1D(i, j)] ? "1":"0").Append(" ");
                 }
                 builder.Append("\n");
             }

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SA</RootNamespace>
     <AssemblyName>SA</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <PublishUrl>publish\</PublishUrl>
@@ -27,6 +28,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,6 +49,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="C5, Version=2.4.5947.17248, Culture=neutral, PublicKeyToken=282361b99ded7e8e, processorArchitecture=MSIL">
       <HintPath>..\packages\C5.2.4.5947.17249\lib\net45\C5.dll</HintPath>
@@ -58,14 +63,95 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.GridView, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Aqua, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Office2013Dark, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Dark, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Light, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.Windows8, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.UI, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="TelerikCommon, Version=2015.3.1104.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CuurentCell.cs" />
+    <Compile Include="GetOpositCell.cs" />
+    <Compile Include="GUI\Costum Controls\Lights\LightsCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Lights\LightsCell.Designer.cs">
+      <DependentUpon>LightsCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Mancala\Cell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Mancala\Cell.Designer.cs">
+      <DependentUpon>Cell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Mancala\CustomLocations.cs" />
+    <Compile Include="GUI\Costum Controls\Mancala\CustomPallete.cs" />
+    <Compile Include="GUI\Costum Controls\Mancala\EarningsCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Mancala\EarningsCell.Designer.cs">
+      <DependentUpon>EarningsCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Mancala\FlatStone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Mancala\FlatStone.Designer.cs">
+      <DependentUpon>FlatStone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Mancala\MancalaCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Mancala\MancalaCell.Designer.cs">
+      <DependentUpon>MancalaCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Mancala\NormalCell.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Mancala\NormalCell.Designer.cs">
+      <DependentUpon>NormalCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Mancala\Stone.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Costum Controls\Mancala\Stone.Designer.cs">
+      <DependentUpon>Stone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Forms\Lights.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\Lights.Designer.cs">
+      <DependentUpon>Lights.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Forms\LightsOuts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\LightsOuts.Designer.cs">
+      <DependentUpon>LightsOuts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Forms\Mancala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\Mancala.Designer.cs">
+      <DependentUpon>Mancala.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Forms\ShapedForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\ShapedForm1.Designer.cs">
+      <DependentUpon>ShapedForm1.cs</DependentUpon>
+    </Compile>
     <Compile Include="LightsOut\AStar.cs" />
     <Compile Include="LightsOut\BFS.cs" />
     <Compile Include="LightsOut\Board.cs" />
@@ -79,12 +165,21 @@
     <Compile Include="Mancala\MinMax.cs" />
     <Compile Include="Mancala\Node.cs" />
     <Compile Include="Mancala\IntelligentAgent.cs" />
+    <Compile Include="Operations.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ResultMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
@@ -97,6 +192,133 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GUI\Costum Controls\Lights\LightsCell.resx">
+      <DependentUpon>LightsCell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Costum Controls\Mancala\Cell.resx">
+      <DependentUpon>Cell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Costum Controls\Mancala\EarningsCell.resx">
+      <DependentUpon>EarningsCell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Costum Controls\Mancala\FlatStone.resx">
+      <DependentUpon>FlatStone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Costum Controls\Mancala\MancalaCell.resx">
+      <DependentUpon>MancalaCell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Costum Controls\Mancala\NormalCell.resx">
+      <DependentUpon>NormalCell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Costum Controls\Mancala\Stone.resx">
+      <DependentUpon>Stone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\Lights.resx">
+      <DependentUpon>Lights.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\LightsOuts.resx">
+      <DependentUpon>LightsOuts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\Mancala.resx">
+      <DependentUpon>Mancala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\ShapedForm1.resx">
+      <DependentUpon>ShapedForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimatedCustomWainting.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimatedCustomWaintingFinalofFinalofFinal.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimatedCustomWaintingFinalofFinalofFinal1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimatedWainting.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimatedWainting1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AnimatedWainting2.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Blue-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button8.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button9.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button12.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CanvasM.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Cell.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Click-SoundBible.com-1387633738 %281%29.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Click-SoundBible.com-1387633738.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Crimson.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fresh-raspberry-2560x1440.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mask.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MBavkground.PNG.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pattern-Dark-Pavement-background-patterns-pattern-wallpapers-1440x900.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Play.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Play1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\light-bulb.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\light-bulb%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\light-bulb1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\light-bulb2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layout1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
