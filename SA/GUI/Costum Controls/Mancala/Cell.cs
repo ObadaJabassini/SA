@@ -100,10 +100,6 @@ namespace SA.GUI.Costum_Controls.Mancala
 
         public void PerformClick()
         {
-
-            Console.WriteLine("It is Player :{0}", Forms.Mancala._game.NextPlayer);
-            Console.WriteLine("{0} played {1}", VirtualId.Item1, id);
-
             CuurentCell cell=new CuurentCell(){
                 player = this.VirtualId.Item1,
                 virtualId = this.VirtualId.Item2
@@ -112,7 +108,10 @@ namespace SA.GUI.Costum_Controls.Mancala
             if(VirtualId.Item1==2)
                 Forms.Mancala._game.MakeMove(this.VirtualId.Item2);
 
+            Console.WriteLine("It is Player :{0}", Forms.Mancala._game.NextPlayer);
+            Console.WriteLine("{0} played {1}", VirtualId.Item1, id);
             Console.WriteLine(Forms.Mancala._game);
+
             GetOpositCell opositCell = null;
             Func<int> index = () => (this.ContainerCell.Controls.Count + id) % 14;
             Func<int> target = () => 14 - index();

@@ -49,7 +49,6 @@ namespace SA.GUI.Forms
 
         private void radButton1_Click(object sender, EventArgs e)
         {
-
             radLabel3.Text = "Number of Solutions :\n";
             this.moves.Clear();
             int[,] ints = new int[tableLayoutPanel1.RowCount, tableLayoutPanel1.ColumnCount];
@@ -77,12 +76,18 @@ namespace SA.GUI.Forms
             if (this.linearalgebra.IsChecked)
                 method = new Solver() {Initial = Board};
             else if (this.bfs.IsChecked)
-                method = new BFS() {Initial = Board};
+            {
+                method = new BFS()
+                {
+                    Initial = Board, 
+                    Method = async.IsChecked? BFS.SolveMethod.ASYNC : BFS.SolveMethod.SYNC
+                };
+            }
             else
                 method = new AStar() {Initial = Board};
 
             List<Node> sol = method.Solve().ToList();
-
+            solution.Clear();
             //this.radListView1.Items.Add(solution[0]);
             foreach (Node node in sol)
             {
@@ -94,7 +99,7 @@ namespace SA.GUI.Forms
             }
            
             radLabel3.Text +=  solution.Count>0? (solution.Count - 1).ToString() : "There is no solutions !";
-        
+            radBindingNavigator1CountItem.Text = "of {"+solution.Count+"}";
         }
 
         private void bfs_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
@@ -163,19 +168,18 @@ namespace SA.GUI.Forms
        
         
 
-        void togrid(int node)
+        void togrid(int nn)
         {
-            string ss = solution[node].ToString();
-            string s = (string) ss.Replace("\n",String.Empty);
+            //string ss = solution[nn].ToString();
+            //string s = (string) ss.Replace("\n",String.Empty);
+            Node node = solution[nn];
             int index = 0;
             for (int i = 0; i < m.Value; i++)
             {
                 for (int j = 0; j < n.Value; j++)
                 {
-                    LightsCell cell = tableLayoutPanel1.GetControlFromPosition(i, j) as LightsCell;
-                    if (s[index] == '0' &&
-                        (cell).radButton1.ThemeName.ToString() !=
-                        visualStudio2012DarkTheme1.ThemeName.ToString())
+                    LightsCell cell = tableLayoutPanel1.GetControlFromPosition(j, i) as LightsCell;
+                    if (node.Board[i,j]==false)
                     {
                         (cell).radButton1.ThemeName =
                             visualStudio2012DarkTheme1.ThemeName;
@@ -183,9 +187,7 @@ namespace SA.GUI.Forms
                         Console.WriteLine("0");
                         Console.WriteLine("{0}",index);
                     }
-                    else if ((s[index] == '1') &&
-                             (cell).radButton1.ThemeName !=
-                             visualStudio2012LightTheme1.ThemeName)
+                     else 
                     {
                         (cell).radButton1.ThemeName =
                             visualStudio2012LightTheme1.ThemeName;
@@ -210,8 +212,10 @@ namespace SA.GUI.Forms
 
         private void radBindingNavigator1MovePreviousItem_Click(object sender, EventArgs e)
         {
+
             radBindingNavigator1PositionItem.Text =
                 (Convert.ToInt16(radBindingNavigator1PositionItem.Text) - 1).ToString();
+
             togrid(Convert.ToInt32(radBindingNavigator1PositionItem.Text));
    
         }
@@ -226,10 +230,29 @@ namespace SA.GUI.Forms
 
         private void radButton4_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        public void TurnAll(bool state)
+        {
             foreach (LightsCell cell in tableLayoutPanel1.Controls)
             {
-                cell.radButton1.ThemeName = visualStudio2012DarkTheme1.ThemeName;
+                cell.radButton1.ThemeName = state ? visualStudio2012LightTheme1.ThemeName : visualStudio2012DarkTheme1.ThemeName;
             }
+        }
+        private void radBindingNavigator1CountItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radButton3_Click_1(object sender, EventArgs e)
+        {
+            TurnAll(false);
+        }
+
+        private void radButton4_Click_1(object sender, EventArgs e)
+        {
+            TurnAll(true);
         }
     }
 }
