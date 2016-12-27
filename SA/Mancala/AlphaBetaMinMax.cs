@@ -23,9 +23,9 @@ namespace SA.Mancala
                 if (n.GetExtraTurn) turn = player;
                 var newVal = GenerateBestMove(n, depth + 1, turn);
                 if (player == 1 && newVal.Item1 >= _alpha.Item1)
-                    _alpha = newVal;
+                    _alpha = new Tuple<int, int>(newVal.Item1, newVal.Item2);
                 if (player == 2 && newVal.Item1 <= _beta.Item1)
-                    _beta = newVal;
+                    _beta = new Tuple<int, int>(newVal.Item1, newVal.Item2);
                 if (_alpha.Item1 >= _beta.Item1)
                     return player == 1 ? _beta : _alpha;
             }

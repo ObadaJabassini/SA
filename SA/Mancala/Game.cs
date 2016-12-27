@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace SA.Mancala
 {
-    class Game
+    public partial class Game
     {
         public const int BINS_NUM   = 6;
         public int StonesNum { set; get; } = 4;
         public enum DifficultyLevel { Easy, Meduim, Difficult }
         private IList<int>[] _bins;
         private int[] _mancals;
-        public int NextPlayer { private set; get; } = 2;
+        public int NextPlayer { set; get; } = 2;
         public bool IsGameOver => Bins.Any(e => e.All(c => c == 0));
         public DifficultyLevel Level { get; }
         public IntelligentAgent Agent { set; get; }
@@ -121,6 +121,9 @@ namespace SA.Mancala
             if (!IsGameOver) return;
             _mancals[0] += _bins[0].Sum();
             _mancals[1] += _bins[1].Sum();
+            for (int i = 0; i < 2; i++)
+                for (int j = 0; j < _bins[i].Count; j++)
+                    _bins[i][j] = 0;
         }
 
         public override string ToString()

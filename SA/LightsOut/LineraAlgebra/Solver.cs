@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace SA.LightsOut.LineraAlgebra
 {
-    public class Solver
+    public class Solver : SolutionMethod
     {
-        public Node.State[,] Initial { set; get; }
-        private bool _isValid(Node.State[,] m, int i, int j) => i >= 0 && i < m.GetLength(0) && j >= 0 && j < m.GetLength(1);
-        private bool _isValid(Matrix<double> m, int i, int j) => i >= 0 && i < m.RowCount && j >= 0 && j < m.ColumnCount;
-        private Node.State _flip(Node.State state) => state == Node.State.ON ? Node.State.OFF : Node.State.ON;
         private int _temp = 0;
         private void _reduce(Matrix<double> d)
         {
@@ -144,7 +140,7 @@ namespace SA.LightsOut.LineraAlgebra
             return list.ToArray();
         }
 
-        public IList<Node> Solve()
+        public override IList<Node> Solve()
         { 
             int r = Initial.GetLength(0), c = Initial.GetLength(1);
             //Matrix<double> O = Matrix<double>.Build.Dense(r, c, 0),
@@ -204,7 +200,7 @@ namespace SA.LightsOut.LineraAlgebra
             {
                 for (int j = 0; j < c; j++)
                 {
-                    b[index++] = Initial[i, j] == Node.State.ON ? 1 : 0;
+                    b[index++] = Initial[i, j]? 1 : 0;
                 }
             }
             var ASize = r * c;
@@ -274,8 +270,8 @@ namespace SA.LightsOut.LineraAlgebra
                     {
                         if (solution[i][j] == 1)
                         {
-                            var bb = last.Board.Clone() as Node.State[,];
-                            _click(bb, i, j);
+                            var bb = last.Board.Clone() as Board;
+                            bb.Click(i, j);
                             var node = new Node(null) { Board = bb };
                             nodes.Add(node);
                             last = node;
@@ -287,17 +283,66 @@ namespace SA.LightsOut.LineraAlgebra
             return new List<Node>();
         }
 
-        public void _click(Node.State[,] b, int i, int j)
+        public bool CanBeSolved(Board bb)
         {
-            b[i, j] = _flip(b[i, j]);
-            if (_isValid(b, i - 1, j))
-                b[i - 1, j] = _flip(b[i - 1, j]);
-            if (_isValid(b, i + 1, j))
-                b[i + 1, j] = _flip(b[i + 1, j]);
-            if (_isValid(b, i, j - 1))
-                b[i, j - 1] = _flip(b[i, j - 1]);
-            if (_isValid(b, i, j + 1))
-                b[i, j + 1] = _flip(b[i, j + 1]);
+            int r = bb.GetLength(0), c = bb.GetLength(1);
+            int[] b = new int[r * c];
+            int index = 0;
+            for (int i = 0; i < r; i++)
+            {
+                for (int j = 0; j < c; j++)
+                {
+                    b[index++] = bb[i, j]? 1 : 0;
+                }
+            }
+            var ASize = r * c;
+            var A = new MMatrix(ASize, ASize);
+            for (int Arow = 0; Arow < ASize; Arow++)
+            {
+                for (int Acol = 0; Acol < ASize; Acol++)
+                {
+                    int i, j, i_, j_ = 0;
+                    i = Arow / c;
+                    j = Arow % c;
+                    i_ = Acol / c;
+                    j_ = Acol % c;
+                    if (i_ >= 0 && i_ <= ASize && j_ >= 0 && j_ <= ASize)
+                    {
+                        if (Math.Abs(i - i_) + Math.Abs(j - j_) <= 1)
+                        {
+                            A.set(Arow, Acol, 1);
+                        }
+                        else
+                        {
+                            A.set(Arow, Acol, 0);
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < b.Length; i++)
+            {
+                A.setBVector(i, 0, b[i]);
+            }
+            A.reducedRowEchelonForm();
+            Func<MMatrix, bool> canBeSolved = (m) =>
+            {
+                for (int curr_Row = r * c - 1; curr_Row >= 0; curr_Row--)
+                {
+                    for (int i = 0; i < r * c; i++)
+                    {
+                        if (m.get(curr_Row, i) != 0)
+                        {
+                            return true;
+                        }
+                    }
+                    if (m.getBVector(curr_Row, 0) != 0)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            };
+            return canBeSolved(A);
         }
 
         private T[,] _createRectangularArray<T>(IList<T[]> arrays)
