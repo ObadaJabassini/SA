@@ -53,7 +53,7 @@ namespace SA
             //    Console.WriteLine("No Solutions have been found");
             //else
             //    sol.ForEach(Console.WriteLine);
-            Game g = new Game(Game.DifficultyLevel.Meduim) {Agent = new IntelligentAgent(Game.DifficultyLevel.Meduim) };
+            Game g = new Game(Game.DifficultyLevel.Meduim) {Agent = new IntelligentAgent(Game.DifficultyLevel.Meduim, true) };
             g.Play();
             Console.ReadKey();
 

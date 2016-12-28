@@ -296,8 +296,8 @@ namespace SA.GUI.Forms
 
             IntelligentAgent agent = StratigyAlgorithm.SelectedItem.Index == 0 ? new IntelligentAgent(level) : new IntelligentAgent(level, true);
             int player = FirstPlayer.SelectedItem.Index == 0 ? 1 : 2;
-            _game = new Game(level) {NextPlayer = player, Agent = agent};
-            _game = new Game(agent, level,Cell.IntCount) {NextPlayer = player};
+            //_game = new Game(level) {NextPlayer = player, Agent = agent};
+            _game = new Game(agent, level,Cell.IntCount) {NextPlayer = player, Agent = agent };
             _game.Subscribe(this);
             Informant.Text = FirstPlayer.SelectedItem.Index == 0 ? "Computer's Turn" : "Your Turn";
             Curten.Start();
