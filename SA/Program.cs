@@ -65,12 +65,13 @@ namespace SA
             //else
             //    sol.ForEach(Console.WriteLine);
             //Console.ReadKey();
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GUI.Forms.Lights());
-            Application.Run(new GUI.Forms.Mancala());
-
-            
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new GUI.Forms.Lights());
+            //Application.Run(new GUI.Forms.Mancala());
+            Game g = new Game(new AlphaBetaMinMax());
+            g.Play();
+            Console.ReadKey();
         }
     }
 }

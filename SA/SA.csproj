@@ -162,6 +162,7 @@
     <Compile Include="LightsOut\SolutionMethod.cs" />
     <Compile Include="Mancala\AlphaBetaMinMax.cs" />
     <Compile Include="Mancala\Game.cs" />
+    <Compile Include="Mancala\GameGUI.cs" />
     <Compile Include="Mancala\MinMax.cs" />
     <Compile Include="Mancala\Node.cs" />
     <Compile Include="Mancala\IntelligentAgent.cs" />

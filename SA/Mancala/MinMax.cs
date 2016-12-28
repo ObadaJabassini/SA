@@ -11,9 +11,6 @@ namespace SA.Mancala
     {
         public MinMax(Game.DifficultyLevel level = Game.DifficultyLevel.Meduim) : base(level) { }
 
-        protected bool _cutOff() => false;
-        protected void _setAdditionalParams(int val, int player) { }
-
         protected override Tuple<int, int> GenerateBestMove(Node node, int depth, int player)
         {
             if (depth == Lookahead || node.IsFinal) return new Tuple<int, int>(node.Eval, node.SelectedBin);
@@ -26,8 +23,6 @@ namespace SA.Mancala
                 int turn = 3 - player;
                 if (n.GetExtraTurn) turn = player;
                 var newVal = GenerateBestMove(n, depth + 1, turn);
-                _setAdditionalParams(newVal.Item1, turn);
-                if(_cutOff()) break;
                 bestVal = player == 1 ? (newVal.Item1 > bestVal ? newVal.Item1 : bestVal) : (newVal.Item1 < bestVal ? newVal.Item1 : bestVal);
                 bestMove = newVal.Item1 == bestVal ? n.SelectedBin : bestMove;
             }
