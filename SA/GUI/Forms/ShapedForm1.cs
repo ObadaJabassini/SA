@@ -76,7 +76,7 @@ namespace SA.GUI.Forms
 
         private void radLabel2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            
         }
     }
 }

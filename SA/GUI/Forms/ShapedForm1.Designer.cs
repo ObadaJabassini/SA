@@ -32,14 +32,14 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
-            this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
+            this.radTitleBar1 = new Telerik.WinControls.UI.RadTitleBar();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTitleBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -70,21 +70,6 @@
             ((Telerik.WinControls.UI.RadPanelElement)(this.radPanel2.GetChildAt(0))).Text = "Lights Out";
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel2.GetChildAt(0).GetChildAt(1))).Opacity = 0D;
             // 
-            // radLabel2
-            // 
-            this.radLabel2.AutoSize = false;
-            this.radLabel2.BackgroundImage = global::SA.Properties.Resources.Green;
-            this.radLabel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.radLabel2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radLabel2.Location = new System.Drawing.Point(358, -2);
-            this.radLabel2.Name = "radLabel2";
-            this.radLabel2.Size = new System.Drawing.Size(40, 42);
-            this.radLabel2.TabIndex = 10;
-            this.radLabel2.Text = "X";
-            this.radLabel2.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
-            this.radLabel2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.radLabel2.Click += new System.EventHandler(this.radLabel2_Click);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::SA.Properties.Resources.idea;
@@ -111,13 +96,23 @@
             ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radLabel1.GetChildAt(0).GetChildAt(2).GetChildAt(0))).ImageScaling = Telerik.WinControls.Enumerations.ImageScaling.None;
             ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radLabel1.GetChildAt(0).GetChildAt(2).GetChildAt(0))).Alignment = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // radTitleBar1
+            // 
+            this.radTitleBar1.Location = new System.Drawing.Point(0, 0);
+            this.radTitleBar1.Name = "radTitleBar1";
+            this.radTitleBar1.Size = new System.Drawing.Size(399, 23);
+            this.radTitleBar1.TabIndex = 11;
+            this.radTitleBar1.TabStop = false;
+            this.radTitleBar1.Text = "Mancala & LightsOut";
+            this.radTitleBar1.ThemeName = "VisualStudio2012Dark";
+            // 
             // ShapedForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InfoText;
             this.ClientSize = new System.Drawing.Size(399, 408);
-            this.Controls.Add(this.radLabel2);
+            this.Controls.Add(this.radTitleBar1);
             this.Controls.Add(this.radPanel2);
             this.Controls.Add(this.radLabel1);
             this.Name = "ShapedForm1";
@@ -128,9 +123,9 @@
             this.Load += new System.EventHandler(this.ShapedForm1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
             this.radPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radTitleBar1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -143,6 +138,6 @@
         private Telerik.WinControls.UI.RadLabel radLabel1;
         private Telerik.WinControls.UI.RadPanel radPanel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private Telerik.WinControls.UI.RadLabel radLabel2;
+        private Telerik.WinControls.UI.RadTitleBar radTitleBar1;
     }
 }

@@ -98,6 +98,7 @@ namespace SA.GUI.Costum_Controls.Mancala
         private void ContainerCell_ControlRemoved(object sender, ControlEventArgs e)
         {
             this.CountStones.Text = ContainerCell.Controls.Count.ToString();
+            
         }
 
         public void PerformClick()
@@ -276,19 +277,24 @@ namespace SA.GUI.Costum_Controls.Mancala
 
         private void CountStones_TextChanged(object sender, EventArgs e)
         {
-
+            Activate();
         }
 
         public void Activate()
         {
-            //CountStones.Font = new Font(CountStones.Font.FontFamily, 12f, FontStyle.Bold);
-            //CountStones.ForeColor = Color.Firebrick;
+            CountStones.Font = new Font(CountStones.Font.FontFamily, 12f, FontStyle.Bold);
+            CountStones.ForeColor = Color.Firebrick;
         }
 
         public void DeActivate()
         {
-            //CountStones.Font = new Font(CountStones.Font.FontFamily, 16f, FontStyle.Bold);
-            //CountStones.ForeColor = Color.DarkRed;
+            CountStones.Font = new Font(CountStones.Font.FontFamily, 16f, FontStyle.Bold);
+            CountStones.ForeColor = Color.DarkRed;
+        }
+
+        private void ContainerCell_ControlAdded_1(object sender, ControlEventArgs e)
+        {
+            
         }
     }
 }

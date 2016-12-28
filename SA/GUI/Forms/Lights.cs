@@ -17,8 +17,14 @@ namespace SA.GUI.Forms
         private LightsCell[,] LightsCells;
         private SolutionMethod method;
         private Board Board;
-        //private List<Node> solution;
         private C5.LinkedList<Node> solution=new C5.LinkedList<Node>();
+         List<Node> sol=new List<Node>();
+        private int counter
+        {
+            set { radBindingNavigator1PositionItem.Text = value.ToString(); }
+            get { return Convert.ToInt32(radBindingNavigator1PositionItem.Text); }
+        }
+
         public Lights()
         {
             InitializeComponent();
@@ -49,57 +55,9 @@ namespace SA.GUI.Forms
 
         private void radButton1_Click(object sender, EventArgs e)
         {
-            radLabel3.Text = "Number of Solutions :\n";
-            this.moves.Clear();
-            int[,] ints = new int[tableLayoutPanel1.RowCount, tableLayoutPanel1.ColumnCount];
-            for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
-            {
-                for (int j = 0; j < tableLayoutPanel1.ColumnCount; j++)
-                {
-                    if (
-                        (this.tableLayoutPanel1.Controls[(i*tableLayoutPanel1.RowCount + j).ToString()] as LightsCell)
-                            .radButton1.ThemeName ==
-                        visualStudio2012DarkTheme1.ThemeName
-
-                        )
-                    {
-                        ints[i, j] = 0;
-                    }
-                    else
-                    {
-                        ints[i, j] = 1;
-                    }
-                }
-            }
-            Board = new Board(ints); 
-            
-            if (this.linearalgebra.IsChecked)
-                method = new Solver() {Initial = Board};
-            else if (this.bfs.IsChecked)
-            {
-                method = new BFS()
-                {
-                    Initial = Board, 
-                    Method = async.IsChecked? BFS.SolveMethod.ASYNC : BFS.SolveMethod.SYNC
-                };
-            }
-            else
-                method = new AStar() {Initial = Board};
-
-            List<Node> sol = method.Solve().ToList();
-            solution.Clear();
-            //this.radListView1.Items.Add(solution[0]);
-            foreach (Node node in sol)
-            {
-                string s = node.ToString();
-                string ss=s;
-                //ss=ss.Replace('1', '*');
-                this.moves.Text += "_____________________\n" + ss;
-                solution.Add(node);
-            }
-           
-            radLabel3.Text +=  solution.Count>0? (solution.Count - 1).ToString() : "There is no solutions !";
-            radBindingNavigator1CountItem.Text = "of {"+solution.Count+"}";
+            Waiting_br.Visible = true;
+            Waiting_br.StartWaiting();
+            backgroundWorker1.RunWorkerAsync();
         }
 
         private void bfs_ToggleStateChanged(object sender, Telerik.WinControls.UI.StateChangedEventArgs args)
@@ -136,6 +94,7 @@ namespace SA.GUI.Forms
 
 
                 }
+                System.Windows.Forms.Application.DoEvents();
             }
 
             tableLayoutPanel1.AutoSize = true;
@@ -150,6 +109,7 @@ namespace SA.GUI.Forms
         private void tableLayoutPanel1_Resize(object sender, EventArgs e)
         {
             this.Size = new Size(tableLayoutPanel1.Size.Width + side.Size.Width + moves.Size.Width+6, this.Size.Height);
+            this.Waiting_br.Size = new Size(Waiting_br.Size.Width + tableLayoutPanel1.Size.Width, tableLayoutPanel1.Size.Height);
             this.Refresh();
         }
 
@@ -160,19 +120,18 @@ namespace SA.GUI.Forms
 
         private void radBindingNavigator1MoveNextItem_Click(object sender, EventArgs e)
         {
-
-            togrid(Convert.ToInt16(radBindingNavigator1PositionItem.Text));
-            radBindingNavigator1PositionItem.Text =
-                (Convert.ToInt16(radBindingNavigator1PositionItem.Text) + 1).ToString();
+            if (counter < solution.Count-1 )
+                counter++;
+            togrid();
         }
        
         
 
-        void togrid(int nn)
+        void togrid()
         {
             //string ss = solution[nn].ToString();
             //string s = (string) ss.Replace("\n",String.Empty);
-            Node node = solution[nn];
+            Node node = solution[counter];
             int index = 0;
             for (int i = 0; i < m.Value; i++)
             {
@@ -212,11 +171,9 @@ namespace SA.GUI.Forms
 
         private void radBindingNavigator1MovePreviousItem_Click(object sender, EventArgs e)
         {
-
-            radBindingNavigator1PositionItem.Text =
-                (Convert.ToInt16(radBindingNavigator1PositionItem.Text) - 1).ToString();
-
-            togrid(Convert.ToInt32(radBindingNavigator1PositionItem.Text));
+            if (counter > 0)
+                counter--;
+            togrid();
    
         }
 
@@ -228,11 +185,7 @@ namespace SA.GUI.Forms
             }
         }
 
-        private void radButton4_Click(object sender, EventArgs e)
-        {
-            
-        }
-
+        
         public void TurnAll(bool state)
         {
             foreach (LightsCell cell in tableLayoutPanel1.Controls)
@@ -254,5 +207,86 @@ namespace SA.GUI.Forms
         {
             TurnAll(true);
         }
+
+        private void radBindingNavigator1MoveLastItem_Click(object sender, EventArgs e)
+        {
+            counter = counter = solution.Count - 1;
+            togrid();
+        }
+
+        private void radBindingNavigator1MoveFirstItem_Click(object sender, EventArgs e)
+        {
+            counter = 0;
+            togrid();
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            int[,] ints = new int[tableLayoutPanel1.RowCount, tableLayoutPanel1.ColumnCount];
+            for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
+            {
+                for (int j = 0; j < tableLayoutPanel1.ColumnCount; j++)
+                {
+                    if (
+                        (this.tableLayoutPanel1.Controls[(i * tableLayoutPanel1.RowCount + j).ToString()] as LightsCell)
+                            .radButton1.ThemeName ==
+                        visualStudio2012DarkTheme1.ThemeName
+
+                        )
+                    {
+                        ints[i, j] = 0;
+                    }
+                    else
+                    {
+                        ints[i, j] = 1;
+                    }
+                }
+            }
+            Board = new Board(ints);
+
+            if (this.linearalgebra.IsChecked)
+                method = new Solver() { Initial = Board };
+            else if (this.bfs.IsChecked)
+            {
+                method = new BFS()
+                {
+                    Initial = Board,
+                    Method = async.IsChecked ? BFS.SolveMethod.ASYNC : BFS.SolveMethod.SYNC
+                };
+            }
+            else
+                method = new AStar() { Initial = Board };
+
+            sol = method.Solve().ToList();
+            solution.Clear();
+        }
+
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            radLabel3.Text = "Number of Solutions :\n";
+            this.moves.Clear();
+
+            //this.radListView1.Items.Add(solution[0]);
+            foreach (Node node in sol)
+            {
+                string s = node.ToString();
+                string ss = s;
+                //ss=ss.Replace('1', '*');
+                this.moves.Text += "_____________________\n" + ss;
+                solution.Add(node);
+                System.Windows.Forms.Application.DoEvents();
+            }
+
+            radLabel3.Text += solution.Count > 0 ? (solution.Count - 1).ToString() : "There is no solution !";
+            radBindingNavigator1CountItem.Text = "of {" + solution.Count + "}";
+            Waiting_br.StopWaiting();
+            Waiting_br.Visible = false;
+        }
+
+        private void Waiting_br_WaitingStarted(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }

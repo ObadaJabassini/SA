@@ -56,6 +56,7 @@
             this.ContainerCell.Size = new System.Drawing.Size(100, 276);
             this.ContainerCell.TabIndex = 4;
             this.ContainerCell.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ContainerCell.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.ContainerCell_ControlAdded);
             this.ContainerCell.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.ContainerCell_ControlRemoved);
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.ContainerCell.GetChildAt(0).GetChildAt(1))).Opacity = 0D;
             // 

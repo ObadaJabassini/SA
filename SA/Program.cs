@@ -53,9 +53,12 @@ namespace SA
             //    Console.WriteLine("No Solutions have been found");
             //else
             //    sol.ForEach(Console.WriteLine);
-            Game g = new Game(Game.DifficultyLevel.Meduim) {Agent = new IntelligentAgent(Game.DifficultyLevel.Meduim, true) };
-            g.Play();
-            Console.ReadKey();
+            //Game g = new Game(Game.DifficultyLevel.Meduim) {Agent = new IntelligentAgent(Game.DifficultyLevel.Meduim, true) };
+            //g.Play();
+            //Console.ReadKey();
+            //Game g = new Game(Game.DifficultyLevel.Meduim) {Agent = new IntelligentAgent(Game.DifficultyLevel.Meduim) };
+            //g.Play();
+            //Console.ReadKey();
 
             //var b = new Node.State[,] { { Node.State.ON, Node.State.ON, Node.State.ON}, { Node.State.ON, Node.State.OFF, Node.State.ON }, { Node.State.OFF, Node.State.OFF, Node.State.OFF } };
             ////var b = new Node.State[,] { { Node.State.OFF, Node.State.ON, Node.State.ON}, { Node.State.OFF, Node.State.OFF, Node.State.ON }, { Node.State.OFF, Node.State.OFF, Node.State.OFF } };
