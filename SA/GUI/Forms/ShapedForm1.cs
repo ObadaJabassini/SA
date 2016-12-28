@@ -10,7 +10,8 @@ namespace SA.GUI.Forms
 {
     public partial class ShapedForm1 : Telerik.WinControls.UI.ShapedForm
     {
-        private Mancala M;
+        public static Mancala Mancala;
+        public static Lights Lights;
         public ShapedForm1()
         {
             InitializeComponent();
@@ -51,17 +52,31 @@ namespace SA.GUI.Forms
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
 
-            M = new Mancala();
-
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (M.IsLoaded)
-            {
-                M.Show();
-                this.Hide();
-            }
+
+        }
+
+        private void radLabel1_Click(object sender, EventArgs e)
+        {
+            Mancala = new Mancala(); Mancala.Show();
+        }
+
+        private void radPanel2_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private void radPanel2_Click(object sender, EventArgs e)
+        {
+            Lights = new Lights(); Lights.Show();
+        }
+
+        private void radLabel2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -69,6 +69,9 @@ namespace SA
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new GUI.Forms.Lights());
             //Application.Run(new GUI.Forms.Mancala());
-        }
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new GUI.Forms.ShapedForm1());
+            }
     }
 }

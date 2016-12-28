@@ -44,7 +44,7 @@ namespace SA.GUI.Forms
 
         private void Mancala_Load(object sender, EventArgs e)
         {
-            backgroundWorker1.RunWorkerAsync();
+            
            //_game.Play();
         }
 
@@ -297,6 +297,7 @@ namespace SA.GUI.Forms
             IntelligentAgent agent = StratigyAlgorithm.SelectedItem.Index == 0 ? new IntelligentAgent(level) : new IntelligentAgent(level, true);
             int player = FirstPlayer.SelectedItem.Index == 0 ? 1 : 2;
             _game = new Game(level) {NextPlayer = player, Agent = agent};
+            _game = new Game(agent, level,Cell.IntCount) {NextPlayer = player};
             _game.Subscribe(this);
             Informant.Text = FirstPlayer.SelectedItem.Index == 0 ? "Computer's Turn" : "Your Turn";
             Curten.Start();
@@ -416,7 +417,7 @@ namespace SA.GUI.Forms
             int start = player == 1 ? 8 : 1;
             int end = player == 1 ? 13 : 6;
             int earning = player == 1 ? 0 : 7;
-            for (int i = start; i < end; i++)
+            for (int i = start; i <= end; i++)
             {
                 Cell cell = List[i]as Cell;
                 int count = cell.ContainerCell.Controls.Count;
@@ -441,20 +442,20 @@ namespace SA.GUI.Forms
             {
                 if(cell is EarningsCell && (cell as EarningsCell).ContainerCell.Controls.Count!=0)
                 {(cell as EarningsCell).ContainerCell.Controls.Clear();continue;}
-                if (cell is Cell && (cell as Cell).ContainerCell.Controls.Count > 4)
+                if (cell is Cell && (cell as Cell).ContainerCell.Controls.Count > Cell.IntCount)
                 {
                     Cell c = cell as Cell;
-                    int tocleared = (cell as Cell).ContainerCell.Controls.Count - 4;
+                    int tocleared = (cell as Cell).ContainerCell.Controls.Count - Cell.IntCount;
                     for (int i = 0; i < tocleared; i++)
                     {
                         c.ContainerCell.Controls.RemoveAt(0);
                     }
                     continue;
                 }
-                if (cell is Cell && (cell as Cell).ContainerCell.Controls.Count < 4)
+                if (cell is Cell && (cell as Cell).ContainerCell.Controls.Count < Cell.IntCount)
                 {
                     Cell c = cell as Cell;
-                    int tocleared = 4-(cell as Cell).ContainerCell.Controls.Count ;
+                    int tocleared = Cell.IntCount - (cell as Cell).ContainerCell.Controls.Count;
                     for (int i = 0; i < tocleared; i++)
                     {
                         c.AddStone(new Stone());
@@ -462,6 +463,17 @@ namespace SA.GUI.Forms
                 }
                 
             }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            Cell.IntCount = (int) numericUpDown1.Value;
+        }
+
+        private void radButton1_Click_1(object sender, EventArgs e)
+        {
+            backgroundWorker1.RunWorkerAsync();
+
         }
     }
 

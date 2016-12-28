@@ -18,6 +18,8 @@ namespace SA.Mancala
         {
             get
             {
+                if (_thisGame.Winner == 1) return int.MaxValue;
+                if (_thisGame.Winner == 2) return int.MinValue;
                 switch (_thisGame.Level)
                 {
                     case Game.DifficultyLevel.Easy:

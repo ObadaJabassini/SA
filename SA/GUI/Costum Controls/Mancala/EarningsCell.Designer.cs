@@ -38,14 +38,15 @@
             // 
             this.CountStones.AutoSize = false;
             this.CountStones.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.CountStones.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.CountStones.ForeColor = System.Drawing.Color.Firebrick;
+            this.CountStones.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CountStones.ForeColor = System.Drawing.Color.DarkRed;
             this.CountStones.Location = new System.Drawing.Point(0, 282);
             this.CountStones.Name = "CountStones";
             this.CountStones.Size = new System.Drawing.Size(100, 18);
             this.CountStones.TabIndex = 3;
             this.CountStones.Text = "0";
             this.CountStones.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CountStones.TextChanged += new System.EventHandler(this.CountStones_TextChanged);
             // 
             // ContainerCell
             // 

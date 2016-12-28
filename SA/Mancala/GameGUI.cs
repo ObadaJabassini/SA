@@ -11,6 +11,21 @@ namespace SA.Mancala
     {
         private List<IObserver<ResultMessage>> _observers = new List<IObserver<ResultMessage>>();
 
+        public Game(IntelligentAgent agent,DifficultyLevel l,int Stonecount)
+        {
+            this.StonesNum = Stonecount;
+            Agent = agent;
+            _bins = new IList<int>[]
+            {
+                 Enumerable.Range(0, BINS_NUM).Select(i => StonesNum).ToList(),
+                 Enumerable.Range(0, BINS_NUM).Select(i => StonesNum).ToList()
+            };
+
+            _mancals = new[] {0, 0};
+
+            Level = l;
+
+        }
         public IDisposable Subscribe(IObserver<ResultMessage> observer)
         {
             if (!_observers.Contains(observer))
