@@ -53,9 +53,9 @@ namespace SA
             //    Console.WriteLine("No Solutions have been found");
             //else
             //    sol.ForEach(Console.WriteLine);
-            //Game g = new Game();
-            //g.Play();
-            //Console.ReadKey();
+            Game g = new Game(Game.DifficultyLevel.Meduim) {Agent = new IntelligentAgent(Game.DifficultyLevel.Meduim) };
+            g.Play();
+            Console.ReadKey();
 
             //var b = new Node.State[,] { { Node.State.ON, Node.State.ON, Node.State.ON}, { Node.State.ON, Node.State.OFF, Node.State.ON }, { Node.State.OFF, Node.State.OFF, Node.State.OFF } };
             ////var b = new Node.State[,] { { Node.State.OFF, Node.State.ON, Node.State.ON}, { Node.State.OFF, Node.State.OFF, Node.State.ON }, { Node.State.OFF, Node.State.OFF, Node.State.OFF } };
@@ -65,13 +65,13 @@ namespace SA
             //else
             //    sol.ForEach(Console.WriteLine);
             //Console.ReadKey();
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new GUI.Forms.Lights());
+            //Application.Run(new GUI.Forms.Mancala());
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new GUI.Forms.ShapedForm1());
-            Game g = new Game(new MinMax(),Game.DifficultyLevel.Meduim,2);
-            
-            g.Play();
-            Console.ReadKey();
-        }
+            }
     }
 }

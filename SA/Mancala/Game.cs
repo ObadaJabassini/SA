@@ -10,7 +10,7 @@ namespace SA.Mancala
     public partial class Game
     {
         public const int BINS_NUM   = 6;
-        public int StonesNum { set; get; } = 4;
+        public int StonesNum { set; get; }
         public enum DifficultyLevel { Easy, Meduim, Difficult }
         private IList<int>[] _bins;
         private int[] _mancals;
@@ -39,8 +39,9 @@ namespace SA.Mancala
             }
         }
 
-        public Game(DifficultyLevel l = DifficultyLevel.Meduim)
+        public Game(DifficultyLevel l = DifficultyLevel.Meduim, int stonesNum = 4)
         {
+            StonesNum = stonesNum;
             _bins = new IList<int>[]
             {
                  Enumerable.Range(0, BINS_NUM).Select(i => StonesNum).ToList(),
@@ -51,17 +52,7 @@ namespace SA.Mancala
 
             Level = l;
 
-            Agent = new MinMax();
-        }
-
-        public Game(IntelligentAgent agent, DifficultyLevel l = DifficultyLevel.Meduim) : this(l)
-        {
-            Agent = agent;
-        }
-
-        public Game(int firstPlayer) : this()
-        {
-            NextPlayer = firstPlayer;
+            Agent = new IntelligentAgent(l, false);
         }
 
         public Game(Game other) : this()
