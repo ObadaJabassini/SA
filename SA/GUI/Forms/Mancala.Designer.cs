@@ -63,11 +63,11 @@ namespace SA.GUI.Forms
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.BoardPanel = new Telerik.WinControls.UI.RadPanel();
             this.Mask = new Telerik.WinControls.UI.RadPanel();
+            this.radButton1 = new Telerik.WinControls.UI.RadButton();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.Play = new Telerik.WinControls.UI.RadLabel();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.Informant = new Telerik.WinControls.UI.RadLabel();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.radButton1 = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
@@ -94,11 +94,11 @@ namespace SA.GUI.Forms
             this.BoardPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Mask)).BeginInit();
             this.Mask.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Informant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -488,6 +488,33 @@ namespace SA.GUI.Forms
             ((Telerik.WinControls.Primitives.FillPrimitive)(this.Mask.GetChildAt(0).GetChildAt(0))).Opacity = 1D;
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.Mask.GetChildAt(0).GetChildAt(1))).Opacity = 0D;
             // 
+            // radButton1
+            // 
+            this.radButton1.Location = new System.Drawing.Point(545, 93);
+            this.radButton1.Name = "radButton1";
+            this.radButton1.Size = new System.Drawing.Size(71, 20);
+            this.radButton1.TabIndex = 16;
+            this.radButton1.Text = "Load Board";
+            this.radButton1.ThemeName = "VisualStudio2012Dark";
+            this.radButton1.Click += new System.EventHandler(this.radButton1_Click_1);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.numericUpDown1.Location = new System.Drawing.Point(475, 93);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(64, 20);
+            this.numericUpDown1.TabIndex = 15;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown1.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
             // Play
             // 
             this.Play.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -541,33 +568,6 @@ namespace SA.GUI.Forms
             this.Informant.Text = "\'s Turn";
             this.Informant.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.Informant.Click += new System.EventHandler(this.Informant_Click);
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            this.numericUpDown1.Location = new System.Drawing.Point(475, 93);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(64, 20);
-            this.numericUpDown1.TabIndex = 15;
-            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericUpDown1.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            // 
-            // radButton1
-            // 
-            this.radButton1.Location = new System.Drawing.Point(545, 93);
-            this.radButton1.Name = "radButton1";
-            this.radButton1.Size = new System.Drawing.Size(71, 20);
-            this.radButton1.TabIndex = 16;
-            this.radButton1.Text = "Load Board";
-            this.radButton1.ThemeName = "VisualStudio2012Dark";
-            this.radButton1.Click += new System.EventHandler(this.radButton1_Click_1);
             // 
             // Mancala
             // 
@@ -626,11 +626,11 @@ namespace SA.GUI.Forms
             ((System.ComponentModel.ISupportInitialize)(this.Mask)).EndInit();
             this.Mask.ResumeLayout(false);
             this.Mask.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Play)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Informant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

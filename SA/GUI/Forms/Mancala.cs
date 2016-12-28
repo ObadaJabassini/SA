@@ -296,7 +296,7 @@ namespace SA.GUI.Forms
 
             IntelligentAgent agent = StratigyAlgorithm.SelectedItem.Index == 0 ? new MinMax() : new AlphaBetaMinMax();
             int player = FirstPlayer.SelectedItem.Index == 0 ? 1 : 2;
-            _game = new Game(agent, level) {NextPlayer = player};
+            _game = new Game(agent, level,Cell.IntCount) {NextPlayer = player};
             _game.Subscribe(this);
             Informant.Text = FirstPlayer.SelectedItem.Index == 0 ? "Computer's Turn" : "Your Turn";
             Curten.Start();
@@ -416,7 +416,7 @@ namespace SA.GUI.Forms
             int start = player == 1 ? 8 : 1;
             int end = player == 1 ? 13 : 6;
             int earning = player == 1 ? 0 : 7;
-            for (int i = start; i < end; i++)
+            for (int i = start; i <= end; i++)
             {
                 Cell cell = List[i]as Cell;
                 int count = cell.ContainerCell.Controls.Count;
@@ -472,6 +472,7 @@ namespace SA.GUI.Forms
         private void radButton1_Click_1(object sender, EventArgs e)
         {
             backgroundWorker1.RunWorkerAsync();
+
         }
     }
 

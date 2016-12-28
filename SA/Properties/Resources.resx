@@ -124,6 +124,9 @@
   <data name="button12" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\button12.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Pattern_Dark_Pavement_background_patterns_pattern_wallpapers_1440x900" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Pattern-Dark-Pavement-background-patterns-pattern-wallpapers-1440x900.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="AnimatedCustomWaintingFinalofFinalofFinal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AnimatedCustomWaintingFinalofFinalofFinal.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -157,8 +160,11 @@
   <data name="Mask" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mask.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Pattern_Dark_Pavement_background_patterns_pattern_wallpapers_1440x900" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Pattern-Dark-Pavement-background-patterns-pattern-wallpapers-1440x900.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="layout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\layout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MBavkground_PNG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MBavkground.PNG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AnimatedCustomWainting" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AnimatedCustomWainting.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,8 +172,8 @@
   <data name="button9" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\button9.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="MBavkground_PNG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MBavkground.PNG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="layout1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\layout1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="light-bulb2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\light-bulb2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -199,10 +205,7 @@
   <data name="AnimatedWainting" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AnimatedWainting.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="layout" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\layout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="layout1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\layout1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="idea" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\idea.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -32,11 +32,8 @@
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
             this.radLabel3 = new Telerik.WinControls.UI.RadLabel();
             this.side = new Telerik.WinControls.UI.RadPanel();
-            this.radButton4 = new Telerik.WinControls.UI.RadButton();
-            this.radButton3 = new Telerik.WinControls.UI.RadButton();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radLabel2 = new Telerik.WinControls.UI.RadLabel();
-            this.radButton2 = new Telerik.WinControls.UI.RadButton();
             this.n = new System.Windows.Forms.NumericUpDown();
             this.m = new System.Windows.Forms.NumericUpDown();
             this.async = new Telerik.WinControls.UI.RadCheckBox();
@@ -63,31 +60,33 @@
             this.radBindingNavigator1 = new Telerik.WinControls.UI.RadBindingNavigator();
             this.radBindingNavigator1RowElement = new Telerik.WinControls.UI.CommandBarRowElement();
             this.radBindingNavigator1FirstStrip = new Telerik.WinControls.UI.CommandBarStripElement();
-            this.radBindingNavigator1MoveFirstItem = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator1 = new Telerik.WinControls.UI.CommandBarSeparator();
-            this.radBindingNavigator1MovePreviousItem = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator2 = new Telerik.WinControls.UI.CommandBarSeparator();
             this.radBindingNavigator1PositionItem = new Telerik.WinControls.UI.CommandBarTextBox();
             this.radBindingNavigator1CountItem = new Telerik.WinControls.UI.CommandBarLabel();
             this.commandBarSeparator3 = new Telerik.WinControls.UI.CommandBarSeparator();
-            this.radBindingNavigator1MoveNextItem = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator4 = new Telerik.WinControls.UI.CommandBarSeparator();
-            this.radBindingNavigator1MoveLastItem = new Telerik.WinControls.UI.CommandBarButton();
             this.radBindingNavigator1SecondStrip = new Telerik.WinControls.UI.CommandBarStripElement();
-            this.radBindingNavigator1AddNewItem = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarSeparator5 = new Telerik.WinControls.UI.CommandBarSeparator();
-            this.radBindingNavigator1DeleteItem = new Telerik.WinControls.UI.CommandBarButton();
             this.commandBarRowElement1 = new Telerik.WinControls.UI.CommandBarRowElement();
             this.object_02fb915f_d53b_4b5d_8c9d_d63c49e67b78 = new Telerik.WinControls.RootRadElement();
+            this.radBindingNavigator1MoveFirstItem = new Telerik.WinControls.UI.CommandBarButton();
+            this.radBindingNavigator1MovePreviousItem = new Telerik.WinControls.UI.CommandBarButton();
+            this.radBindingNavigator1MoveNextItem = new Telerik.WinControls.UI.CommandBarButton();
+            this.radBindingNavigator1MoveLastItem = new Telerik.WinControls.UI.CommandBarButton();
+            this.radBindingNavigator1AddNewItem = new Telerik.WinControls.UI.CommandBarButton();
+            this.radBindingNavigator1DeleteItem = new Telerik.WinControls.UI.CommandBarButton();
+            this.radButton4 = new Telerik.WinControls.UI.RadButton();
+            this.radButton3 = new Telerik.WinControls.UI.RadButton();
+            this.radButton2 = new Telerik.WinControls.UI.RadButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
+            this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.side)).BeginInit();
             this.side.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.n)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.m)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.async)).BeginInit();
@@ -110,6 +109,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
             this.radPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radBindingNavigator1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,6 +120,7 @@
             // 
             this.radPanel2.BackColor = System.Drawing.Color.Transparent;
             this.radPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.radPanel2.Controls.Add(this.pictureBox1);
             this.radPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel2.Font = new System.Drawing.Font("Nightclub BTN Cn", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radPanel2.ForeColor = System.Drawing.Color.Silver;
@@ -161,56 +165,6 @@
             this.side.TabIndex = 0;
             this.side.Paint += new System.Windows.Forms.PaintEventHandler(this.radPanel3_Paint);
             // 
-            // radButton4
-            // 
-            this.radButton4.Image = global::SA.Properties.Resources.light_bulb_1_;
-            this.radButton4.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radButton4.Location = new System.Drawing.Point(114, 26);
-            this.radButton4.Name = "radButton4";
-            this.radButton4.Size = new System.Drawing.Size(68, 24);
-            this.radButton4.TabIndex = 3;
-            this.radButton4.Text = "All On";
-            this.radButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.radButton4.ThemeName = "VisualStudio2012Light";
-            this.radButton4.Click += new System.EventHandler(this.radButton4_Click_1);
-            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton4.GetChildAt(0))).Image = global::SA.Properties.Resources.light_bulb_1_;
-            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton4.GetChildAt(0))).TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton4.GetChildAt(0))).ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton4.GetChildAt(0))).Text = "All On";
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).StretchHorizontally = true;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).StretchVertically = true;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ScaleSize = new System.Drawing.Size(16, 16);
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ImageScaling = Telerik.WinControls.Enumerations.ImageScaling.SizeToFit;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).AutoSize = true;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).FitToSizeMode = Telerik.WinControls.RadFitToSizeMode.FitToParentPadding;
-            // 
-            // radButton3
-            // 
-            this.radButton3.Image = global::SA.Properties.Resources.light_bulb2;
-            this.radButton3.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radButton3.Location = new System.Drawing.Point(45, 26);
-            this.radButton3.Name = "radButton3";
-            this.radButton3.Size = new System.Drawing.Size(68, 24);
-            this.radButton3.TabIndex = 0;
-            this.radButton3.Text = "All Off";
-            this.radButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.radButton3.ThemeName = "VisualStudio2012Light";
-            this.radButton3.Click += new System.EventHandler(this.radButton3_Click_1);
-            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton3.GetChildAt(0))).Image = global::SA.Properties.Resources.light_bulb2;
-            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton3.GetChildAt(0))).TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton3.GetChildAt(0))).ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton3.GetChildAt(0))).Text = "All Off";
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).StretchHorizontally = true;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).StretchVertically = true;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ScaleSize = new System.Drawing.Size(16, 16);
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ImageScaling = Telerik.WinControls.Enumerations.ImageScaling.SizeToFit;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).AutoSize = true;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).FitToSizeMode = Telerik.WinControls.RadFitToSizeMode.FitToParentPadding;
-            // 
             // radLabel1
             // 
             this.radLabel1.Location = new System.Drawing.Point(30, 115);
@@ -229,32 +183,12 @@
             this.radLabel2.Text = "Row Count";
             this.radLabel2.ThemeName = "VisualStudio2012Dark";
             // 
-            // radButton2
-            // 
-            this.radButton2.Image = global::SA.Properties.Resources.layout;
-            this.radButton2.Location = new System.Drawing.Point(57, 152);
-            this.radButton2.Name = "radButton2";
-            this.radButton2.Size = new System.Drawing.Size(110, 24);
-            this.radButton2.TabIndex = 0;
-            this.radButton2.Text = "create";
-            this.radButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.radButton2.ThemeName = "VisualStudio2012Light";
-            this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
-            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton2.GetChildAt(0))).Image = global::SA.Properties.Resources.layout;
-            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton2.GetChildAt(0))).TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton2.GetChildAt(0))).Text = "create";
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton2.GetChildAt(0).GetChildAt(1).GetChildAt(0))).StretchHorizontally = false;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton2.GetChildAt(0).GetChildAt(1).GetChildAt(0))).StretchVertically = false;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton2.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ImageLayout = System.Windows.Forms.ImageLayout.None;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton2.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ImageScaling = Telerik.WinControls.Enumerations.ImageScaling.SizeToFit;
-            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton2.GetChildAt(0).GetChildAt(1).GetChildAt(0))).AutoSize = true;
-            // 
             // n
             // 
             this.n.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.n.Location = new System.Drawing.Point(119, 114);
             this.n.Name = "n";
-            this.n.Size = new System.Drawing.Size(48, 20);
+            this.n.Size = new System.Drawing.Size(48, 22);
             this.n.TabIndex = 0;
             this.n.Value = new decimal(new int[] {
             11,
@@ -267,7 +201,7 @@
             this.m.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.m.Location = new System.Drawing.Point(118, 73);
             this.m.Name = "m";
-            this.m.Size = new System.Drawing.Size(49, 20);
+            this.m.Size = new System.Drawing.Size(49, 22);
             this.m.TabIndex = 0;
             this.m.Value = new decimal(new int[] {
             11,
@@ -363,7 +297,6 @@
             this.ControlsContainer.Location = new System.Drawing.Point(26, 0);
             this.ControlsContainer.Margin = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.ControlsContainer.Name = "ControlsContainer";
-            this.ControlsContainer.Padding = new System.Windows.Forms.Padding(0);
             this.ControlsContainer.Size = new System.Drawing.Size(197, 418);
             this.ControlsContainer.TabIndex = 0;
             // 
@@ -514,22 +447,10 @@
             ((Telerik.WinControls.UI.RadCommandBarGrip)(this.radBindingNavigator1FirstStrip.GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
             ((Telerik.WinControls.UI.RadCommandBarOverflowButton)(this.radBindingNavigator1FirstStrip.GetChildAt(2))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
             // 
-            // radBindingNavigator1MoveFirstItem
-            // 
-            this.radBindingNavigator1MoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1MoveFirstItem.Image")));
-            this.radBindingNavigator1MoveFirstItem.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.radBindingNavigator1MoveFirstItem.Name = "radBindingNavigator1MoveFirstItem";
-            // 
             // commandBarSeparator1
             // 
             this.commandBarSeparator1.Name = "commandBarSeparator1";
             this.commandBarSeparator1.VisibleInOverflowMenu = false;
-            // 
-            // radBindingNavigator1MovePreviousItem
-            // 
-            this.radBindingNavigator1MovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1MovePreviousItem.Image")));
-            this.radBindingNavigator1MovePreviousItem.Name = "radBindingNavigator1MovePreviousItem";
-            this.radBindingNavigator1MovePreviousItem.Click += new System.EventHandler(this.radBindingNavigator1MovePreviousItem_Click);
             // 
             // commandBarSeparator2
             // 
@@ -554,21 +475,10 @@
             this.commandBarSeparator3.Name = "commandBarSeparator3";
             this.commandBarSeparator3.VisibleInOverflowMenu = false;
             // 
-            // radBindingNavigator1MoveNextItem
-            // 
-            this.radBindingNavigator1MoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1MoveNextItem.Image")));
-            this.radBindingNavigator1MoveNextItem.Name = "radBindingNavigator1MoveNextItem";
-            this.radBindingNavigator1MoveNextItem.Click += new System.EventHandler(this.radBindingNavigator1MoveNextItem_Click);
-            // 
             // commandBarSeparator4
             // 
             this.commandBarSeparator4.Name = "commandBarSeparator4";
             this.commandBarSeparator4.VisibleInOverflowMenu = false;
-            // 
-            // radBindingNavigator1MoveLastItem
-            // 
-            this.radBindingNavigator1MoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1MoveLastItem.Image")));
-            this.radBindingNavigator1MoveLastItem.Name = "radBindingNavigator1MoveLastItem";
             // 
             // radBindingNavigator1SecondStrip
             // 
@@ -590,21 +500,10 @@
             ((Telerik.WinControls.UI.RadCommandBarGrip)(this.radBindingNavigator1SecondStrip.GetChildAt(0))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
             ((Telerik.WinControls.UI.RadCommandBarOverflowButton)(this.radBindingNavigator1SecondStrip.GetChildAt(2))).Visibility = Telerik.WinControls.ElementVisibility.Collapsed;
             // 
-            // radBindingNavigator1AddNewItem
-            // 
-            this.radBindingNavigator1AddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1AddNewItem.Image")));
-            this.radBindingNavigator1AddNewItem.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.radBindingNavigator1AddNewItem.Name = "radBindingNavigator1AddNewItem";
-            // 
             // commandBarSeparator5
             // 
             this.commandBarSeparator5.Name = "commandBarSeparator5";
             this.commandBarSeparator5.VisibleInOverflowMenu = false;
-            // 
-            // radBindingNavigator1DeleteItem
-            // 
-            this.radBindingNavigator1DeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1DeleteItem.Image")));
-            this.radBindingNavigator1DeleteItem.Name = "radBindingNavigator1DeleteItem";
             // 
             // commandBarRowElement1
             // 
@@ -615,6 +514,120 @@
             this.object_02fb915f_d53b_4b5d_8c9d_d63c49e67b78.Name = "object_02fb915f_d53b_4b5d_8c9d_d63c49e67b78";
             this.object_02fb915f_d53b_4b5d_8c9d_d63c49e67b78.StretchHorizontally = true;
             this.object_02fb915f_d53b_4b5d_8c9d_d63c49e67b78.StretchVertically = true;
+            // 
+            // radBindingNavigator1MoveFirstItem
+            // 
+            this.radBindingNavigator1MoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1MoveFirstItem.Image")));
+            this.radBindingNavigator1MoveFirstItem.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.radBindingNavigator1MoveFirstItem.Name = "radBindingNavigator1MoveFirstItem";
+            // 
+            // radBindingNavigator1MovePreviousItem
+            // 
+            this.radBindingNavigator1MovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1MovePreviousItem.Image")));
+            this.radBindingNavigator1MovePreviousItem.Name = "radBindingNavigator1MovePreviousItem";
+            this.radBindingNavigator1MovePreviousItem.Click += new System.EventHandler(this.radBindingNavigator1MovePreviousItem_Click);
+            // 
+            // radBindingNavigator1MoveNextItem
+            // 
+            this.radBindingNavigator1MoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1MoveNextItem.Image")));
+            this.radBindingNavigator1MoveNextItem.Name = "radBindingNavigator1MoveNextItem";
+            this.radBindingNavigator1MoveNextItem.Click += new System.EventHandler(this.radBindingNavigator1MoveNextItem_Click);
+            // 
+            // radBindingNavigator1MoveLastItem
+            // 
+            this.radBindingNavigator1MoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1MoveLastItem.Image")));
+            this.radBindingNavigator1MoveLastItem.Name = "radBindingNavigator1MoveLastItem";
+            // 
+            // radBindingNavigator1AddNewItem
+            // 
+            this.radBindingNavigator1AddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1AddNewItem.Image")));
+            this.radBindingNavigator1AddNewItem.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.radBindingNavigator1AddNewItem.Name = "radBindingNavigator1AddNewItem";
+            // 
+            // radBindingNavigator1DeleteItem
+            // 
+            this.radBindingNavigator1DeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1DeleteItem.Image")));
+            this.radBindingNavigator1DeleteItem.Name = "radBindingNavigator1DeleteItem";
+            // 
+            // radButton4
+            // 
+            this.radButton4.Image = global::SA.Properties.Resources.light_bulb_1_;
+            this.radButton4.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radButton4.Location = new System.Drawing.Point(114, 26);
+            this.radButton4.Name = "radButton4";
+            this.radButton4.Size = new System.Drawing.Size(68, 24);
+            this.radButton4.TabIndex = 3;
+            this.radButton4.Text = "All On";
+            this.radButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.radButton4.ThemeName = "VisualStudio2012Light";
+            this.radButton4.Click += new System.EventHandler(this.radButton4_Click_1);
+            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton4.GetChildAt(0))).Image = global::SA.Properties.Resources.light_bulb_1_;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton4.GetChildAt(0))).TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton4.GetChildAt(0))).ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton4.GetChildAt(0))).Text = "All On";
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).StretchHorizontally = true;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).StretchVertically = true;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ScaleSize = new System.Drawing.Size(16, 16);
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ImageScaling = Telerik.WinControls.Enumerations.ImageScaling.SizeToFit;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).AutoSize = true;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton4.GetChildAt(0).GetChildAt(1).GetChildAt(0))).FitToSizeMode = Telerik.WinControls.RadFitToSizeMode.FitToParentPadding;
+            // 
+            // radButton3
+            // 
+            this.radButton3.Image = global::SA.Properties.Resources.light_bulb2;
+            this.radButton3.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            this.radButton3.Location = new System.Drawing.Point(45, 26);
+            this.radButton3.Name = "radButton3";
+            this.radButton3.Size = new System.Drawing.Size(68, 24);
+            this.radButton3.TabIndex = 0;
+            this.radButton3.Text = "All Off";
+            this.radButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.radButton3.ThemeName = "VisualStudio2012Light";
+            this.radButton3.Click += new System.EventHandler(this.radButton3_Click_1);
+            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton3.GetChildAt(0))).Image = global::SA.Properties.Resources.light_bulb2;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton3.GetChildAt(0))).TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton3.GetChildAt(0))).ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton3.GetChildAt(0))).Text = "All Off";
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).StretchHorizontally = true;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).StretchVertically = true;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ScaleSize = new System.Drawing.Size(16, 16);
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ImageScaling = Telerik.WinControls.Enumerations.ImageScaling.SizeToFit;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).AutoSize = true;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).AutoSizeMode = Telerik.WinControls.RadAutoSizeMode.WrapAroundChildren;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton3.GetChildAt(0).GetChildAt(1).GetChildAt(0))).FitToSizeMode = Telerik.WinControls.RadFitToSizeMode.FitToParentPadding;
+            // 
+            // radButton2
+            // 
+            this.radButton2.Image = global::SA.Properties.Resources.layout;
+            this.radButton2.Location = new System.Drawing.Point(57, 152);
+            this.radButton2.Name = "radButton2";
+            this.radButton2.Size = new System.Drawing.Size(110, 24);
+            this.radButton2.TabIndex = 0;
+            this.radButton2.Text = "create";
+            this.radButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.radButton2.ThemeName = "VisualStudio2012Light";
+            this.radButton2.Click += new System.EventHandler(this.radButton2_Click);
+            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton2.GetChildAt(0))).Image = global::SA.Properties.Resources.layout;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton2.GetChildAt(0))).TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            ((Telerik.WinControls.UI.RadButtonElement)(this.radButton2.GetChildAt(0))).Text = "create";
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton2.GetChildAt(0).GetChildAt(1).GetChildAt(0))).StretchHorizontally = false;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton2.GetChildAt(0).GetChildAt(1).GetChildAt(0))).StretchVertically = false;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton2.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ImageLayout = System.Windows.Forms.ImageLayout.None;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton2.GetChildAt(0).GetChildAt(1).GetChildAt(0))).ImageScaling = Telerik.WinControls.Enumerations.ImageScaling.SizeToFit;
+            ((Telerik.WinControls.Primitives.ImagePrimitive)(this.radButton2.GetChildAt(0).GetChildAt(1).GetChildAt(0))).AutoSize = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::SA.Properties.Resources.idea;
+            this.pictureBox1.Location = new System.Drawing.Point(384, -9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 57);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // Lights
             // 
@@ -636,15 +649,13 @@
             this.ThemeName = "VisualStudio2012Dark";
             this.Load += new System.EventHandler(this.Lights_Load);
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).EndInit();
+            this.radPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.side)).EndInit();
             this.side.ResumeLayout(false);
             this.side.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.n)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.m)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.async)).EndInit();
@@ -669,6 +680,10 @@
             this.radPanel3.ResumeLayout(false);
             this.radPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radBindingNavigator1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -727,6 +742,7 @@
         private Telerik.WinControls.RootRadElement object_02fb915f_d53b_4b5d_8c9d_d63c49e67b78;
         private Telerik.WinControls.UI.RadButton radButton3;
         private Telerik.WinControls.UI.RadButton radButton4;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
 
     }
