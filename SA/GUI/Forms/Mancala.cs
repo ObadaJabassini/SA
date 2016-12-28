@@ -294,9 +294,9 @@ namespace SA.GUI.Forms
                     ? Game.DifficultyLevel.Meduim
                     : Game.DifficultyLevel.Difficult;
 
-            IntelligentAgent agent = StratigyAlgorithm.SelectedItem.Index == 0 ? new MinMax() : new AlphaBetaMinMax();
+            IntelligentAgent agent = StratigyAlgorithm.SelectedItem.Index == 0 ? new IntelligentAgent(level) : new IntelligentAgent(level, true);
             int player = FirstPlayer.SelectedItem.Index == 0 ? 1 : 2;
-            _game = new Game(agent, level) {NextPlayer = player};
+            _game = new Game(level) {NextPlayer = player, Agent = agent};
             _game.Subscribe(this);
             Informant.Text = FirstPlayer.SelectedItem.Index == 0 ? "Computer's Turn" : "Your Turn";
             Curten.Start();
