@@ -23,12 +23,23 @@ namespace SA.GUI.Costum_Controls.Mancala
             
         }
 
+        public void Activate()
+        {
+            //CountStones.Font = new Font(CountStones.Font.FontFamily, 12f, FontStyle.Bold);
+            //CountStones.ForeColor = Color.Firebrick;
+        }
+
+        public void DeActivate()
+        {
+            //CountStones.Font = new Font(CountStones.Font.FontFamily, 16f, FontStyle.Bold);
+            //CountStones.ForeColor = Color.DarkRed;
+        }
+
         public void AddStone(Stone stone)
         {
-
-                ContainerCell.Controls.Add(stone);
-                player.Play();
-                this.CountStones.Text = ContainerCell.Controls.Count.ToString();
+            ContainerCell.Controls.Add(stone);
+            player.Play();
+            this.CountStones.Text = ContainerCell.Controls.Count.ToString();
         }
 
         public void CarryStones(List<Stone> stones)
@@ -38,6 +49,7 @@ namespace SA.GUI.Costum_Controls.Mancala
                 Func<int, int> next = (int current) => (current + 1) % 14;
                 if (Canaddto)
                 {
+                    Activate();
                     this.AddStone(stones[0]);
                     stones.RemoveAt(0);
                 }
@@ -49,9 +61,11 @@ namespace SA.GUI.Costum_Controls.Mancala
                         nextcell.CarryStones(stones);
                     }
                 }
+                
                // else
-                   // _observers[0].OnNext(this.VirtualId.Item1);
+               // _observers[0].OnNext(this.VirtualId.Item1);
             }
+            DeActivate();
         }
 
         public void AddStones(List<Stone> stones)
@@ -76,6 +90,11 @@ namespace SA.GUI.Costum_Controls.Mancala
         private void ContainerCell_ControlRemoved(object sender, ControlEventArgs e)
         {
             this.CountStones.Text = ContainerCell.Controls.Count.ToString();
+        }
+
+        private void CountStones_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

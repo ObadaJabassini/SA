@@ -39,6 +39,7 @@ namespace SA.GUI.Forms
             this.radPanel2 = new Telerik.WinControls.UI.RadPanel();
             this.radLabel1 = new Telerik.WinControls.UI.RadLabel();
             this.radPanel3 = new Telerik.WinControls.UI.RadPanel();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.radPanel4 = new Telerik.WinControls.UI.RadPanel();
             this.radPanel5 = new Telerik.WinControls.UI.RadPanel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -65,12 +66,14 @@ namespace SA.GUI.Forms
             this.Play = new Telerik.WinControls.UI.RadLabel();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.Informant = new Telerik.WinControls.UI.RadLabel();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.radButton1 = new Telerik.WinControls.UI.RadButton();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).BeginInit();
             this.radPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel5)).BeginInit();
             this.radPanel5.SuspendLayout();
@@ -94,7 +97,8 @@ namespace SA.GUI.Forms
             ((System.ComponentModel.ISupportInitialize)(this.Play)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Informant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,6 +141,16 @@ namespace SA.GUI.Forms
             this.radPanel3.TabIndex = 3;
             ((Telerik.WinControls.UI.RadPanelElement)(this.radPanel3.GetChildAt(0))).Text = "";
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.radPanel3.GetChildAt(0).GetChildAt(1))).Opacity = 0D;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackgroundImage = global::SA.Properties.Resources.Green;
+            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox10.Location = new System.Drawing.Point(12, 29);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(62, 42);
+            this.pictureBox10.TabIndex = 0;
+            this.pictureBox10.TabStop = false;
             // 
             // radPanel4
             // 
@@ -456,6 +470,8 @@ namespace SA.GUI.Forms
             // Mask
             // 
             this.Mask.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.Mask.Controls.Add(this.radButton1);
+            this.Mask.Controls.Add(this.numericUpDown1);
             this.Mask.Controls.Add(this.Play);
             this.Mask.Controls.Add(this.pictureBox9);
             this.Mask.Location = new System.Drawing.Point(-15, 3);
@@ -526,15 +542,32 @@ namespace SA.GUI.Forms
             this.Informant.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.Informant.Click += new System.EventHandler(this.Informant_Click);
             // 
-            // pictureBox10
+            // numericUpDown1
             // 
-            this.pictureBox10.BackgroundImage = global::SA.Properties.Resources.Green;
-            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox10.Location = new System.Drawing.Point(12, 29);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(62, 42);
-            this.pictureBox10.TabIndex = 0;
-            this.pictureBox10.TabStop = false;
+            this.numericUpDown1.BackColor = System.Drawing.SystemColors.InactiveCaptionText;
+            this.numericUpDown1.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            this.numericUpDown1.Location = new System.Drawing.Point(475, 93);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(64, 20);
+            this.numericUpDown1.TabIndex = 15;
+            this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numericUpDown1.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // radButton1
+            // 
+            this.radButton1.Location = new System.Drawing.Point(545, 93);
+            this.radButton1.Name = "radButton1";
+            this.radButton1.Size = new System.Drawing.Size(71, 20);
+            this.radButton1.TabIndex = 16;
+            this.radButton1.Text = "Load Board";
+            this.radButton1.ThemeName = "VisualStudio2012Dark";
+            this.radButton1.Click += new System.EventHandler(this.radButton1_Click_1);
             // 
             // Mancala
             // 
@@ -571,6 +604,7 @@ namespace SA.GUI.Forms
             ((System.ComponentModel.ISupportInitialize)(this.radLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel3)).EndInit();
             this.radPanel3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel5)).EndInit();
             this.radPanel5.ResumeLayout(false);
@@ -595,7 +629,8 @@ namespace SA.GUI.Forms
             ((System.ComponentModel.ISupportInitialize)(this.Play)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Informant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.radButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -634,6 +669,8 @@ namespace SA.GUI.Forms
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox10;
+        private RadButton radButton1;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
 
     }
 }

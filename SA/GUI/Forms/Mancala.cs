@@ -44,7 +44,7 @@ namespace SA.GUI.Forms
 
         private void Mancala_Load(object sender, EventArgs e)
         {
-            backgroundWorker1.RunWorkerAsync();
+            
            //_game.Play();
         }
 
@@ -441,20 +441,20 @@ namespace SA.GUI.Forms
             {
                 if(cell is EarningsCell && (cell as EarningsCell).ContainerCell.Controls.Count!=0)
                 {(cell as EarningsCell).ContainerCell.Controls.Clear();continue;}
-                if (cell is Cell && (cell as Cell).ContainerCell.Controls.Count > 4)
+                if (cell is Cell && (cell as Cell).ContainerCell.Controls.Count > Cell.IntCount)
                 {
                     Cell c = cell as Cell;
-                    int tocleared = (cell as Cell).ContainerCell.Controls.Count - 4;
+                    int tocleared = (cell as Cell).ContainerCell.Controls.Count - Cell.IntCount;
                     for (int i = 0; i < tocleared; i++)
                     {
                         c.ContainerCell.Controls.RemoveAt(0);
                     }
                     continue;
                 }
-                if (cell is Cell && (cell as Cell).ContainerCell.Controls.Count < 4)
+                if (cell is Cell && (cell as Cell).ContainerCell.Controls.Count < Cell.IntCount)
                 {
                     Cell c = cell as Cell;
-                    int tocleared = 4-(cell as Cell).ContainerCell.Controls.Count ;
+                    int tocleared = Cell.IntCount - (cell as Cell).ContainerCell.Controls.Count;
                     for (int i = 0; i < tocleared; i++)
                     {
                         c.AddStone(new Stone());
@@ -462,6 +462,16 @@ namespace SA.GUI.Forms
                 }
                 
             }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            Cell.IntCount = (int) numericUpDown1.Value;
+        }
+
+        private void radButton1_Click_1(object sender, EventArgs e)
+        {
+            backgroundWorker1.RunWorkerAsync();
         }
     }
 

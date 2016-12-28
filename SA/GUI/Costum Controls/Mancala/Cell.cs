@@ -21,6 +21,7 @@ namespace SA.GUI.Costum_Controls.Mancala
         public int id;
         static SoundPlayer player = new SoundPlayer(Resources.Click_SoundBible_com_1387633738);
         public Tuple<byte,int >VirtualId;
+        public static int IntCount=4 ;
         public Cell()
         {
             InitializeComponent();
@@ -29,9 +30,8 @@ namespace SA.GUI.Costum_Controls.Mancala
         private void Cell_Load(object sender, EventArgs e)
         {
             SuspendLayout();
-            int count = 4;
 
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < IntCount; i++)
             {
                 this.ContainerCell.Controls.Add(new Stone()
                 {
@@ -102,6 +102,7 @@ namespace SA.GUI.Costum_Controls.Mancala
 
         public void PerformClick()
         {
+            Activate();
             (Forms.Mancala.List[0] as EarningsCell).Canaddto = VirtualId.Item1 == 1;
             (Forms.Mancala.List[7] as EarningsCell).Canaddto = VirtualId.Item1 == 2;
             CuurentCell cell=new CuurentCell(){
@@ -135,11 +136,6 @@ namespace SA.GUI.Costum_Controls.Mancala
                 {
                     if (c.ContainerCell.Controls.Count == 0 && t.ContainerCell.Controls.Count != 0)
                     {
-                        //Console.WriteLine(index());
-                        //Console.WriteLine(id);
-                        //Console.WriteLine("===" + c.ContainerCell.Controls.Count);
-                        //Console.WriteLine(target());
-                        //Console.WriteLine("===" + t.ContainerCell.Controls.Count);
                         opositCell = new GetOpositCell()
                         {
                             //id=index(),
@@ -188,6 +184,7 @@ namespace SA.GUI.Costum_Controls.Mancala
             if(opositCell != null)
                 _observers2[0].OnNext(opositCell);
             _observers[0].OnNext(cell);
+            DeActivate();
         }
 
         private Func<Cell, bool> CanClicked =
@@ -219,7 +216,7 @@ namespace SA.GUI.Costum_Controls.Mancala
 
         public void CarryStones(List<Stone> stones)
         {
-            
+            Activate();
             if (stones.Count != 0)
             {
                 Func<int, int> next = (int current) => (current + 1)%14;
@@ -275,6 +272,23 @@ namespace SA.GUI.Costum_Controls.Mancala
                 _observers2.Add(observer);
             }
             return null;
+        }
+
+        private void CountStones_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void Activate()
+        {
+            //CountStones.Font = new Font(CountStones.Font.FontFamily, 12f, FontStyle.Bold);
+            //CountStones.ForeColor = Color.Firebrick;
+        }
+
+        public void DeActivate()
+        {
+            //CountStones.Font = new Font(CountStones.Font.FontFamily, 16f, FontStyle.Bold);
+            //CountStones.ForeColor = Color.DarkRed;
         }
     }
 }
