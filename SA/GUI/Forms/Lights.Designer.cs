@@ -80,6 +80,8 @@
             this.radButton3 = new Telerik.WinControls.UI.RadButton();
             this.radButton2 = new Telerik.WinControls.UI.RadButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.Waiting_br = new Telerik.WinControls.UI.RadWaitingBar();
             ((System.ComponentModel.ISupportInitialize)(this.radPanel2)).BeginInit();
             this.radPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.radLabel3)).BeginInit();
@@ -113,6 +115,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radButton3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Waiting_br)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,6 +123,7 @@
             // 
             this.radPanel2.BackColor = System.Drawing.Color.Transparent;
             this.radPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.radPanel2.Controls.Add(this.Waiting_br);
             this.radPanel2.Controls.Add(this.pictureBox1);
             this.radPanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.radPanel2.Font = new System.Drawing.Font("Nightclub BTN Cn", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -161,7 +165,7 @@
             this.side.Dock = System.Windows.Forms.DockStyle.Left;
             this.side.Location = new System.Drawing.Point(0, 77);
             this.side.Name = "side";
-            this.side.Size = new System.Drawing.Size(232, 495);
+            this.side.Size = new System.Drawing.Size(232, 416);
             this.side.TabIndex = 0;
             this.side.Paint += new System.Windows.Forms.PaintEventHandler(this.radPanel3_Paint);
             // 
@@ -188,7 +192,7 @@
             this.n.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.n.Location = new System.Drawing.Point(119, 114);
             this.n.Name = "n";
-            this.n.Size = new System.Drawing.Size(48, 22);
+            this.n.Size = new System.Drawing.Size(48, 20);
             this.n.TabIndex = 0;
             this.n.Value = new decimal(new int[] {
             11,
@@ -201,7 +205,7 @@
             this.m.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.m.Location = new System.Drawing.Point(118, 73);
             this.m.Name = "m";
-            this.m.Size = new System.Drawing.Size(49, 22);
+            this.m.Size = new System.Drawing.Size(49, 20);
             this.m.TabIndex = 0;
             this.m.Value = new decimal(new int[] {
             11,
@@ -358,7 +362,7 @@
             this.moves.AutoScroll = true;
             this.moves.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.moves.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.moves.Location = new System.Drawing.Point(0, 85);
+            this.moves.Location = new System.Drawing.Point(0, 6);
             this.moves.Multiline = true;
             this.moves.Name = "moves";
             this.moves.Size = new System.Drawing.Size(217, 410);
@@ -374,7 +378,7 @@
             this.radPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.radPanel4.Location = new System.Drawing.Point(232, 77);
             this.radPanel4.Name = "radPanel4";
-            this.radPanel4.Size = new System.Drawing.Size(735, 495);
+            this.radPanel4.Size = new System.Drawing.Size(735, 416);
             this.radPanel4.TabIndex = 3;
             this.radPanel4.Paint += new System.Windows.Forms.PaintEventHandler(this.radPanel4_Paint);
             // 
@@ -386,7 +390,7 @@
             this.radPanel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.radPanel1.Location = new System.Drawing.Point(750, 77);
             this.radPanel1.Name = "radPanel1";
-            this.radPanel1.Size = new System.Drawing.Size(217, 495);
+            this.radPanel1.Size = new System.Drawing.Size(217, 416);
             this.radPanel1.TabIndex = 4;
             this.radPanel1.Text = "radPanel1";
             // 
@@ -520,6 +524,7 @@
             this.radBindingNavigator1MoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1MoveFirstItem.Image")));
             this.radBindingNavigator1MoveFirstItem.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.radBindingNavigator1MoveFirstItem.Name = "radBindingNavigator1MoveFirstItem";
+            this.radBindingNavigator1MoveFirstItem.Click += new System.EventHandler(this.radBindingNavigator1MoveFirstItem_Click);
             // 
             // radBindingNavigator1MovePreviousItem
             // 
@@ -537,6 +542,7 @@
             // 
             this.radBindingNavigator1MoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("radBindingNavigator1MoveLastItem.Image")));
             this.radBindingNavigator1MoveLastItem.Name = "radBindingNavigator1MoveLastItem";
+            this.radBindingNavigator1MoveLastItem.Click += new System.EventHandler(this.radBindingNavigator1MoveLastItem_Click);
             // 
             // radBindingNavigator1AddNewItem
             // 
@@ -629,13 +635,32 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // Waiting_br
+            // 
+            this.Waiting_br.Location = new System.Drawing.Point(232, 54);
+            this.Waiting_br.Name = "Waiting_br";
+            this.Waiting_br.Size = new System.Drawing.Size(520, 24);
+            this.Waiting_br.TabIndex = 2;
+            this.Waiting_br.Text = "radWaitingBar1";
+            this.Waiting_br.ThemeName = "VisualStudio2012Dark";
+            this.Waiting_br.Visible = false;
+            this.Waiting_br.WaitingStarted += new System.EventHandler(this.Waiting_br_WaitingStarted);
+            ((Telerik.WinControls.UI.WaitingBarIndicatorElement)(this.Waiting_br.GetChildAt(0).GetChildAt(0).GetChildAt(2))).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(103)))));
+            ((Telerik.WinControls.UI.WaitingBarIndicatorElement)(this.Waiting_br.GetChildAt(0).GetChildAt(0).GetChildAt(2))).StretchHorizontally = false;
+            ((Telerik.WinControls.UI.WaitingBarSeparatorElement)(this.Waiting_br.GetChildAt(0).GetChildAt(0).GetChildAt(2).GetChildAt(0))).BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(204)))), ((int)(((byte)(172)))));
+            // 
             // Lights
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(967, 572);
+            this.ClientSize = new System.Drawing.Size(967, 493);
             this.Controls.Add(this.radPanel1);
             this.Controls.Add(this.radPanel4);
             this.Controls.Add(this.side);
@@ -684,6 +709,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.radButton3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radButton2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Waiting_br)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -743,6 +769,8 @@
         private Telerik.WinControls.UI.RadButton radButton3;
         private Telerik.WinControls.UI.RadButton radButton4;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Telerik.WinControls.UI.RadWaitingBar Waiting_br;
 
 
     }
