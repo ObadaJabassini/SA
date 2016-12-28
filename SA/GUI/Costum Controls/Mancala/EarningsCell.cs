@@ -25,14 +25,14 @@ namespace SA.GUI.Costum_Controls.Mancala
 
         public void Activate()
         {
-            //CountStones.Font = new Font(CountStones.Font.FontFamily, 12f, FontStyle.Bold);
-            //CountStones.ForeColor = Color.Firebrick;
+            CountStones.Font = new Font(CountStones.Font.FontFamily, 12f, FontStyle.Bold);
+            CountStones.ForeColor = Color.Firebrick;
         }
 
         public void DeActivate()
         {
-            //CountStones.Font = new Font(CountStones.Font.FontFamily, 16f, FontStyle.Bold);
-            //CountStones.ForeColor = Color.DarkRed;
+            CountStones.Font = new Font(CountStones.Font.FontFamily, 16f, FontStyle.Bold);
+            CountStones.ForeColor = Color.DarkRed;
         }
 
         public void AddStone(Stone stone)
@@ -94,7 +94,12 @@ namespace SA.GUI.Costum_Controls.Mancala
 
         private void CountStones_TextChanged(object sender, EventArgs e)
         {
+            Activate();
+        }
 
+        private void ContainerCell_ControlAdded(object sender, ControlEventArgs e)
+        {
+            
         }
     }
 }

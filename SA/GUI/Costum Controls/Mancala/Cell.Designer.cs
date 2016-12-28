@@ -59,6 +59,7 @@
             this.ContainerCell.TabIndex = 2;
             this.ContainerCell.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             this.ContainerCell.Click += new System.EventHandler(this.ContainerCell_Click);
+            this.ContainerCell.ControlAdded += new System.Windows.Forms.ControlEventHandler(this.ContainerCell_ControlAdded_1);
             this.ContainerCell.ControlRemoved += new System.Windows.Forms.ControlEventHandler(this.ContainerCell_ControlRemoved);
             this.ContainerCell.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ContainerCell_MouseUp);
             ((Telerik.WinControls.Primitives.BorderPrimitive)(this.ContainerCell.GetChildAt(0).GetChildAt(1))).Opacity = 0D;
